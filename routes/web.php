@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Book\BooksController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +25,9 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
         Route::get('/logout', [AdminController::class, 'logout']);
         Route::get('/dashboard', [AdminController::class, 'dashboard']);
         Route::post('/check-current-pwd', [AdminController::class, 'checkCurrentPwd']);
+
+
+        Route::get('categories', [BooksController::class, 'categories']);
 
 });
 
