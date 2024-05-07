@@ -6,12 +6,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Categories Details</h1>
+            <h1>Books Details</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Library</li>
+              <li class="breadcrumb-item active">Books</li>
             </ol>
           </div>
         </div>
@@ -40,8 +40,8 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Books Categories</h3>
-                <a href="{{ url('admin/add-edit-category') }}"><Button class="btn-success" style="float: right;">Add Category</Button></a>
+                <h3 class="card-title">Books Details</h3>
+                <a href="{{ url('admin/add-edit-book') }}"><Button class="btn-success" style="float: right;">Add Book</Button></a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -49,31 +49,35 @@
                   <thead>
                   <tr>
                     <th>ID</th>
-                    <th>Category Name</th>
-                    <th>Table Number</th>
-                    <th>Category Image</th>
+                    <th>Book Title</th>
+                    <th>Category</th>
+                    <th>Added By</th>
+                    <th>Image</th>
+                    <!-- <th>Description</th> -->
                     <th>Status</th>
                     <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach($cat_details as $category)
+                  @foreach($books as $book)
                   <tr>
-                    <td>{{ $category->id }}</td>
-                    <td>{{ $category->category_name }}</td>
-                    <td>{{ $category->table_no }}</td>
-                    <td>{{ $category->category_image }}</td>
-                                     <td>
-                    @if( $category->status == 1)
-    	                <a class="updateCategoryStatus" id="category-{{ $category->id }}" category_id="{{ $category->id }}"
+                    <td>{{ $book['id'] }}</td>
+                    <td>{{ $book['title'] }}</td>
+                    <td>{{ $book['categories']['category_name'] }}</td>
+                    <td>{{ $book['added_by_details']['name'] }}</td>
+                    <td>{{ $book['book_image'] }}</td>
+                    <!-- <td>{{ $book['description'] }}</td> -->
+                    <td>
+                    @if( $book['status'] == 1)
+    	                <a class="updateCategoryStatus" id="book-{{ $book['id'] }}" category_id="{{ $book['id'] }}"
                         href="javascript:void(0)"><i class="fas fa-toggle-on" aria-hidden="true" status="Active"></i></a>
                     @else
-                    <a class="updateCategoryStatus" id="category-{{ $category->id }}" category_id="{{ $category->id }}"
+                    <a class="updateCategoryStatus" id="book-{{ $book['id'] }}" category_id="{{ $book['id'] }}"
                         href="javascript:void(0)"><i class="fas fa-toggle-off" aria-hidden="true" status="In-Active"></i></a>
                     @endif    
                   </td>
-                    <td><a href="{{ url('/admin/add-edit-category/'.$category->id ) }}"><i class="fas fa-edit"></i></a>
-                    &nbsp;&nbsp;<a style="color:red;" href="javascript:void(0)" class="confirmDelete" record="category" recordId="{{  $category->id }}">
+                    <td><a href="{{ url('/admin/add-edit-book/'.$book['id'] ) }}"><i class="fas fa-edit"></i></a>
+                    &nbsp;&nbsp;<a style="color:red;" href="javascript:void(0)" class="confirmDelete" record="book" recordId="{{  $book['id'] }}">
                     <i class="fas fa-trash"></i></a></td>
                   </tr>
                   @endforeach

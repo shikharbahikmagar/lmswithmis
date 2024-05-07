@@ -14,7 +14,8 @@ class CategoriesController extends Controller
     {
         $cat_details = Category::get();
         // echo "<pre>"; print_r($cat_detail); die;
-        return view('admin.books.categories.categories')->with(compact('cat_details'));
+        // return response()->json($cat_details);
+        return view('admin.categories.categories')->with(compact('cat_details'));
     }
 
     //update and add category details
@@ -85,7 +86,7 @@ class CategoriesController extends Controller
 
         }
 
-        return view('admin.books.categories.add_edit_category')->with(compact('title', 'btn', 'category'));
+        return view('admin.categories.add_edit_category')->with(compact('title', 'btn', 'category'));
     }
 
     //delete category

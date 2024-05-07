@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\CategoriesController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,20 +17,4 @@ use App\Http\Controllers\AdminController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-});
-Route::match(['get', 'post'], '/update-admin-details', [AdminController::class, 'updateAdminDetails']);
-Route::prefix('/admin')->namespace('Admin')->group(function() {
-
-    Route::match(['get', 'post'], '/login', [AdminController::class, 'login']);
-
-    Route::group(['middleware'=> ['admin']], function(){
-
-        Route::match(['get', 'post'], '/update-admin-details', [AdminController::class, 'updateAdminDetails']);
-        Route::match(['get', 'post'], '/update-admin-pwd', [AdminController::class, 'updateAdminPwd']);
-        Route::get('/logout', [AdminController::class, 'logout']);
-        Route::get('/dashboard', [AdminController::class, 'dashboard']);
-        Route::post('/check-current-pwd', [AdminController::class, 'checkCurrentPwd']);
-
-});
-
 });

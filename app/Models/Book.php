@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     use HasFactory;
+
+    public function categories()
+    {
+        return $this->belongsTo('App\Models\Category', 'category_id')->select('id', 'category_name');
+    }
+
+    public function added_by_details()
+    {
+        return $this->belongsTo('App\Models\Admin', 'added_by')->select('id', 'name');
+    }
 }

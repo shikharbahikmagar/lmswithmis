@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Admin\BooksController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,12 +27,16 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
         Route::get('/dashboard', [AdminController::class, 'dashboard']);
         Route::post('/check-current-pwd', [AdminController::class, 'checkCurrentPwd']);
 
-
+        //categories
         Route::get('categories', [CategoriesController::class, 'categories']);
         Route::match(['get', 'post'], 'add-edit-category/{id?}', [CategoriesController::class, 'addEditCategory']);
         Route::get('/delete-category/{id}', [CategoriesController::class, 'deleteCategory']);
-         Route::get('/delete-category-image/{id}', [CategoriesController::class, 'deleteCategoryImage']);
+        Route::get('/delete-category-image/{id}', [CategoriesController::class, 'deleteCategoryImage']);
         Route::post('/update-category-status', [CategoriesController::class, 'updateCategoryStatus']);
+
+        //books
+        Route::get('books', [BooksController::class, 'books']);
+        Route::match(['get', 'post'], 'add-edit-book/{id?}', [BooksController::class, 'addEditBooks']);
 });
 
 
