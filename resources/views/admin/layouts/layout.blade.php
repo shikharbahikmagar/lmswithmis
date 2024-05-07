@@ -110,6 +110,7 @@
 <script src="{{ asset('admin/js/adminlte.js') }}"></script>
 <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
 <script src="{{ asset('admin/js/admin_script.js') }}"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
   $(function () {
     $("#category_table").DataTable({
@@ -118,5 +119,6 @@
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
   });
 </script>
+
 </body>
 </html>
