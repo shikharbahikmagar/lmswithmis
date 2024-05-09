@@ -78,12 +78,55 @@ $(document).ready(function () {
                    {
                     $("#category-" + category_id).html(" <i class='fas fa-toggle-on' aria-hidden='true' status='Active'></i>");
                    }
-            },error:function()
+            },error:function(error)
             {
                 alert(error);
             }
         })
     });
+
+    //update book status
+    $(document).on("click", ".updateBookStatus", function () {
+        var status = $(this).children("i").attr("status");
+        var book_id = $(this).attr("book_id");
+        $.ajax({
+            type: 'post',
+            url: '/admin/update-book-status',
+            data: { status: status, book_id: book_id },
+
+            success: function (resp) {
+                if (resp['status'] == 0) {
+                    $("#book-" + book_id).html(" <i class='fas fa-toggle-off' aria-hidden='true' status='In-Active'></i>");
+                } else if (resp['status'] == 1) {
+                    $("#book-" + book_id).html(" <i class='fas fa-toggle-on' aria-hidden='true' status='Active'></i>");
+                }
+            }, error: function (error) {
+                alert(error);
+            }
+        })
+    });
+
+    //book delete confirmation sweet alert
+    $(document).on("click", ".bookConfirmDelete", function () {
+        var record = $(this).attr("record");
+        var recordId = $(this).attr("recordId");
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                window.location.href = "/admin/delete-" + record + "/" + recordId;
+
+            }
+        });
+
+    });
+
 
 
 });

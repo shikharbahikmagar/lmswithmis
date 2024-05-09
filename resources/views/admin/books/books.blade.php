@@ -69,15 +69,15 @@
                     <!-- <td>{{ $book['description'] }}</td> -->
                     <td>
                     @if( $book['status'] == 1)
-    	                <a class="updateCategoryStatus" id="book-{{ $book['id'] }}" category_id="{{ $book['id'] }}"
+    	                <a class="updateBookStatus" id="book-{{ $book['id'] }}" book_id="{{ $book['id'] }}"
                         href="javascript:void(0)"><i class="fas fa-toggle-on" aria-hidden="true" status="Active"></i></a>
                     @else
-                    <a class="updateCategoryStatus" id="book-{{ $book['id'] }}" category_id="{{ $book['id'] }}"
+                    <a class="updateBookStatus" id="book-{{ $book['id'] }}" book_id="{{ $book['id'] }}"
                         href="javascript:void(0)"><i class="fas fa-toggle-off" aria-hidden="true" status="In-Active"></i></a>
                     @endif    
                   </td>
                     <td><a href="{{ url('/admin/add-edit-book/'.$book['id'] ) }}"><i class="fas fa-edit"></i></a>
-                    &nbsp;&nbsp;<a style="color:red;" href="javascript:void(0)" class="confirmDelete" record="book" recordId="{{  $book['id'] }}">
+                    &nbsp;&nbsp;<a style="color:red;" href="javascript:void(0)" class="bookConfirmDelete" record="book" recordId="{{  $book['id'] }}">
                     <i class="fas fa-trash"></i></a></td>
                   </tr>
                   @endforeach

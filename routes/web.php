@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\BooksController;
+use App\Http\Controllers\Front\IndexController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,9 +38,14 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
         //books
         Route::get('books', [BooksController::class, 'books']);
         Route::match(['get', 'post'], 'add-edit-book/{id?}', [BooksController::class, 'addEditBooks']);
+        Route::post('update-book-status', [BooksController::class, 'updateBookStatus']);
+        Route::get('delete-book/{id}', [BooksController::class, 'deleteBook']);
+});
 });
 
+
+
+
+    Route::get('/', [IndexController::class, 'index']);
 
    
-
-});

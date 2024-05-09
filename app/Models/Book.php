@@ -16,6 +16,6 @@ class Book extends Model
 
     public function added_by_details()
     {
-        return $this->belongsTo('App\Models\Admin', 'added_by')->select('id', 'name');
+        return $this->belongsTo('App\Models\Admin', 'admin_id')->select('id', 'name');
     }
 }
