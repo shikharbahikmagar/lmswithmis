@@ -66,7 +66,7 @@
                                  </td>
                                  <td>
                                     <a href="{{ url('admin/add-edit-category/'.$category['id']) }}"><i style="font-size: 20px;" class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;
-                                    <a href="javascript:void(0)" class="BookConfirmDelete" id="category-{{ $category['id'] }}" category_id = "{{ $category['id'] }}"><i style="color:red; font-size: 20px;" class="fa fa-trash"></i></a>
+                                    <a href="javascript:void(0)" class="deleteCategory" record="category" recordID = "{{ $category['id'] }}"><i style="color:red; font-size: 20px;" class="fa fa-trash"></i></a>
                                  </td>
                             </tr>
                             @endforeach

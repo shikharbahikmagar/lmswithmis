@@ -84,7 +84,7 @@
                     <img src="{{ asset('/images/category_images/'.$category['category_image']) }}" width="100px" height="100px" alt="">
                     <input type="hidden" value="{{ $category['category_image'] }}" name="current_category_image">
                     <a target="_blank" class="float-right" href="{{ url('images/category_images/'.$category['category_image']) }}">View Image</a><br>
-                    <a href="javascript:void(0)" class="imageConfirmDelete float-right" style="color:red;" record="category-image" 
+                    <a href="javascript:void(0)" class="deleteCategoryImage float-right" style="color:red;" record="category-image" 
                     recordId = "{{ $category->id }}">Delete Image</a>
                     @endif
                 </div>

@@ -57,7 +57,7 @@
                     <td>{{ $book['title'] }}</td>
                     <td>{{ $book['categories']['category_name'] }}</td>
                     <td>{{ $book['added_by_details']['name'] }}</td>
-                    <td>{{ $book['book_image'] }}</td>
+                    <td><img src="{{ asset('/images/book_images/'.$book['book_image']) }}" width="60px" height="60px" alt=""></td>
                     <!-- <td>{{ $book['description'] }}</td> -->
                     <td>@if($book['status'] == 1) 
                                     <a href="javascript:void(0)" class="updateBookStatus" id="book-{{ $book['id'] }}" book_id="{{$book['id']}}">
@@ -69,7 +69,7 @@
                                  </td>
                                  <td>
                                     <a href="{{ url('admin/add-edit-book/'.$book['id']) }}"><i style="font-size: 20px;" class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;
-                                    <a href="javascript:void(0)" class="confirmDelete" id="book-{{ $book['id'] }}" book_id = "{{ $book['id'] }}"><i style="color:red; font-size: 20px;" class="fa fa-trash"></i></a>
+                                    <a href="javascript:void(0)" class="deleteBook" record="book" recordId = "{{ $book['id'] }}"><i style="color:red; font-size: 20px;" class="fa fa-trash"></i></a>
                                  </td>
                             </tr>
                             @endforeach

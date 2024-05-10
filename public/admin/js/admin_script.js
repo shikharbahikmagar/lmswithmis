@@ -19,7 +19,7 @@ $(document).ready(function () {
     });
 
     //category delete confirmation
-    $(document).on("click", ".confirmDelete", function () {
+    $(document).on("click", ".deleteCategory", function () {
         var record = $(this).attr("record");
         var recordId = $(this).attr("recordId");
         Swal.fire({
@@ -40,7 +40,7 @@ $(document).ready(function () {
     });
 
     //category image delete confirmation
-        $(document).on("click", ".imageConfirmDelete", function () {
+        $(document).on("click", ".deleteCategoryImage", function () {
             var record = $(this).attr("record");
             var recordId = $(this).attr("recordId");
             Swal.fire({
@@ -107,7 +107,28 @@ $(document).ready(function () {
     });
 
     //book delete confirmation sweet alert
-    $(document).on("click", ".bookConfirmDelete", function () {
+    $(document).on("click", ".deleteBook", function () {
+        var record = $(this).attr("record");
+        var recordId = $(this).attr("recordId");
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                window.location.href = "/admin/delete-" + record + "/" + recordId;
+
+            }
+        });
+
+    });
+
+    //category image delete confirmation
+    $(document).on("click", ".imageConfirmDelete", function () {
         var record = $(this).attr("record");
         var recordId = $(this).attr("recordId");
         Swal.fire({
