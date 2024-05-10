@@ -83,7 +83,7 @@
                 </div> 
                     <div class="form-group">
                   <label>Select Category</label>
-                  <select name="category_id" id="category_id" class="form-control select2" style="width: 100%;">
+                  <select name="category_id" id="category_id" class="custom-select" style="width: 100%;">
                     <option value="">Select</option>
                     @foreach($categories as $category)
                     <option value="{{ $category->id }}" @if(!empty($booksData['category_id']) &&

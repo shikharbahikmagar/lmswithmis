@@ -3,12 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ProBootstrap:Enlight &mdash; Free Bootstrap Theme, Free Responsive Bootstrap Website Template</title>
+    <title>front</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700|Open+Sans" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('front/css/styles-merged.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/css/note_board.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('front/css/style.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('front/css/custom.css') }}">
-  </head>
+</head>
   <body>
     
     <div class="probootstrap-search" id="probootstrap-search">
@@ -27,12 +29,9 @@
 
     </div>
   
-    
-
     <script src="{{ asset('front/js/scripts.min.js') }}"></script>
     <script src="{{ asset('front/js/main.min.js') }}"></script>
     <script src="{{ asset('front/js/custom.js') }}"></script>
-    <script src="{{ asset('front/js/script.js') }}"></script>
 
   </body>
 </html>

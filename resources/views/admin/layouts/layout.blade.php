@@ -1,125 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+  <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin</title>
-
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="{{ asset('admin/plugins/fontawesome-free/css/all.min.css') }}">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="{{ asset('admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="{{ asset('admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="{{ asset('admin/plugins/jqvmap/jqvmap.min.css') }}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset('admin/css/adminlte.min.css') }}">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="{{ asset('admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="{{ asset('admin/plugins/daterangepicker/daterangepicker.css') }}">
-  <!-- summernote -->
-  <link rel="stylesheet" href="{{ asset('admin/plugins/summernote/summernote-bs4.min.css') }}">
- <!-- DataTables -->
-  <link rel="stylesheet" href="{{ asset('admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Skydash Admin</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="{{ asset('admin/vendors/feather/feather.css') }}">
+  <link rel="stylesheet" href="{{ asset('admin/vendors/ti-icons/css/themify-icons.css') }}">
+  <link rel="stylesheet" href="{{ asset('admin/vendors/css/vendor.bundle.base.css') }}">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="{{ asset('admin/vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
+  <link rel="stylesheet" href="{{ asset('admin/vendors/ti-icons/css/themify-icons.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('admin/js/select.dataTables.min.css') }}">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link href="{{ asset('admin/vendors/mdi/css/materialdesignicons.min.css') }}" media="all" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="{{ asset('admin/css/vertical-layout-light/style.css') }}">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="{{ asset('admin/images/favicon.png') }}" />
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
-
-  <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="{{ asset('admin/images/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60" width="60">
-  </div>
-
-  <!-- header -->
+<body>
+  <div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
     @include('admin.layouts.header')
-
-    <!-- sidebar -->
-
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_settings-panel.html -->
+      <!-- partial -->
+      <!-- partial:partials/_sidebar.html -->
       @include('admin.layouts.sidebar')
-
-      <!-- main start -->
-      @yield('content')
-
-      <!-- main end -->
-
-      <!-- footer -->
-      @include('admin.layouts.footer')
-
-
-
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
-
-<!-- jQuery -->
-<script src="{{ asset('admin/plugins/jquery/jquery.min.js') }}"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="{{ asset('admin/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
-<!-- Bootstrap 4 -->
-<script src="{{ asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<!-- ChartJS -->
-<script src="{{ asset('admin/plugins/chart.js/Chart.min.js') }}"></script>
-<!-- Sparkline -->
-<script src="{{ asset('admin/plugins/sparklines/sparkline.js') }}"></script>
-<!-- JQVMap -->
-<script src="{{ asset('admin/plugins/jqvmap/jquery.vmap.min.js') }}"></script>
-<script src="{{ asset('admin/plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
-<!-- jQuery Knob Chart -->
-<script src="{{ asset('admin/plugins/jquery-knob/jquery.knob.min.js') }}"></script>
-<!-- daterangepicker -->
-<script src="{{ asset('admin/plugins/moment/moment.min.js') }}"></script>
-<script src="{{ asset('admin/plugins/daterangepicker/daterangepicker.js') }}"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="{{ asset('admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-<!-- Summernote -->
-<script src="{{ asset('admin/plugins/summernote/summernote-bs4.min.js') }}"></script>
-<!-- overlayScrollbars -->
-<script src="{{ asset('admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
-<!-- AdminLTE App -->
-<!-- DataTables  & Plugins -->
-<script src="{{ asset('admin/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('admin/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('admin/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset('admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('admin/plugins/jszip/jszip.min.js') }}"></script>
-<script src="{{ asset('admin/plugins/pdfmake/pdfmake.min.js') }}"></script>
-<script src="{{ asset('admin/plugins/pdfmake/vfs_fonts.js') }}"></script>
-<script src="{{ asset('admin/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
-<script src="{{ asset('admin/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
-<script src="{{ asset('admin/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
-<script src="{{ asset('admin/js/adminlte.js') }}"></script>
-<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
-<script src="{{ asset('admin/js/admin_script.js') }}"></script>
+      <!-- partial -->
+      <div class="main-panel">
+        @yield('content')
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+       @include('admin.layouts.footer')
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-  $(function () {
-    $("#category_table").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-  });
-</script>
+  <!-- plugins:js -->
+  <script src="{{ asset('admin/vendors/js/vendor.bundle.base.js') }}"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="{{ asset('admin/vendors/chart.js/Chart.min.js') }}"></script>
+  <script src="{{ asset('admin/vendors/datatables.net/jquery.dataTables.js') }}"></script>
+  <script src="{{ asset('admin/vendors/datatables.net-bs4/dataTables.bootstrap4.js') }}"></script>
+  <script src="{{ asset('admin/js/dataTables.select.min.js') }}"></script>
 
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="{{ asset('admin/js/off-canvas.js') }}"></script>
+  <script src="{{ asset('admin/js/hoverable-collapse.js') }}"></script>
+  <script src="{{ asset('admin/js/template.js') }}"></script>
+  <script src="{{ asset('admin/js/settings.js') }}"></script>
+  <script src="{{ asset('admin/js/todolist.js') }}"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="{{ asset('admin/js/dashboard.js') }}"></script>
+    <script src="{{ asset('admin/js/admin_script.js') }}"></script>
+  <script src="{{ asset('admin/js/Chart.roundedBarCharts.js') }}"></script>
+  <script>
+         $(document).ready( function () {
+            $('#categories').DataTable();
+         } );
+      </script>
+  <!-- End custom js for this page-->
 </body>
+
 </html>
+

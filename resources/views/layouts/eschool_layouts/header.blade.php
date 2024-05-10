@@ -9,17 +9,17 @@
             </div>
             <div class="col-lg-3 col-md-3 col-sm-3 probootstrap-top-social">
               <ul>
-                <a target="_blank" href="{{ url('/admin/login') }}" class="login">login</a>
+                <li><a href="{{ url('admin/login') }}" style="color:white"><i class="icon-login"></i>&nbsp; &nbsp;login</a></li>               
               </ul>
             </div>
           </div>
         </div>
       </div>
       <nav class="navbar navbar-default probootstrap-navbar"
-      style="  position: -webkit-sticky; /* Safari */
-  position: sticky;
-  top: 0;
-  z-index: 100; !important;">
+        style="  position: -webkit-sticky; /* Safari */
+        position: sticky;
+        top: 0;
+        z-index: 100; !important;">
         <div class="container">
           <div class="navbar-header">
             <div class="btn-more js-btn-more visible-xs">
@@ -35,7 +35,7 @@
           </div>
 
           <div id="navbar-collapse" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right" style="display: flex;">
               <li class="active"><a href="index.html">Home</a></li>
               <li><a href="courses.html">Courses</a></li>
               <li><a href="teachers.html">Teachers</a></li>

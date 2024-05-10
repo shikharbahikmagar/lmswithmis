@@ -73,10 +73,10 @@ $(document).ready(function () {
             {
                 if(resp['status'] == 0)
                    {
-                    $("#category-" + category_id).html(" <i class='fas fa-toggle-off' aria-hidden='true' status='In-Active'></i>");
+                    $("#category-" + category_id).html("<i style='font-size: 20px;' class='mdi mdi-checkbox-blank-circle-outline' status='InActive'></i>");
                 } else if (resp['status'] == 1)
                    {
-                    $("#category-" + category_id).html(" <i class='fas fa-toggle-on' aria-hidden='true' status='Active'></i>");
+                    $("#category-" + category_id).html(" <i style='font-size: 20px;' class='mdi mdi-check-circle-outline' status='Active'></i> ");
                    }
             },error:function(error)
             {
@@ -96,9 +96,9 @@ $(document).ready(function () {
 
             success: function (resp) {
                 if (resp['status'] == 0) {
-                    $("#book-" + book_id).html(" <i class='fas fa-toggle-off' aria-hidden='true' status='In-Active'></i>");
+                    $("#book-" + book_id).html("<i style='font-size: 20px;' class='mdi mdi-checkbox-blank-circle-outline' status='InActive'></i>");
                 } else if (resp['status'] == 1) {
-                    $("#book-" + book_id).html(" <i class='fas fa-toggle-on' aria-hidden='true' status='Active'></i>");
+                    $("#book-" + book_id).html("<i style='font-size: 20px;' class='mdi mdi-check-circle-outline' status='Active'></i> ");
                 }
             }, error: function (error) {
                 alert(error);
