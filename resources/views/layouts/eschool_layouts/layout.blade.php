@@ -6,6 +6,7 @@
     <title>front</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700|Open+Sans" rel="stylesheet">
+    <link href="{{ asset('admin/vendors/mdi/css/materialdesignicons.min.css') }}" media="all" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="{{ asset('front/css/styles-merged.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('front/css/note_board.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('front/css/style.min.css') }}">

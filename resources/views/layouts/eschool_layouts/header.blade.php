@@ -9,7 +9,16 @@
             </div>
             <div class="col-lg-3 col-md-3 col-sm-3 probootstrap-top-social">
               <ul>
-                <li><a href="{{ url('admin/login') }}" style="color:white"><i class="icon-login"></i>&nbsp; &nbsp;login</a></li>               
+               <!-- Single button -->
+              <div class="btn-group" style="cursor:pointer">
+                <div class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 <i style="font-size: 18px; margin-bottom: 1px; justify-item:center; align-item:center;" class="mdi mdi-lock-open-outline" status="InActive"></i> <span>Login</span>
+                </div>
+                <ul class="dropdown-menu">
+                  <li><a href="{{ url('/admin/login') }}" style="color: black;">Admin Login</a></li><br>
+                  <li><a href="{{ url('/student/login') }}" style="color: black;">Student Login</a></li>
+                </ul>
+              </div>
               </ul>
             </div>
           </div>
