@@ -33,43 +33,41 @@
                         </button>
                      </div>
                      @endif
-                     <h4 class="card-title">Sections Table</h4>
-                     <a href="{{ url('/admin/add-edit-book') }}" class="btn btn-block btn-primary" style="max-width: 150px; float: right; display:inline-block;">
-                        Add Book</a>
+                     <h4 class="card-title">Grades Table</h4>
+                     <a href="{{ url('/admin/add-edit-subject') }}" class="btn btn-block btn-primary" style="max-width: 150px; float: right; display:inline-block;">
+                        Add Subject</a>
                      <div class="table-responsive pt-3">
-                    <table id="books" class="table table-bordered">
-                        <thead>
-                            <tr>
-  <th>ID</th>
-                    <th>Book Title</th>
-                    <th>Category</th>
-                    <th>Added By</th>
-                    <th>Image</th>
-                    <!-- <th>Description</th> -->
+                    <table id="subjects" class="table table-bordered">
+                     <thead>
+                     <tr>
+                    <th>ID</th>
+                    <th>Grade Level</th>
+                    <th>Subject Name</th>
+                    <th>Subject Code</th>
+                    <th>Credit Hours</th>
                     <th>Status</th>
                     <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                   @foreach($books as $book)
+                    </tr>
+                    </thead>
+                    <tbody>
+                   @foreach($subjects as $subject)
                   <tr>
-                    <td>{{ $book['id'] }}</td>
-                    <td>{{ $book['title'] }}</td>
-                    <td>{{ $book['categories']['category_name'] }}</td>
-                    <td>{{ $book['added_by_details']['name'] }}</td>
-                    <td><img src="{{ asset('/images/book_images/'.$book['book_image']) }}" width="60px" height="60px" alt=""></td>
-                    <!-- <td>{{ $book['description'] }}</td> -->
-                    <td>@if($book['status'] == 1) 
-                                    <a href="javascript:void(0)" class="updateBookStatus" id="book-{{ $book['id'] }}" book_id="{{$book['id']}}">
+                    <td>{{ $subject['id'] }}</td>
+                    <td>{{ $subject['grades']['grade_name'] }}</td>
+                    <td>{{ $subject['subject_name'] }}</td>
+                    <td>{{ $subject['subject_code'] }}</td>
+                    <td>{{ $subject['credit_hours'] }}</td>
+                    <td>@if($subject['status'] == 1) 
+                                    <a href="javascript:void(0)" class="updateBookStatus" id="subject-{{ $subject['id'] }}" book_id="{{$subject['id']}}">
                                     <i status="Active" style="font-size: 20px; " class="mdi mdi-check-circle-outline"></i></a>
-                                    @elseif($book['status'] == 0)
-                                    <a href="javascript:void(0)" class="updateBookStatus" id="book-{{ $book['id']}}" book_id="{{$book['id']}}">
+                                    @elseif($subject['status'] == 0)
+                                    <a href="javascript:void(0)" class="updateBookStatus" id="subject-{{ $subject['id']}}" book_id="{{$subject['id']}}">
                                     <i style="font-size: 20px; " class="mdi mdi-checkbox-blank-circle-outline" status="InActive"></i></a>
                                     @endif 
                                  </td>
                                  <td>
-                                    <a href="{{ url('admin/add-edit-book/'.$book['id']) }}"><i style="font-size: 20px;" class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;
-                                    <a href="javascript:void(0)" class="deleteBook" record="book" recordId = "{{ $book['id'] }}"><i style="color:red; font-size: 20px;" class="fa fa-trash"></i></a>
+                                    <a href="{{ url('admin/add-edit-subject/'.$subject['id']) }}"><i style="font-size: 20px;" class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;
+                                    <a href="javascript:void(0)" class="deleteBook" record="subject" recordId = "{{ $subject['id'] }}"><i style="color:red; font-size: 20px;" class="fa fa-trash"></i></a>
                                  </td>
                             </tr>
                             @endforeach

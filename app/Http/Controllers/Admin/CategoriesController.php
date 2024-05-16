@@ -12,6 +12,7 @@ class CategoriesController extends Controller
 {
     public function categories()
     {
+        Session::put('page', 'book_category'); 
         $cat_details = Category::get();
         // echo "<pre>"; print_r($cat_detail); die;
         // return response()->json($cat_details);

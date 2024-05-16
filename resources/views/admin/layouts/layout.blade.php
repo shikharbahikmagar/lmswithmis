@@ -72,6 +72,15 @@
          $(document).ready( function () {
             $('#categories').DataTable();
          } );
+         $(document).ready( function () {
+            $('#grades').DataTable();
+         } );
+         $(document).ready( function () {
+            $('#subjects').DataTable();
+         } );
+         $(document).ready( function () {
+            $('#books').DataTable();
+         } );
       </script>
   <!-- End custom js for this page-->
 </body>

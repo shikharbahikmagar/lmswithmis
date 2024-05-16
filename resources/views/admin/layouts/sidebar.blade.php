@@ -8,52 +8,73 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <i class="icon-layout menu-icon"></i>
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="true" aria-controls="ui-basic"
+            @if(Session::get('page') == "update_details" || Session::get('page') == "update_password") 
+            style="background-color: #4B49AC !important; color: #fff !important;" @endif>
+              <i class="icon-layout menu-icon" style=""></i>
               <span class="menu-title">Admin Settings</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ url('/admin/update-admin-pwd') }}">Update Password</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ url('/admin/update-admin-details') }}">Update Details</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ url('/admin/update-admin-pwd') }}"
+                @if(Session::get('page') == "update_password") 
+                   style="background-color: #fff !important; color: #4B49AC !important;"
+                  @else style="background-color: #4B49AC !important; color: #fff !important;" 
+                  @endif>Update Password</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ url('/admin/update-admin-details') }}"
+                @if(Session::get('page') == "update_details") 
+                  style="background-color: #fff !important; color: #4B49AC !important;"
+                  @else style="background-color: #4B49AC !important; color: #fff !important;" 
+                  @endif>Update Details</a></li>
               </ul>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+            <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements"
+            @if(Session::get('page') == "book_category" || Session::get('page') == "books") 
+            style="background-color: #4B49AC !important; color: #fff !important;" @endif>
               <i class="icon-columns menu-icon"></i>
               <span class="menu-title">Library</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="{{ url('/admin/categories') }}">Book Category</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ url('/admin/books') }}">Books</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('/admin/categories') }}"
+                @if(Session::get('page') == "book_category") 
+                  style="background-color: #fff !important; color: #4B49AC !important;"
+                  @else style="background-color: #4B49AC !important; color: #fff !important;" 
+                  @endif>Book Category</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('/admin/books') }}"
+                @if(Session::get('page') == "books") 
+                  style="background-color: #fff !important; color: #4B49AC !important;"
+                  @else style="background-color: #4B49AC !important; color: #fff !important;" 
+                  @endif>Books</a></li>
               </ul>
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
-              <i class="icon-bar-graph menu-icon"></i>
-              <span class="menu-title">Charts</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="charts">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">ChartJs</a></li>
-              </ul>
-            </div>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false">
+                <i class="icon-bar-graph menu-icon"></i>
+                <span class="menu-title">Subjects</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="charts">
+                <ul class="nav flex-column sub-menu">
+                  
+                  <li class="nav-item"> <a class="nav-link" href="{{ url('/admin/subjects') }}">Subjects</a></li>
+                </ul>
+              </div>
+            </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
               <i class="icon-grid-2 menu-icon"></i>
-              <span class="menu-title">Tables</span>
+              <span class="menu-title">School</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="tables">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Basic table</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ url('admin/grades') }}">Classes</a></li>
               </ul>
             </div>
           </li>
@@ -82,24 +103,6 @@
               </ul>
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#error" aria-expanded="false" aria-controls="error">
-              <i class="icon-ban menu-icon"></i>
-              <span class="menu-title">Error pages</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="error">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pages/documentation/documentation.html">
-              <i class="icon-paper menu-icon"></i>
-              <span class="menu-title">Documentation</span>
-            </a>
-          </li>
+
         </ul>
       </nav>

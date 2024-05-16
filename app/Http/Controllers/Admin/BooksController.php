@@ -17,6 +17,7 @@ class BooksController extends Controller
 
     public function books()
     {
+        Session::put('page', 'books');
         $books = Book::with(['categories', 'added_by_details'])->get();
         $books = json_decode(json_encode($books), true);
         // echo "<pre>"; print_r($books); die;

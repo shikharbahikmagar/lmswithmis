@@ -33,43 +33,43 @@
                         </button>
                      </div>
                      @endif
-                     <h4 class="card-title">Sections Table</h4>
-                     <a href="{{ url('/admin/add-edit-book') }}" class="btn btn-block btn-primary" style="max-width: 150px; float: right; display:inline-block;">
-                        Add Book</a>
+                     <h4 class="card-title">Grades Table</h4>
+                     <a href="{{ url('/admin/add-edit-grade') }}" class="btn btn-block btn-primary" style="max-width: 150px; float: right; display:inline-block;">
+                        Add Grade</a>
                      <div class="table-responsive pt-3">
-                    <table id="books" class="table table-bordered">
+                    <table id="grades" class="table table-bordered">
                         <thead>
                             <tr>
-  <th>ID</th>
-                    <th>Book Title</th>
-                    <th>Category</th>
-                    <th>Added By</th>
-                    <th>Image</th>
+                    <th>ID</th>
+                    <th>Grade Level</th>
+                    <th>Room No</th>
+                    <th>Capacity</th>
+                    <th>Enrolled Students</th>
                     <!-- <th>Description</th> -->
                     <th>Status</th>
                     <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                   @foreach($books as $book)
+                   @foreach($grades as $grade)
                   <tr>
-                    <td>{{ $book['id'] }}</td>
-                    <td>{{ $book['title'] }}</td>
-                    <td>{{ $book['categories']['category_name'] }}</td>
-                    <td>{{ $book['added_by_details']['name'] }}</td>
-                    <td><img src="{{ asset('/images/book_images/'.$book['book_image']) }}" width="60px" height="60px" alt=""></td>
-                    <!-- <td>{{ $book['description'] }}</td> -->
-                    <td>@if($book['status'] == 1) 
-                                    <a href="javascript:void(0)" class="updateBookStatus" id="book-{{ $book['id'] }}" book_id="{{$book['id']}}">
+                    <td>{{ $grade['id'] }}</td>
+                    <td>{{ $grade['grade_name'] }}</td>
+                    <td>{{ $grade['room_num'] }}</td>
+                    <td>{{ $grade['capacity'] }}</td>
+                    <td>{{ $grade['enrolled_students'] }}</td>
+                    <!-- <td>{{ $grade['description'] }}</td> -->
+                    <td>@if($grade['status'] == 1) 
+                                    <a href="javascript:void(0)" class="updateGradeStatus" id="grade-{{ $grade['id'] }}" grade_id="{{$grade['id']}}">
                                     <i status="Active" style="font-size: 20px; " class="mdi mdi-check-circle-outline"></i></a>
-                                    @elseif($book['status'] == 0)
-                                    <a href="javascript:void(0)" class="updateBookStatus" id="book-{{ $book['id']}}" book_id="{{$book['id']}}">
+                                    @elseif($grade['status'] == 0)
+                                    <a href="javascript:void(0)" class="updateGradeStatus" id="grade-{{ $grade['id']}}" grade_id="{{$grade['id']}}">
                                     <i style="font-size: 20px; " class="mdi mdi-checkbox-blank-circle-outline" status="InActive"></i></a>
                                     @endif 
                                  </td>
                                  <td>
-                                    <a href="{{ url('admin/add-edit-book/'.$book['id']) }}"><i style="font-size: 20px;" class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;
-                                    <a href="javascript:void(0)" class="deleteBook" record="book" recordId = "{{ $book['id'] }}"><i style="color:red; font-size: 20px;" class="fa fa-trash"></i></a>
+                                    <a href="{{ url('admin/add-edit-grade/'.$grade['id']) }}"><i style="font-size: 20px;" class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;
+                                    <a href="javascript:void(0)" class="deleteGrade" record="grade" recordId = "{{ $grade['id'] }}"><i style="color:red; font-size: 20px;" class="fa fa-trash"></i></a>
                                  </td>
                             </tr>
                             @endforeach

@@ -4,7 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\BooksController;
+use App\Http\Controllers\Admin\GradesController;
+use App\Http\Controllers\Admin\SubjectsController;
 use App\Http\Controllers\Front\IndexController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,6 +43,15 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
         Route::match(['get', 'post'], 'add-edit-book/{id?}', [BooksController::class, 'addEditBooks']);
         Route::post('update-book-status', [BooksController::class, 'updateBookStatus']);
         Route::get('delete-book/{id}', [BooksController::class, 'deleteBook']);
+
+        //classes
+        Route::get('/grades', [GradesController::class, 'grades']);
+        Route::match(['get', 'post'], 'add-edit-grade/{id?}', [GradesController::class, 'addEditGrades']);
+        Route::post('update-grade-status', [GradesController::class, 'updateGradeStatus']);
+        Route::get('delete-grade/{id}', [GradesController::class, 'deleteGrade']);
+
+        //subjects
+        Route::get('/subjects', [SubjectsController::class, 'subjects']);
 });
 });
 

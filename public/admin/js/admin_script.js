@@ -105,7 +105,7 @@ $(document).ready(function () {
             }
         })
     });
-
+    
     //book delete confirmation sweet alert
     $(document).on("click", ".deleteBook", function () {
         var record = $(this).attr("record");
@@ -129,6 +129,48 @@ $(document).ready(function () {
 
     //category image delete confirmation
     $(document).on("click", ".imageConfirmDelete", function () {
+        var record = $(this).attr("record");
+        var recordId = $(this).attr("recordId");
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                window.location.href = "/admin/delete-" + record + "/" + recordId;
+
+            }
+        });
+
+    });
+
+    //update grade status
+    $(document).on("click", ".updateGradeStatus", function () {
+        var status = $(this).children("i").attr("status");
+        var grade_id = $(this).attr("grade_id");
+        $.ajax({
+            type: 'post',
+            url: '/admin/update-grade-status',
+            data: { status: status, grade_id: grade_id },
+
+            success: function (resp) {
+                if (resp['status'] == 0) {
+                    $("#grade-" + grade_id).html("<i style='font-size: 20px;' class='mdi mdi-checkbox-blank-circle-outline' status='InActive'></i>");
+                } else if (resp['status'] == 1) {
+                    $("#grade-" + grade_id).html("<i style='font-size: 20px;' class='mdi mdi-check-circle-outline' status='Active'></i> ");
+                }
+            }, error: function (error) {
+                alert(error);
+            }
+        })
+    });
+
+    //delete grade
+    $(document).on("click", ".deleteGrade", function () {
         var record = $(this).attr("record");
         var recordId = $(this).attr("recordId");
         Swal.fire({
