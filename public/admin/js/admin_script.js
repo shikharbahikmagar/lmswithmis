@@ -190,6 +190,19 @@ $(document).ready(function () {
 
     });
 
+    $('.addSubject').on('change', function () {
+        var class_id = $(this).val(); //or alert($(this).val());
+        // alert(class_id);
+        $.ajax({
+            url: '/admin/subjects',
+            method: "post",
+            data: { class_id: class_id },
+            success: function (data) {
+                $('.table_contents').html(data);
+            }
+        });
+    });
+
 
 
 });

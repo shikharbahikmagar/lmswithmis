@@ -1,6 +1,6 @@
 @extends('admin.layouts.layout')
 @section('content')
-        <div class="content-wrapper">
+   <div class="content-wrapper">
    <div class="row">
       <div class="col-md-12 grid-margin">
          <div class="row">
@@ -33,47 +33,21 @@
                         </button>
                      </div>
                      @endif
-                     <h4 class="card-title">Grades Table</h4>
-                     <a href="{{ url('/admin/add-edit-subject') }}" class="btn btn-block btn-primary" style="max-width: 150px; float: right; display:inline-block;">
+                     <h4 class="card-title">Add Subjects</h4>
+                     <div class="d-flex flex-row">
+                      <div class="col-sm-3">
+                        <select class="custom-select mr-sm-2 addSubject" id="inlineFormCustomSelect">
+                        <option selected value="all">All Subjects</option>
+                       @foreach($grades as $grade)
+                        <option value="{{ $grade['id'] }}">Class {{$grade['grade_name']}}</option>
+                        @endforeach
+                        </select>
+                     </div>
+                     <a href="{{ url('/admin/add-edit-subject') }}" class="btn btn-block btn-primary" style="max-width: 150px; margin-left:64%">
                         Add Subject</a>
-                     <div class="table-responsive pt-3">
-                    <table id="subjects" class="table table-bordered">
-                     <thead>
-                     <tr>
-                    <th>ID</th>
-                    <th>Grade Level</th>
-                    <th>Subject Name</th>
-                    <th>Subject Code</th>
-                    <th>Credit Hours</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                   @foreach($subjects as $subject)
-                  <tr>
-                    <td>{{ $subject['id'] }}</td>
-                    <td>{{ $subject['grades']['grade_name'] }}</td>
-                    <td>{{ $subject['subject_name'] }}</td>
-                    <td>{{ $subject['subject_code'] }}</td>
-                    <td>{{ $subject['credit_hours'] }}</td>
-                    <td>@if($subject['status'] == 1) 
-                                    <a href="javascript:void(0)" class="updateBookStatus" id="subject-{{ $subject['id'] }}" book_id="{{$subject['id']}}">
-                                    <i status="Active" style="font-size: 20px; " class="mdi mdi-check-circle-outline"></i></a>
-                                    @elseif($subject['status'] == 0)
-                                    <a href="javascript:void(0)" class="updateBookStatus" id="subject-{{ $subject['id']}}" book_id="{{$subject['id']}}">
-                                    <i style="font-size: 20px; " class="mdi mdi-checkbox-blank-circle-outline" status="InActive"></i></a>
-                                    @endif 
-                                 </td>
-                                 <td>
-                                    <a href="{{ url('admin/add-edit-subject/'.$subject['id']) }}"><i style="font-size: 20px;" class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;
-                                    <a href="javascript:void(0)" class="deleteBook" record="subject" recordId = "{{ $subject['id'] }}"><i style="color:red; font-size: 20px;" class="fa fa-trash"></i></a>
-                                 </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    </div>
+                        </div>
+                  <div class="table_contents">
+                     @include('admin.subjects.ajax_add_subject')
                   </div>
                </div>
             </div>

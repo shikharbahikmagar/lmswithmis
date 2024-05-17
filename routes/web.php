@@ -51,7 +51,7 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
         Route::get('delete-grade/{id}', [GradesController::class, 'deleteGrade']);
 
         //subjects
-        Route::get('/subjects', [SubjectsController::class, 'subjects']);
+        Route::match(['get', 'post'], '/subjects', [SubjectsController::class, 'subjects']);
 });
 });
 
