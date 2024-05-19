@@ -61,12 +61,12 @@
               <form action="{{ url('/admin/edit-subject/'.$subjectDetails['id']) }}" role="form" enctype="multipart/form-data" method="post">@csrf
                 <div class="card-body">
                      <div class="form-group col-sm-6">
-                    <label for="subject_name">Subject Name</label>
+                    <label for="subject_name">Book Name</label>
                     <input type="text" class="form-control" name="subject_name" @if(!empty($subjectDetails)) 
                     value = "{{ $subjectDetails['subject_name'] }} " @endif id="subject_name" placeholder="Enter category name">
                   </div>
                   <div class="form-group col-sm-6">
-                    <label for="subject_code">Subject Code</label>
+                    <label for="subject_code">Book Code</label>
                     <input type="text" class="form-control" name="subject_code"@if(!empty($subjectDetails)) 
                     value = "{{ $subjectDetails['subject_code'] }} " @endif id="subject_code" placeholder="enter table no">
                   </div>

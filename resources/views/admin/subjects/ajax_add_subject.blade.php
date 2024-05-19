@@ -4,8 +4,8 @@
                      <tr>
                     <th>ID</th>
                     <th>Grade Level</th>
-                    <th>Subject Name</th>
-                    <th>Subject Code</th>
+                    <th>Book Name</th>
+                    <th>Book Code</th>
                     <th>Credit Hours</th>
                     <th>Status</th>
                     <th>Action</th>

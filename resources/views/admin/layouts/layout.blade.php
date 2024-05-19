@@ -81,6 +81,10 @@
          $(document).ready( function () {
             $('#books').DataTable();
          } );
+          $(document).ready( function () {
+            $('#teachers_table').DataTable();
+         } );
+         
       </script>
   <!-- End custom js for this page-->
 </body>

@@ -33,18 +33,18 @@
                         </button>
                      </div>
                      @endif
-                     <h4 class="card-title">Add Subjects</h4>
+                     <h4 class="card-title">Add Books</h4>
                      <div class="d-flex flex-row">
                       <div class="col-sm-3">
                         <select class="custom-select mr-sm-2 addSubject" id="inlineFormCustomSelect">
-                        <option selected value="all">All Subjects</option>
+                        <option selected value="all">All Books</option>
                        @foreach($grades as $grade)
                         <option value="{{ $grade['id'] }}">Class {{$grade['grade_name']}}</option>
                         @endforeach
                         </select>
                      </div>
                      <a href="{{ url('/admin/add-subjects') }}" class="btn btn-block btn-primary" style="max-width: 150px; margin-left:64%">
-                        Add Subject</a>
+                        Add Books</a>
                      </div>
                      <div class="table-responsive pt-3 table_contents">
                      @include('admin.subjects.ajax_add_subject')

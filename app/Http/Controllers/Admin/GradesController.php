@@ -11,7 +11,7 @@ class GradesController extends Controller
 {
     public function grades()
     {   
-        // Session::put('page', 'grades');
+        Session::put('page', 'grades');
 
         $grades = Grade::get();
         return view('admin.grades.grades')->with(compact('grades'));

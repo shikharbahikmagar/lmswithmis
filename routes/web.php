@@ -63,8 +63,10 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
         Route::match(['get', 'post'], 'add-edit-teacher/{id?}', [TeachersController::class, 'addEditTeacher']);
         Route::post('update-teacher-status', [TeachersController::class, 'updateTeacherStatus']);
         Route::get('delete-teacher/{id}', [TeachersController::class, 'deleteTeacher']);
+        Route::match(['get', 'post'], '/update-teacher-pwd/{id}', [TeachersController::class, 'updateTeacherPwd']);
+        Route::post('/check-teacher-current-pwd', [TeachersController::class, 'chkCurrentTeacherPwd']);
 });
 });
 
-
+Route::get('/', [IndexController::class, 'index']);
    

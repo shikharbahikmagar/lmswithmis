@@ -62,11 +62,11 @@
                 <div class="card-body">
                    <div class="d-flex flex-row">
                      <div class="form-group col-sm-4">
-                    <label for="subject_name">Subject Name (1)</label>
+                    <label for="subject_name">Book Name (1)</label>
                     <input type="text" class="form-control" name="subject_name[]" id="subject_name" placeholder="Enter category name">
                   </div>
                   <div class="form-group col-sm-4">
-                    <label for="subject_code">Subject Code</label>
+                    <label for="subject_code">Book Code</label>
                     <input type="text" class="form-control" name="subject_code[]" id="subject_code" placeholder="enter table no">
                   </div>
                   <div class="form-group col-sm-4">
@@ -76,11 +76,11 @@
                    </div>
                    <div class="d-flex flex-row">
                      <div class="form-group col-sm-4">
-                    <label for="subject_name">Subject Name (2)</label>
+                    <label for="subject_name">Book Name (2)</label>
                     <input type="text" class="form-control" name="subject_name[]" id="subject_name" placeholder="Enter category name">
                   </div>
                   <div class="form-group col-sm-4">
-                    <label for="subject_code">Subject Code</label>
+                    <label for="subject_code">Book Code</label>
                     <input type="text" class="form-control" name="subject_code[]" id="subject_code" placeholder="enter table no">
                   </div>
                   <div class="form-group col-sm-4">
@@ -90,11 +90,11 @@
                    </div>
                    <div class="d-flex flex-row">
                      <div class="form-group col-sm-4">
-                    <label for="subject_name">Subject Name (3)</label>
+                    <label for="subject_name">Book Name (3)</label>
                     <input type="text" class="form-control" name="subject_name[]" id="subject_name" placeholder="Enter category name">
                   </div>
                   <div class="form-group col-sm-4">
-                    <label for="subject_code">Subject Code</label>
+                    <label for="subject_code">Book Code</label>
                     <input type="text" class="form-control" name="subject_code[]" id="subject_code" placeholder="enter table no">
                   </div>
                   <div class="form-group col-sm-4">
@@ -104,11 +104,11 @@
                    </div>
                    <div class="d-flex flex-row">
                      <div class="form-group col-sm-4">
-                    <label for="subject_name">Subject Name (4)</label>
+                    <label for="subject_name">Book Name (4)</label>
                     <input type="text" class="form-control" name="subject_name[]" id="subject_name" placeholder="Enter category name">
                   </div>
                   <div class="form-group col-sm-4">
-                    <label for="subject_code">Subject Code</label>
+                    <label for="subject_code">Book Code</label>
                     <input type="text" class="form-control" name="subject_code[]" id="subject_code" placeholder="enter table no">
                   </div>
                   <div class="form-group col-sm-4">
@@ -118,11 +118,11 @@
                    </div>
                     <div class="d-flex flex-row">
                      <div class="form-group col-sm-4">
-                    <label for="subject_name">Subject Name (5)</label>
+                    <label for="subject_name">Book Name (5)</label>
                     <input type="text" class="form-control" name="subject_name[]" id="subject_name" placeholder="Enter category name">
                   </div>
                   <div class="form-group col-sm-4">
-                    <label for="subject_code">Subject Code</label>
+                    <label for="subject_code">Book Code</label>
                     <input type="text" class="form-control" name="subject_code[]" id="subject_code" placeholder="enter table no">
                   </div>
                   <div class="form-group col-sm-4">
@@ -132,11 +132,11 @@
                    </div>
                     <div class="d-flex flex-row">
                      <div class="form-group col-sm-4">
-                    <label for="subject_name">Subject Name (6)</label>
+                    <label for="subject_name">Book Name (6)</label>
                     <input type="text" class="form-control" name="subject_name[]" id="subject_name" placeholder="Enter category name">
                   </div>
                   <div class="form-group col-sm-4">
-                    <label for="subject_code">Subject Code</label>
+                    <label for="subject_code">Book Code</label>
                     <input type="text" class="form-control" name="subject_code[]" id="subject_code" placeholder="enter table no">
                   </div>
                   <div class="form-group col-sm-4">

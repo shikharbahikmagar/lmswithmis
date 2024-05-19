@@ -51,7 +51,8 @@ class SubjectsController extends Controller
 
     //add subjects
     public function addSubject(Request $request)
-    {   
+    {
+        Session::put('page', 'subjects');   
         if($request->isMethod('post'))
         {
 
@@ -103,6 +104,7 @@ class SubjectsController extends Controller
     //edit subjects
     public function editSubject(Request $request, $id)
     {
+        Session::put('page', 'subjects');
         if($request->isMethod('post'))
         {
             $data = $request->all();

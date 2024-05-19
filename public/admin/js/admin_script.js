@@ -245,6 +245,68 @@ $(document).ready(function () {
         })
     });
 
+    //update teacher status
+    $(document).on("click", ".updateTeacherStatus", function () {
+        var status = $(this).children("i").attr("status");
+        var teacher_id = $(this).attr("teacher_id");
+        $.ajax({
+            type: 'post',
+            url: '/admin/update-teacher-status',
+            data: { status: status, teacher_id: teacher_id },
+
+            success: function (resp) {
+                if (resp['status'] == 0) {
+                    $("#teacher-" + teacher_id).html("<i style='font-size: 20px;' class='mdi mdi-checkbox-blank-circle-outline' status='InActive'></i>");
+                } else if (resp['status'] == 1) {
+                    $("#teacher-" + teacher_id).html("<i style='font-size: 20px;' class='mdi mdi-check-circle-outline' status='Active'></i> ");
+                }
+            }, error: function (error) {
+                alert(error);
+            }
+        })
+    });
+    //delete teacher
+    $(document).on("click", ".deleteTeacher", function () {
+        var record = $(this).attr("record");
+        var recordId = $(this).attr("recordId");
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                window.location.href = "/admin/delete-" + record + "/" + recordId;
+
+            }
+        });
+
+    });
+
+    //check teacher current pwd
+    $('#teacher_current_pwd').keyup(function () {
+        var teacher_current_pwd = $('#teacher_current_pwd').val();
+        var teacher_id = $(this).attr("teacher_id");
+        // alert (teacher_id);
+        $.ajax({
+            type: 'post',
+            url: '/admin/check-teacher-current-pwd',
+            data: { teacher_current_pwd: teacher_current_pwd, teacher_id: teacher_id },
+            success: function (resp) {
+                if (resp == "false") {
+                    $("#chkTeacherCurrentPwd").html("<font color=red>password is incorrect</font>");
+                } else {
+                    $("#chkTeacherCurrentPwd").html("<font color=green>password is correct</font>");
+                }
+            }, error: function () {
+                alert("error");
+            }
+        });
+    });
+
 
 });
 

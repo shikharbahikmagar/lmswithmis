@@ -33,27 +33,26 @@
                         </button>
                      </div>
                      @endif
-                     <h4 class="card-title">Grades Table</h4>
+                     <h4 class="card-title">Teachers Table</h4>
                      <a href="{{ url('/admin/add-edit-teacher') }}" class="btn btn-block btn-primary" style="max-width: 150px; float: right; display:inline-block;">
                         Add Teacher</a>
                      <div class="table-responsive pt-3">
-                    <table id="grades" class="table table-bordered">
+                    <table id="teachers_table" class="table table-bordered">
                         <thead>
                             <tr>
-                    <th>ID</th>
-                    <th>Teacher Name</th>
-                    <th>Attendance</th>
-                    <th>Age</th>
-                    <th>Salary</th>
-                    <th>Department</th>
-                    <th>Contact</th>
-                     <th>Routine</th>
-                    <th>Leaves</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+                  <th>ID</th>
+                  <th>Teacher Name</th>
+                  <th>Attendance</th>
+                  <th>Age</th>
+                  <th>Salary</th>
+                  <th>Department</th>
+                  <th>Contact</th>
+                  <th>Status</th>
+                  <th>More Info</th>
+                  <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
                    @foreach($teachers as $teacher)
                   <tr>
                     <td>{{ $teacher['id'] }}</td>
@@ -63,17 +62,20 @@
                     <td>{{ $teacher['salary'] }}</td>
                     <td>{{ $teacher['department'] }}</td>
                     <td>{{ $teacher['contact'] }}</td>
-                    <td>click here</td>
-                    <td>click here</td>
+                     <td>@if($teacher['status'] == 1) 
+                        <a href="javascript:void(0)" class="updateTeacherStatus" id="teacher-{{ $teacher['id'] }}" teacher_id="{{$teacher['id']}}">
+                        <i status="Active" style="font-size: 20px; " class="mdi mdi-check-circle-outline"></i></a>
+                        @elseif($teacher['status'] == 0)
+                        <a href="javascript:void(0)" class="updateTeacherStatus" id="teacher-{{ $teacher['id']}}" teacher_id="{{$teacher['id']}}">
+                        <i style="font-size: 20px; " class="mdi mdi-checkbox-blank-circle-outline" status="InActive"></i></a>
+                        @endif 
+                     </td>
+                    <td>
+                        <a href="{{ url('admin/add-edit-teacher/'.$teacher['id']) }}" title="time table"><i style="font-size: 20px;" class="mdi mdi-timetable"></i></a>&nbsp;&nbsp;&nbsp;
+                        <a href="javascript:void(0)" title="leaves" class="deleteTeacher" record="teacher" recordId = "{{ $teacher['id'] }}"><i style="font-size: 22px;" class="mdi mdi-account-off"></i></a>
+                     </td>
                     <!-- <td>{{ $teacher['description'] }}</td> -->
-                    <td>@if($teacher['status'] == 1) 
-                                    <a href="javascript:void(0)" class="updateGradeStatus" id="teacher-{{ $teacher['id'] }}" grade_id="{{$teacher['id']}}">
-                                    <i status="Active" style="font-size: 20px; " class="mdi mdi-check-circle-outline"></i></a>
-                                    @elseif($teacher['status'] == 0)
-                                    <a href="javascript:void(0)" class="updateGradeStatus" id="teacher-{{ $teacher['id']}}" grade_id="{{$teacher['id']}}">
-                                    <i style="font-size: 20px; " class="mdi mdi-checkbox-blank-circle-outline" status="InActive"></i></a>
-                                    @endif 
-                                 </td>
+                   
                                  <td>
                                     <a href="{{ url('admin/add-edit-teacher/'.$teacher['id']) }}"><i style="font-size: 20px;" class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;
                                     <a href="javascript:void(0)" class="deleteGrade" record="teacher" recordId = "{{ $teacher['id'] }}"><i style="color:red; font-size: 20px;" class="fa fa-trash"></i></a>
