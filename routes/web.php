@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\BooksController;
 use App\Http\Controllers\Admin\GradesController;
 use App\Http\Controllers\Admin\SubjectsController;
 use App\Http\Controllers\Front\IndexController;
+use App\Http\Controllers\Admin\TeachersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,12 +53,18 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
 
         //subjects
         Route::match(['get', 'post'], '/subjects', [SubjectsController::class, 'subjects']);
+        Route::match(['get', 'post'], '/add-subjects', [SubjectsController::class, 'addSubject'] );
+        Route::match(['get', 'post'], '/edit-subject/{id}', [SubjectsController::class, 'editSubject']);
+        Route::get('delete-subject/{id}', [SubjectsController::class, 'deleteSubject']);
+        Route::post('update-subject-status', [SubjectsController::class, 'updateSubjectStatus']);
+
+        //teachers
+        Route::get('/teachers', [TeachersController::class, 'teachers']);
+        Route::match(['get', 'post'], 'add-edit-teacher/{id?}', [TeachersController::class, 'addEditTeacher']);
+        Route::post('update-teacher-status', [TeachersController::class, 'updateTeacherStatus']);
+        Route::get('delete-teacher/{id}', [TeachersController::class, 'deleteTeacher']);
 });
 });
 
-
-
-
-    Route::get('/', [IndexController::class, 'index']);
 
    

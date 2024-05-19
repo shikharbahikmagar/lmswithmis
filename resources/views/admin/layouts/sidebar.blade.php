@@ -10,7 +10,8 @@
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="true" aria-controls="ui-basic"
             @if(Session::get('page') == "update_details" || Session::get('page') == "update_password") 
-            style="background-color: #4B49AC !important; color: #fff !important;" @endif>
+            style="background-color: #4B49AC !important; color: #fff !important;" @else
+             style="background-color: #fff !important; color: #4B49AC; !important;" @endif>
               <i class="icon-layout menu-icon" style=""></i>
               <span class="menu-title">Admin Settings</span>
               <i class="menu-arrow"></i>

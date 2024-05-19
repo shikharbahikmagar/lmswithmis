@@ -43,10 +43,10 @@
                         @endforeach
                         </select>
                      </div>
-                     <a href="{{ url('/admin/add-edit-subject') }}" class="btn btn-block btn-primary" style="max-width: 150px; margin-left:64%">
+                     <a href="{{ url('/admin/add-subjects') }}" class="btn btn-block btn-primary" style="max-width: 150px; margin-left:64%">
                         Add Subject</a>
-                        </div>
-                  <div class="table_contents">
+                     </div>
+                     <div class="table-responsive pt-3 table_contents">
                      @include('admin.subjects.ajax_add_subject')
                   </div>
                </div>

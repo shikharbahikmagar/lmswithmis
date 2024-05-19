@@ -189,7 +189,7 @@ $(document).ready(function () {
         });
 
     });
-
+    
     $('.addSubject').on('change', function () {
         var class_id = $(this).val(); //or alert($(this).val());
         // alert(class_id);
@@ -203,6 +203,47 @@ $(document).ready(function () {
         });
     });
 
+    //delete subject
+    $(document).on("click", ".deleteSubject", function () {
+        var record = $(this).attr("record");
+        var recordId = $(this).attr("recordId");
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                window.location.href = "/admin/delete-" + record + "/" + recordId;
+
+            }
+        });
+
+    });
+
+    //update subjects status
+    $(document).on("click", ".updateSubjectStatus", function () {
+        var status = $(this).children("i").attr("status");
+        var subject_id = $(this).attr("subject_id");
+        $.ajax({
+            type: 'post',
+            url: '/admin/update-subject-status',
+            data: { status: status, subject_id: subject_id },
+
+            success: function (resp) {
+                if (resp['status'] == 0) {
+                    $("#subject-" + subject_id).html("<i style='font-size: 20px;' class='mdi mdi-checkbox-blank-circle-outline' status='InActive'></i>");
+                } else if (resp['status'] == 1) {
+                    $("#subject-" + subject_id).html("<i style='font-size: 20px;' class='mdi mdi-check-circle-outline' status='Active'></i> ");
+                }
+            }, error: function (error) {
+                alert(error);
+            }
+        })
+    });
 
 
 });
