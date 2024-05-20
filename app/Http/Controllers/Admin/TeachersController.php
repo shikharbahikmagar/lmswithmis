@@ -202,7 +202,7 @@ class TeachersController extends Controller
             }
         }
         $teacherDetails = Teacher::find($id);
-        return view('admin.teachers.update_pwd')->with(compact('teacherDetails'));
+        return view('admin.teachers.update_teacher_pwd')->with(compact('teacherDetails'));
     }    
 
     

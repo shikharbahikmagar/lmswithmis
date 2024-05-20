@@ -73,6 +73,8 @@
                     <td>
                         <a href="{{ url('admin/add-edit-teacher/'.$teacher['id']) }}" title="time table"><i style="font-size: 20px;" class="mdi mdi-timetable"></i></a>&nbsp;&nbsp;&nbsp;
                         <a href="javascript:void(0)" title="leaves" class="deleteTeacher" record="teacher" recordId = "{{ $teacher['id'] }}"><i style="font-size: 22px;" class="mdi mdi-account-off"></i></a>
+                        &nbsp;&nbsp;&nbsp;
+                        <a href="{{ url('admin/update-teacher-pwd/'.$teacher['id']) }}" title="update password" record="teacher" recordId = "{{ $teacher['id'] }}"><i style="font-size: 22px;" class="mdi mdi-account-key"></i></a>
                      </td>
                     <!-- <td>{{ $teacher['description'] }}</td> -->
                    

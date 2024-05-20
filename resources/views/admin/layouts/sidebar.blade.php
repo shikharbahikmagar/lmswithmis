@@ -98,11 +98,11 @@
                    style="background-color: #fff !important; color: #4B49AC !important;"
                   @else style="background-color: #4B49AC !important; color: #fff !important;" 
                   @endif>Teachers Details</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{ url('/admin/teachers') }}"
-                @if(Session::get('page') == "teachers_passwords") 
+                <li class="nav-item"> <a class="nav-link" href="{{ url('/admin/teacher-schedules') }}"
+                @if(Session::get('page') == "teacher_schedules") 
                    style="background-color: #fff !important; color: #4B49AC !important;"
                   @else style="background-color: #4B49AC !important; color: #fff !important;" 
-                  @endif>Teachers Passwords</a></li>
+                  @endif>Teacher Schedules</a></li>
               </ul>
             </div>
           </li>

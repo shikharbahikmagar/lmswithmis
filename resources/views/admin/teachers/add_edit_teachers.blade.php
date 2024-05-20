@@ -92,8 +92,8 @@
                           <div class="col-sm-9">
                             <select class="form-control" name="gender">
                               <option>Select</option>
-                              <option value="male">Male</option>
-                              <option value="female">Female</option>
+                              <option value="male" @if(!empty($teacherData['gender']) && $teacherData['gender'] == "male") selected @endif>Male</option>
+                              <option value="female" @if(!empty($teacherData['gender']) && $teacherData['gender'] == "female") selected @endif>Female</option>
                             </select>
                           </div>
                         </div>

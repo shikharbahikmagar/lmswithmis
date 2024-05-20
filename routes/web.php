@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\GradesController;
 use App\Http\Controllers\Admin\SubjectsController;
 use App\Http\Controllers\Front\IndexController;
 use App\Http\Controllers\Admin\TeachersController;
+use App\Http\Controllers\Admin\TeacherScheduleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,6 +66,9 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
         Route::get('delete-teacher/{id}', [TeachersController::class, 'deleteTeacher']);
         Route::match(['get', 'post'], '/update-teacher-pwd/{id}', [TeachersController::class, 'updateTeacherPwd']);
         Route::post('/check-teacher-current-pwd', [TeachersController::class, 'chkCurrentTeacherPwd']);
+        
+        //teacher schedules
+        Route::get('/teacher-schedules', [TeacherScheduleController::class, 'teacherSchedule']);
 });
 });
 
