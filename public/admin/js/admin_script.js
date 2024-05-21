@@ -316,7 +316,7 @@ $(document).ready(function () {
             
             // You can add more styling or effects to visually indicate that the link is disabled
         } else {
-            $('#addTeacherSchedule').attr('href', '/admin/add-edit-schedules/'+teacher_id).css('color', '').removeClass('disabled-link');
+            $('#addTeacherSchedule').attr('href', '/admin/add-edit-teacher-schedule').css('color', '').removeClass('disabled-link');
             // Resetting href attribute and any applied styles if the condition is not met
         }
         // alert(class_id);
@@ -330,6 +330,18 @@ $(document).ready(function () {
         });
     });
 
+      $('.selectClass').on('change', function () {
+        var class_id = $(this).val(); //or alert($(this).val());
+        //  alert(class_id);
+        $.ajax({
+            url: '/admin/show-subjects',
+            method: "post",
+            data: { class_id: class_id },
+            success: function (data) {
+                $('.subject_options').html(data);
+            }
+        });
+    });
 
 });
 
