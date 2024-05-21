@@ -190,6 +190,7 @@ $(document).ready(function () {
 
     });
     
+    //dynamic subjects according to selected class
     $('.addSubject').on('change', function () {
         var class_id = $(this).val(); //or alert($(this).val());
         // alert(class_id);
@@ -303,6 +304,28 @@ $(document).ready(function () {
                 }
             }, error: function () {
                 alert("error");
+            }
+        });
+    });
+
+    //schedules according to selected teacher
+        $('.teacherSchedule').on('change', function () {
+        var teacher_id = $(this).val(); //or alert($(this).val());
+        if(teacher_id === 'all' || teacher_id === '') {
+                $('#addTeacherSchedule').removeAttr('href').css('color', 'gray').addClass('disabled-link');
+            
+            // You can add more styling or effects to visually indicate that the link is disabled
+        } else {
+            $('#addTeacherSchedule').attr('href', '/admin/add-edit-schedules/'+teacher_id).css('color', '').removeClass('disabled-link');
+            // Resetting href attribute and any applied styles if the condition is not met
+        }
+        // alert(class_id);
+        $.ajax({
+            url: '/admin/teacher-schedules',
+            method: "post",
+            data: { teacher_id: teacher_id },
+            success: function (data) {
+                $('.teacher_schedule_table').html(data);
             }
         });
     });

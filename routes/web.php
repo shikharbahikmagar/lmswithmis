@@ -68,7 +68,7 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
         Route::post('/check-teacher-current-pwd', [TeachersController::class, 'chkCurrentTeacherPwd']);
         
         //teacher schedules
-        Route::get('/teacher-schedules', [TeacherScheduleController::class, 'teacherSchedule']);
+        Route::match(['get', 'post'], '/teacher-schedules/{id?}', [TeacherScheduleController::class, 'teacherSchedule']);
 });
 });
 

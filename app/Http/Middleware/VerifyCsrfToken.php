@@ -14,6 +14,6 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         "/admin/check-current-pwd", "/admin/update-category-status", "/admin/update-book-status",
         "/admin/update-grade-status", "/admin/subjects", "/admin/update-subject-status", 
-        "/admin/update-teacher-status", "/admin/check-teacher-current-pwd",
+        "/admin/update-teacher-status", "/admin/check-teacher-current-pwd", "/admin/teacher-schedules",
     ];
 }

@@ -20,6 +20,7 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    <link href="{{ asset('admin/vendors/mdi/css/materialdesignicons.min.css') }}" media="all" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="{{ asset('admin/css/vertical-layout-light/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/css/custom.css') }}">
   <!-- endinject -->
   <link rel="shortcut icon" href="{{ asset('admin/images/favicon.png') }}" />
 </head>
@@ -83,6 +84,9 @@
          } );
           $(document).ready( function () {
             $('#teachers_table').DataTable();
+         } );
+        $(document).ready( function () {
+            $('#schedules').DataTable();
          } );
          
       </script>
