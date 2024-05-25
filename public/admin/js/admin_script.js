@@ -191,8 +191,16 @@ $(document).ready(function () {
     });
     
     //dynamic subjects according to selected class
-    $('.addSubject').on('change', function () {
+    $('.selectClass').on('change', function () {
         var class_id = $(this).val(); //or alert($(this).val());
+        if(class_id === 'all' || class_id === '') {
+                $('#addSubject').removeAttr('href').css('color', 'gray').addClass('disabled-link');
+            
+            // You can add more styling or effects to visually indicate that the link is disabled
+        } else {
+            $('#addSubject').attr('href', '/admin/add-subject/'+class_id).css('color', '').removeClass('disabled-link');
+            // Resetting href attribute and any applied styles if the condition is not met
+        }
         // alert(class_id);
         $.ajax({
             url: '/admin/subjects',
@@ -311,12 +319,13 @@ $(document).ready(function () {
     //schedules according to selected teacher
         $('.teacherSchedule').on('change', function () {
         var teacher_id = $(this).val(); //or alert($(this).val());
+        //alert(teacher_id);
         if(teacher_id === 'all' || teacher_id === '') {
                 $('#addTeacherSchedule').removeAttr('href').css('color', 'gray').addClass('disabled-link');
             
             // You can add more styling or effects to visually indicate that the link is disabled
         } else {
-            $('#addTeacherSchedule').attr('href', '/admin/add-edit-teacher-schedule').css('color', '').removeClass('disabled-link');
+            $('#addTeacherSchedule').attr('href', '/admin/add-teacher-schedule/'+teacher_id).css('color', '').removeClass('disabled-link');
             // Resetting href attribute and any applied styles if the condition is not met
         }
         // alert(class_id);
@@ -330,6 +339,7 @@ $(document).ready(function () {
         });
     });
 
+    //for displaying subjects dynamically according to selected class
       $('.selectClass').on('change', function () {
         var class_id = $(this).val(); //or alert($(this).val());
         //  alert(class_id);

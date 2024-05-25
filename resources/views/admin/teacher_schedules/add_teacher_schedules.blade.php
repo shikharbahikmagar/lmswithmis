@@ -54,25 +54,19 @@
           </div>
       @endif
               <div class="card-header">
-                <h3 class="card-title">{{ $title }}</h3>
+                <h3 class="card-title">Teacher Schedule</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form
-              @if(empty($teacherScheduleData['id']))
-              action="{{ url('/admin/add-edit-teacher-schedule') }}"
-              @else
-              action="{{ url('/admin/add-edit-teacher-schedule/'.$teacherScheduleData['id']) }}"
-              @endif
-               role="form" enctype="multipart/form-data" method="post">@csrf
+              <form action="{{ url('/admin/add-teacher-schedule') }}"
+              role="form" enctype="multipart/form-data" method="post">@csrf
                 <div class="card-body">
                 <div class="form-group">
                   <label>Select Class</label>
                   <select name="class_id" id="class_id" class="custom-select selectClass" style="width: 100%;">
                     <option value="">Select</option>
                     @foreach($grades as $grade)
-                    <option value="{{ $grade->id }}" @if(!empty($teacherScheduleData['class_id']) &&
-                        $teacherScheduleData['class_id'] == $grade->id) selected @endif>Class {{ $grade->grade_name }}</option>
+                    <option value="{{ $grade->id }}">Class {{ $grade->grade_name }}</option>
                     @endforeach
                   </select>
                   </div>
@@ -80,9 +74,26 @@
                     @include('admin.teacher_schedules.ajax_subject_options')
                 </div>
                 <!-- /.card-body -->
-
+                <div class="form-group">
+                  <label>Select Day of Week</label>
+                  <select name="day_of_week" id="day_of_week" class="custom-select" style="width: 100%;">
+                    <option value="everyday">Every Day</option>
+                    <option value="sunday">Sunday</option>
+                    <option value="monday">Monday</option>
+                    <option value="tuesday">Tuesday</option>
+                    <option value="wednesday">Wednesday</option>
+                    <option value="thursday">Thursday</option>
+                    <option value="friday">Friday</option>
+                    <option value="saturday">Saturday</option>
+                  </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="time">Time</label>
+                    <input type="text" class="form-control" name="time" id="time" placeholder="enter time example: 10:05-11:00">
+                  </div>
+                  <input type="hidden" teacher_id="{{ $teacherScheduleData['id'] }}">
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">{{ $btn }}</button>
+                  <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
               </form>
             </div>

@@ -30,7 +30,7 @@
             @endif 
          </td>
          <td>
-            <a href="{{ url('admin/add-edit-schedule/'.$schedule['id']) }}"><i style="font-size: 20px;" class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;
+            <a href="{{ url('admin/edit-teacher-schedule/'.$schedule['id']) }}"><i style="font-size: 20px;" class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;
             <a href="javascript:void(0)" class="deleteschedule" record="schedule" recordId = "{{ $schedule['id'] }}"><i style="color:red; font-size: 20px;" class="fa fa-trash"></i></a>
          </td>
       </tr>

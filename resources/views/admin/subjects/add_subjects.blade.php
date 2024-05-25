@@ -58,7 +58,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{ url('/admin/add-subjects') }}" role="form" enctype="multipart/form-data" method="post">@csrf
+              <form action="{{ url('/admin/add-subject/'.$grade_id) }}" role="form" enctype="multipart/form-data" method="post">@csrf
                 <div class="card-body">
                    <div class="d-flex flex-row">
                      <div class="form-group col-sm-4">

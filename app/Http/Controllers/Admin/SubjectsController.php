@@ -22,7 +22,7 @@ class SubjectsController extends Controller
             $data = $request->all();
             // echo "<pre>"; print_r($data); die();
             $grade_id = $data['class_id'];
-             Session::put('grade_id', $grade_id);
+            //  Session::put('grade_id', $grade_id);
             if($data['class_id'] == "all")
             {
                 
@@ -50,8 +50,9 @@ class SubjectsController extends Controller
     }
 
     //add subjects
-    public function addSubject(Request $request)
+    public function addSubject(Request $request, $id = null)
     {
+        $grade_id = $id;
         Session::put('page', 'subjects');   
         if($request->isMethod('post'))
         {
@@ -63,7 +64,8 @@ class SubjectsController extends Controller
             {
                 if(!empty($value))
                 {
-                    $grade_id = Session::get('grade_id');
+                    // $grade_id = Session::get('grade_id');
+                    // Session::put('grade_id', '');
                     if(empty($data['subject_code'][$key]) || empty($data['credit_hour'][$key]))
                     {
                         Session::flash('error_message', 'Enter at least one subject');
@@ -98,7 +100,7 @@ class SubjectsController extends Controller
             
         }
 
-        return view('admin.subjects.add_subjects');
+        return view('admin.subjects.add_subjects')->with(compact('grade_id'));
     }
 
     //edit subjects

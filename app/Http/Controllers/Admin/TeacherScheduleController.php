@@ -14,12 +14,12 @@ class TeacherScheduleController extends Controller
 {
     public function teacherSchedule(Request $request)
     {
-        Session::put('page', 'teacher_schedules');
         $teacherDetails = Teacher::get();
         if($request->ajax())
         {
 
             $data = $request->all();
+            Session::put('teacher_id'. $data['teacher_id']);
             if($data['teacher_id'] != "all")
             {
             $teachersScheduleData = TeacherSchedule::with('subjects', 'classes', 'teachers')->where('teacher_id', $data['teacher_id'])->get();
@@ -39,32 +39,58 @@ class TeacherScheduleController extends Controller
         
        
 
-        //echo "<pre>"; print_r($teachersScheduleData); die;
+        // echo "<pre>"; print_r($teachersScheduleData); die;
         return view('admin.teacher_schedules.teacher_schedules')->with(compact('teachersScheduleData', 'teacherDetails'));
         }
     }
 
     public function addEditTeacherSchedule(Request $request, $id = null)
     {
-        if($id == "")
+        if($id == "" )
         {
-            $title = "Add Teacher Schedule";
-            $teacherScheduleData = new TeacherSchedule;
-            $btn = "Submit";
-            $messgage = "Teacher Schedule added successfully";
-        }else
-        {
-            $title = "Edit Teacher Schedule";
-            $teacherScheduleData = TeacherSchedule::find($id);
-            $btn = "Update";
-            $messgage = "Teacher Schedule updated successfully";
+            Session::flash('error_message', 'teacher not found');
+            return redirect()->back();
         }
+        if($request->isMethod('post'))
+        {
+            $data = $request->all();
+            //echo "<pre>"; print_r($data); die;
+                        $rules = [
+                'class_id' => 'required',
+                'subject_id' => 'required',
+                'time' => 'required',
+            ];
 
+            $custom_messages = [
+                'class_id.required' => 'please select class',
+                'subject_id.required' => 'please select Subject',
+                'time.required' => 'please select time',
+
+            ];
+
+            $this->validate($request, $rules, $custom_messages);
+
+            $teacherSchedule = new TeacherSchedule;
+
+            $teacherSchedule->teacher_id = $id;
+            $teacherSchedule->class_id = $data['class_id'];
+            $teacherSchedule->subject_id = $data['subject_id'];
+            $teacherSchedule->day_of_week = $data['day_of_week'];
+            $teacherSchedule->time = $data['time'];
+            $teacherSchedule->status = 1;
+
+            $teacherSchedule->save();
+            Session::flash('success_message', "Schedule added successfully");
+            return redirect('admin/teacher-schedules');
+        }
+        $teacher_id = $id;
         $grades = Grade::get();
-        
+        $teacherScheduleData = teacherSchedule::find($id);
         $subjects = Subject::get();
+        // $teacherScheduleData = json_decode(json_encode($teacherScheduleData), true);
+        // dd($teacherScheduleData);
        
-        return view('admin.teacher_schedules.add_edit_teacher_schedules')->with(compact('title', 'btn', 'teacherScheduleData', 'grades', 'subjects'));
+        return view('admin.teacher_schedules.add_edit_teacher_schedules')->with(compact('teacher_id', 'teacherScheduleData', 'grades', 'subjects'));
     }
 
     public function showSubjects(Request $request)
