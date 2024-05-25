@@ -58,20 +58,20 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{ url('/admin/add-teacher-schedule') }}"
+              <form action="{{ url('/admin/add-teacher-schedule/'.$teacher_id) }}"
               role="form" enctype="multipart/form-data" method="post">@csrf
                 <div class="card-body">
                 <div class="form-group">
                   <label>Select Class</label>
-                  <select name="class_id" id="class_id" class="custom-select selectClass" style="width: 100%;">
+                  <select name="class_id" id="class_id" class="custom-select selectClassForAdd" style="width: 100%;">
                     <option value="">Select</option>
                     @foreach($grades as $grade)
                     <option value="{{ $grade->id }}">Class {{ $grade->grade_name }}</option>
                     @endforeach
                   </select>
                   </div>
-                    <div class="form-group subject_options">
-                    @include('admin.teacher_schedules.ajax_subject_options')
+                    <div class="form-group subject_options_for_adding">
+                    @include('admin.teacher_schedules.ajax_subject_options_for_add')
                 </div>
                 <!-- /.card-body -->
                 <div class="form-group">
@@ -91,7 +91,6 @@
                     <label for="time">Time</label>
                     <input type="text" class="form-control" name="time" id="time" placeholder="enter time example: 10:05-11:00">
                   </div>
-                  <input type="hidden" teacher_id="{{ $teacherScheduleData['id'] }}">
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </div>

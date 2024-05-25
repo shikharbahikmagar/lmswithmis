@@ -191,7 +191,7 @@ $(document).ready(function () {
     });
     
     //dynamic subjects according to selected class
-    $('.selectClass').on('change', function () {
+    $('.selectClassForSubject').on('change', function () {
         var class_id = $(this).val(); //or alert($(this).val());
         if(class_id === 'all' || class_id === '') {
                 $('#addSubject').removeAttr('href').css('color', 'gray').addClass('disabled-link');
@@ -340,11 +340,24 @@ $(document).ready(function () {
     });
 
     //for displaying subjects dynamically according to selected class
-      $('.selectClass').on('change', function () {
+      $('.selectClassForAdd').on('change', function () {
         var class_id = $(this).val(); //or alert($(this).val());
         //  alert(class_id);
         $.ajax({
-            url: '/admin/show-subjects',
+            url: '/admin/show-subjects-for-add',
+            method: "post",
+            data: { class_id: class_id },
+            success: function (data) {
+                $('.subject_options_for_adding').html(data);
+            }
+        });
+    });
+
+          $('.selectClassForEdit').on('change', function () {
+        var class_id = $(this).val(); //or alert($(this).val());
+        //  alert(class_id);
+        $.ajax({
+            url: '/admin/show-subjects-for-edit',
             method: "post",
             data: { class_id: class_id },
             success: function (data) {

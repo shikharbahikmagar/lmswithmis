@@ -36,7 +36,7 @@
                      <h4 class="card-title">Add Books</h4>
                      <div class="d-flex flex-row">
                       <div class="col-sm-3">
-                        <select class="custom-select mr-sm-2 selectClass" id="inlineFormCustomSelect">
+                        <select class="custom-select mr-sm-2 selectClassForSubject" id="inlineFormCustomSelect">
                         <option selected value="all">All Books</option>
                        @foreach($grades as $grade)
                         <option value="{{ $grade['id'] }}">Class {{$grade['grade_name']}}</option>

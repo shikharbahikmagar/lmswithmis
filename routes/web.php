@@ -69,9 +69,10 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
         
         //teacher schedules
         Route::match(['get', 'post'], '/teacher-schedules', [TeacherScheduleController::class, 'teacherSchedule']);
-        Route::match(['get', 'post'], '/add-teacher-schedule/{id?}', [TeacherScheduleController::class, 'addTeacherSchedule']);
-        Route::match(['get', 'post'], '/edit-teacher-schedule/{id?}', [TeacherScheduleController::class, 'editTeacherSchedule']);
-        Route::post('/show-subjects', [TeacherScheduleController::class, 'showSubjects']);
+        Route::match(['get', 'post'], '/add-teacher-schedule/{id}', [TeacherScheduleController::class, 'addTeacherSchedule']);
+        Route::match(['get', 'post'], '/edit-teacher-schedule/{id}', [TeacherScheduleController::class, 'editTeacherSchedule']);
+        Route::post('/show-subjects-for-add', [TeacherScheduleController::class, 'showSubjectsForAdd']);
+        Route::post('/show-subjects-for-edit', [TeacherScheduleController::class, 'showSubjectsForEdit']);
 });
 });
 
