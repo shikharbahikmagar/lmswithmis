@@ -78,6 +78,7 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
         //students
         Route::match(['get', 'post'], '/students', [StudentsController::class, 'students']);
         Route::match(['get', 'post'], '/add-students/{id?}', [StudentsController::class, 'addStudent']);
+        Route::match(['get', 'post'], '/edit-student/{id?}', [StudentsController::class, 'editStudent']);
 });
 });
 

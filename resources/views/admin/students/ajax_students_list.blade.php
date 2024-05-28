@@ -24,10 +24,10 @@
             <td>Class {{ $student['grades']['grade_name'] }}</td>
             <td>{{ $student['roll_no'] }}</td>
             <td>@if($student['status'] == 1) 
-            <a href="javascript:void(0)" class="updateTeacherStatus" id="student-{{ $student['id'] }}" teacher_id="{{$student['id']}}">
+            <a href="javascript:void(0)" class="updateStudentStatus" id="student-{{ $student['id'] }}" student_id="{{$student['id']}}">
             <i status="Active" style="font-size: 20px; " class="mdi mdi-check-circle-outline"></i></a>
             @elseif($student['status'] == 0)
-            <a href="javascript:void(0)" class="updateTeacherStatus" id="student-{{ $student['id']}}" teacher_id="{{$student['id']}}">
+            <a href="javascript:void(0)" class="updateStudentStatus" id="student-{{ $student['id']}}" student_id="{{$student['id']}}">
             <i style="font-size: 20px; " class="mdi mdi-checkbox-blank-circle-outline" status="InActive"></i></a>
             @endif 
             </td>
@@ -37,7 +37,7 @@
             <a href="{{ url('admin/update-student-pwd/'.$student['id']) }}" title="update password" record="student" recordId = "{{ $student['id'] }}"><i style="font-size: 22px;" class="mdi mdi-account-key"></i></a>
             </td>
             <td>
-            <a href="{{ url('admin/add-edit-student/'.$student['id']) }}"><i style="font-size: 20px;" class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;
+            <a href="{{ url('admin/edit-student/'.$student['id']) }}"><i style="font-size: 20px;" class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;
             <a href="javascript:void(0)" class="deleteGrade" record="student" recordId = "{{ $student['id'] }}"><i style="color:red; font-size: 20px;" class="fa fa-trash"></i></a>
             </td>
         </tr>
