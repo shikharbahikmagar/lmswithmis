@@ -365,6 +365,50 @@ $(document).ready(function () {
             }
         });
     });
+
+     //update teacher schedule status
+     $('.updateTeacherScheduleStatus').on('click', function(){
+        var status = $(this).children("i").attr("status");
+        var schedule_id = $(this).attr("schedule_id");
+        //alert(status);
+
+        $.ajax({
+            type: 'post',
+            url: '/admin/update-teacher-schedule-status',
+            data: { schedule_id: schedule_id, status: status  },
+
+            success:function(resp)
+            {
+                if (resp['status'] == 0) {
+                    $("#schedule-" + schedule_id).html("<i style='font-size: 20px;' class='mdi mdi-checkbox-blank-circle-outline' status='InActive'></i>");
+                } else if (resp['status'] == 1) {
+                    $("#schedule-" + schedule_id).html("<i style='font-size: 20px;' class='mdi mdi-check-circle-outline' status='Active'></i> ");
+                }
+            }, error: function (error) {
+                alert(error);
+            }  
+        })
+    });
+
+    //delete teacher schedule
+     $(document).on("click", ".deleteTeacherSchedule", function () {
+        var schedule_id = $(this).attr("schedule_id");
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                window.location.href = "/admin/delete-teacher-schedule/" + schedule_id;
+
+            }
+        });
+
+    });
     
     //students ajax
         $('.selectClassForStudent').on('change', function () {
@@ -388,6 +432,72 @@ $(document).ready(function () {
             }
         });
     });
+
+    //check student current password
+        $('#student_current_pwd').keyup(function () {
+        var student_current_pwd = $('#student_current_pwd').val();
+        var student_id = $(this).attr("student_id");
+        // alert (student_id);
+        $.ajax({
+            type: 'post',
+            url: '/admin/check-student-current-pwd',
+            data: { student_current_pwd: student_current_pwd, student_id: student_id },
+            success: function (resp) {
+                if (resp == "false") {
+                    $("#chkStudentCurrentPwd").html("<font color=red>password is incorrect</font>");
+                } else {
+                    $("#chkStudentCurrentPwd").html("<font color=green>password is correct</font>");
+                }
+            }, error: function () {
+                alert("error");
+            }
+        });
+    });
+
+    //update student status
+    $('.updateStudentStatus').on('click', function(){
+        var status = $(this).children("i").attr("status");
+        var student_id = $(this).attr("student_id");
+        //alert(status);
+
+        $.ajax({
+            type: 'post',
+            url: '/admin/update-student-status',
+            data: { student_id: student_id, status: status  },
+
+            success:function(resp)
+            {
+                if (resp['status'] == 0) {
+                    $("#student-" + student_id).html("<i style='font-size: 20px;' class='mdi mdi-checkbox-blank-circle-outline' status='InActive'></i>");
+                } else if (resp['status'] == 1) {
+                    $("#student-" + student_id).html("<i style='font-size: 20px;' class='mdi mdi-check-circle-outline' status='Active'></i> ");
+                }
+            }, error: function (error) {
+                alert(error);
+            }  
+        })
+    });
+
+    //delete student
+    $(document).on("click", ".deleteStudent", function () {
+        var studentId = $(this).attr("studentId");
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                window.location.href = "/admin/delete-student/" + studentId;
+
+            }
+        });
+
+    });
+
 
 });
 

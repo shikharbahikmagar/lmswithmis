@@ -23,16 +23,16 @@
          <td>{{ $schedule['day_of_week'] }}</td>
          <td>{{ $schedule['time'] }}</td>
          <td>@if($schedule['status'] == 1) 
-            <a href="javascript:void(0)" class="updatescheduleStatus" id="schedule-{{ $schedule['id'] }}" schedule_id="{{$schedule['id']}}">
+            <a href="javascript:void(0)" class="updateTeacherScheduleStatus" id="schedule-{{ $schedule['id'] }}" schedule_id="{{$schedule['id']}}">
             <i status="Active" style="font-size: 20px; " class="mdi mdi-check-circle-outline"></i></a>
             @elseif($schedule['status'] == 0)
-            <a href="javascript:void(0)" class="updatescheduleStatus" id="schedule-{{ $schedule['id']}}" schedule_id="{{$schedule['id']}}">
+            <a href="javascript:void(0)" class="updateTeacherScheduleStatus" id="schedule-{{ $schedule['id']}}" schedule_id="{{$schedule['id']}}">
             <i style="font-size: 20px; " class="mdi mdi-checkbox-blank-circle-outline" status="InActive"></i></a>
             @endif 
          </td>
          <td>
             <a href="{{ url('admin/edit-teacher-schedule/'.$schedule['id']) }}"><i style="font-size: 20px;" class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;
-            <a href="javascript:void(0)" class="deleteschedule" record="schedule" recordId = "{{ $schedule['id'] }}"><i style="color:red; font-size: 20px;" class="fa fa-trash"></i></a>
+            <a href="javascript:void(0)" class="deleteTeacherSchedule" schedule_id = "{{ $schedule['id'] }}"><i style="color:red; font-size: 20px;" class="fa fa-trash"></i></a>
          </td>
       </tr>
       <!-- <input type="hidden" name="teacher_id" teacher_id = "{{ $schedule['teachers']['id'] }}"> -->

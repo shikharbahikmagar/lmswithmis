@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('teacher_schedules', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('teacher_id');
-            $table->bigInteger('class_id');
-            $table->bigInteger('subject_id');
+            $table->bigInteger('teacher_id')->unsigned()->index()->nullable();
+            $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
+            $table->bigInteger('class_id')->unsigned()->index()->nullable();
+            $table->foreign('class_id')->references('id')->on('grades')->onDelete('cascade');
+            $table->bigInteger('subject_id')->unsigned()->index()->nullable();
+            $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
             $table->string('day_of_week');
             $table->string('time');
             $table->tinyInteger('status');

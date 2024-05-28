@@ -44,6 +44,7 @@ class TeacherScheduleController extends Controller
         }
     }
 
+    //add teacher schedules
     public function addTeacherSchedule(Request $request, $id = null)
     {
         $teacher_id = $id;
@@ -51,7 +52,7 @@ class TeacherScheduleController extends Controller
         {
             $data = $request->all();
             //echo "<pre>"; print_r($data); die;
-                        $rules = [
+            $rules = [
                 'class_id' => 'required',
                 'subject_id' => 'required',
                 'time' => 'required',
@@ -89,6 +90,7 @@ class TeacherScheduleController extends Controller
         return view('admin.teacher_schedules.add_teacher_schedules')->with(compact('teacher_id', 'subjects', 'grades'));
     }
 
+    //edit teacher schedules
     public function editTeacherSchedule(Request $request, $id = null)
     {
         if($request->isMethod('post'))
@@ -136,6 +138,7 @@ class TeacherScheduleController extends Controller
         return view('admin.teacher_schedules.edit_teacher_schedules')->with(compact('teacherScheduleData', 'grades', 'subjects', 'schedule_with_teacher'));
     }
 
+    //show subjects dynamically for adding schedules
     public function showSubjectsForAdd(Request $request)
     {
         if($request->ajax())
@@ -147,7 +150,8 @@ class TeacherScheduleController extends Controller
         }
     }
 
-        public function showSubjectsForEdit(Request $request)
+    //show subjects dynamically for editing schedule
+    public function showSubjectsForEdit(Request $request)
     {
         if($request->ajax())
         {
@@ -157,5 +161,36 @@ class TeacherScheduleController extends Controller
             // echo "<pre>"; print_r($data); die;
             return view('admin.teacher_schedules.ajax_subject_options_for_edit')->with(compact('subjects'));
         }
+    }
+
+    //update teacher schedule status
+    public function updateTeacherScheduleStatus(Request $request)
+    {
+        if($request->ajax())
+        {
+            $data = $request->all();
+
+            if($data['status'] == "Active")
+            {
+                $status = 0;
+            }else
+            {
+                $status = 1;
+            }
+
+        TeacherSchedule::where('id', $data['schedule_id'])->update(['status'=>$status]);
+        return response()->json(['status'=>$status,'schedule_id'=>$data['schedule_id']]);
+
+        }
+       
+    }
+
+    //delete teacher schedule
+    public function deleteTeacherSchedule($id)
+    {
+        TeacherSchedule::where('id', $id)->delete();
+
+        Session::flash('success_message', 'teacher schedule deleted successfully');
+        return redirect()->back();
     }
 }

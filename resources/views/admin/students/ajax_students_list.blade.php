@@ -10,7 +10,6 @@
             <th>Class</th>
             <th>Roll No</th>
             <th>Status</th>
-            <th>More Info</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -32,13 +31,9 @@
             @endif 
             </td>
             <td>
-            <a href="javascript:void(0)" title="leaves" class="deleteTeacher" record="student" recordId = "{{ $student['id'] }}"><i style="font-size: 22px;" class="mdi mdi-account-off"></i></a>
-            &nbsp;&nbsp;&nbsp;
-            <a href="{{ url('admin/update-student-pwd/'.$student['id']) }}" title="update password" record="student" recordId = "{{ $student['id'] }}"><i style="font-size: 22px;" class="mdi mdi-account-key"></i></a>
-            </td>
-            <td>
-            <a href="{{ url('admin/edit-student/'.$student['id']) }}"><i style="font-size: 20px;" class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;
-            <a href="javascript:void(0)" class="deleteGrade" record="student" recordId = "{{ $student['id'] }}"><i style="color:red; font-size: 20px;" class="fa fa-trash"></i></a>
+            <a href="{{ url('admin/update-student-pwd/'.$student['id']) }}" title="update password"><i style="font-size: 22px;" class="mdi mdi-account-key"></i></a>&nbsp;&nbsp;&nbsp;
+            <a href="{{ url('admin/edit-student/'.$student['id']) }}" title="Edit Details"><i style="font-size: 20px;" class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;
+            <a href="javascript:void(0)" class="deleteStudent" title="Delete Student" studentId = "{{ $student['id'] }}"><i style="color:red; font-size: 20px;" class="fa fa-trash"></i></a>
             </td>
         </tr>
         @endforeach

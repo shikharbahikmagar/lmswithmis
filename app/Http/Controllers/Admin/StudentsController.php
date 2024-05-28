@@ -8,6 +8,7 @@ use App\Models\Student;
 use App\Models\Grade;
 use Image;
 use Session;
+use Hash;
 
 class StudentsController extends Controller
 {
@@ -62,7 +63,7 @@ class StudentsController extends Controller
                 'address' => 'required',
                 'roll_no' => 'required|numeric',
                 'email' => 'required|email',
-                'password' => 'required|min:6',
+                'password' => 'required|min:8',
                 'student_image' => 'image', 
             ];
             $customMessages = [
@@ -81,7 +82,7 @@ class StudentsController extends Controller
                 'email.required' => 'email is required',
                 'email.email' => 'valid email is required',
                 'password.required' => 'password is required',
-                'password.min' => 'Password is required with a minimum of 6 characters',
+                'password.min' => 'Password is required with a minimum of 8 characters',
                 'student_image.image' => 'valid image is required',
             ];
 
@@ -233,5 +234,109 @@ class StudentsController extends Controller
         $students = json_decode(json_encode($students), true);
         // echo "<pre>"; print_r($students); die;
         return view('admin.students.edit_students')->with(compact('students', 'grades'));
+    }
+
+    //check student current password is correct or not
+    public function chkStudentCurrentPwd(Request $request)
+    {
+        if($request->ajax())
+        {
+            $data = $request->all();
+            // echo "<pre>"; print_r($data); die;
+            $student = Student::where('id', $data['student_id'])->first();
+            $student = json_decode(json_encode($student), true);
+            // echo "<pre>"; print_r($student); die;
+            if(Hash::check($data['student_current_pwd'], $student['password']))
+            {
+                echo "true";
+            }
+            else{
+                echo "false";
+            }
+        }
+    }
+
+    //updating student current password
+    public function updateStudentPwd(Request $request, $id = null)
+    {
+        $studentDetails = Student::find($id);
+        $studentDetails = json_decode(json_encode($studentDetails), true);
+        $studentWithGrade = Student::with('grades')->where('grade_id', $studentDetails['grade_id'])->first();
+        $studentWithGrade = json_decode(json_encode($studentWithGrade), true);
+
+        if($request->isMethod('post'))
+        {
+            $data = $request->all();
+
+            $rules = [
+                'student_current_pwd' => 'required',
+                'new_pwd' => 'required|min:8',
+                'confirm_pwd' => 'required|min:8',
+            ];
+
+            $customMessages = [
+                'student_current_pwd.required' => 'please enter current password',
+                'new_pwd.required' => 'please enter new password',
+                'new_pwd.min' => 'new password is required with a minimum of 8 characters',
+                'confirm_pwd.required' => 'please enter confirm password',
+                'confirm_pwd.min' => 'confirm password is required with a minimum of 8 characters',
+            ];
+
+            $this->validate($request, $rules, $customMessages);
+            //echo "<pre>"; print_r($data); die;
+            if(Hash::check($data['student_current_pwd'], $studentDetails['password']))
+            {
+                if($data['new_pwd'] == $data['confirm_pwd'])
+                {
+                    $new_password = bcrypt($data['confirm_pwd']);
+                    Student::where('id', $id)->update(['password'=> $new_password]);
+
+                    Session::flash('success_message', 'student password updated successfully');
+                    return redirect('admin/students');
+                }else
+                {
+                    Session::flash('error_message', 'new password and confirm password does not match');
+                    return redirect()->back();
+                }
+            }
+            else
+            {
+                Session::flash('error_message', 'current password does not match');
+                return redirect()->back();
+            }
+        }
+
+      
+
+
+        //echo "<pre>"; print_r($studentWithGrade); die;
+        return view('admin.students.update_students_password')->with(compact('studentDetails', 'studentWithGrade'));
+    }
+
+    public function updateStudentStatus(Request $request)
+    {
+        if($request->ajax())
+        {
+            $data = $request->all();
+            //echo "<pre>"; print_r($data); die;
+            if($data['status'] == "Active")
+            {
+                $status = 0;
+            }else
+            {
+                $status = 1;
+            }
+            Student::where('id', $data['student_id'])->update(['status' => $status]);
+
+            return response()->json(['status'=>$status,'student_id'=>$data['student_id']]);
+        }
+    }
+
+    //delete student
+    public function deleteStudent(Request $request, $id=null)
+    {
+        Student::where('id', $id)->delete();
+        Session::flash('success_message', 'Student deleted successfully');
+        return redirect()->back();
     }
 }

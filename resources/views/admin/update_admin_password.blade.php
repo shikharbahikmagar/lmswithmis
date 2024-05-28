@@ -53,15 +53,6 @@
         </button>
         </div>
         @endif
-        @if ($errors->any())
-          <div class="alert alert-success">
-              <ul>
-                  @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                  @endforeach
-              </ul>
-          </div>
-      @endif
               <div class="card-header">
                 <h3 class="card-title">Update Admin Details</h3>
               </div>

@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Admin Setting</h1>
+            <h1>Student Password</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -54,32 +54,32 @@
         </div>
         @endif
               <div class="card-header">
-                <h3 class="card-title">Update Admin Details</h3>
+                <h3 class="card-title">Update Student Details</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{ url('/admin/update-teacher-pwd/'.$teacherDetails->id) }}" role="form" method="post">@csrf
+              <form action="{{ url('/admin/update-student-pwd/'.$studentDetails['id']) }}" role="form" method="post">@csrf
                 <div class="card-body">
                     <div class="form-group">
-                    <label for="username">Full Name</label>
-                    <input type="text" class="form-control" value = "{{ $teacherDetails->first_name }} {{ $teacherDetails->last_name }} " readonly name="username" id="username" placeholder="Enter email">
+                    <label for="username">Name</label>
+                    <input type="text" class="form-control" value = "{{ $studentDetails['first_name'] }} {{ $studentDetails['middle_name'] }} {{ $studentDetails['last_name'] }}" readonly name="username" id="username" placeholder="Enter email">
                   </div>
                   <div class="form-group">
-                    <label for="contact">Contact</label>
-                    <input type="text" class="form-control" value = "{{ $teacherDetails->contact }}" readonly name="contact" id="contact" placeholder="Enter email">
+                    <label for="mobile">Class</label>
+                    <input type="text" class="form-control" value = "Class {{ $studentWithGrade['grades']['grade_name'] }}" readonly name="mobile" id="mobile" placeholder="Enter email">
                   </div>
                   <div class="form-group">
-                    <label for="department">Department</label>
-                    <input type="email" class="form-control" value = "{{ $teacherDetails->department }}" readonly name="department" id="department" placeholder="Enter email">
+                    <label for="type">Roll Number</label>
+                    <input type="email" class="form-control" value = "{{ $studentDetails['roll_no'] }}" readonly name="type" id="type" placeholder="Enter email">
                   </div>
                    <div class="form-group">
                     <label for="email">Email address</label>
-                    <input type="email" class="form-control" value = "{{ $teacherDetails->email }}" readonly name="email" id="email" placeholder="Enter email">
+                    <input type="email" class="form-control" value = "{{ $studentDetails['email'] }}" readonly name="email" id="email" placeholder="Enter email">
                   </div>
                   <div class="form-group">
-                    <label for="teacher_current_pwd">Current Password</label>
-                    <input type="password" class="form-control" id="teacher_current_pwd" teacher_id = "{{ $teacherDetails->id }}" name="teacher_current_pwd" placeholder="old password">
-                    <span id="chkTeacherCurrentPwd" required></span>
+                    <label for="student_current_pwd">Current Password</label>
+                    <input type="password" class="form-control" student_id = "{{ $studentDetails['id'] }}" id="student_current_pwd" name="student_current_pwd" placeholder="old password">
+                    <span id="chkStudentCurrentPwd" required></span>
                   </div>
                   <div class="form-group">
                     <label for="new_password">New Password</label>

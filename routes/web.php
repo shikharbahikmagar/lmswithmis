@@ -72,13 +72,20 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
         Route::match(['get', 'post'], '/teacher-schedules', [TeacherScheduleController::class, 'teacherSchedule']);
         Route::match(['get', 'post'], '/add-teacher-schedule/{id}', [TeacherScheduleController::class, 'addTeacherSchedule']);
         Route::match(['get', 'post'], '/edit-teacher-schedule/{id}', [TeacherScheduleController::class, 'editTeacherSchedule']);
+        Route::post('/update-teacher-schedule-status', [TeacherScheduleController::class, 'updateTeacherScheduleStatus']);
         Route::post('/show-subjects-for-add', [TeacherScheduleController::class, 'showSubjectsForAdd']);
         Route::post('/show-subjects-for-edit', [TeacherScheduleController::class, 'showSubjectsForEdit']);
+        Route::get('/delete-teacher-schedule/{id}', [TeacherScheduleController::class, 'deleteTeacherSchedule']);
 
         //students
         Route::match(['get', 'post'], '/students', [StudentsController::class, 'students']);
         Route::match(['get', 'post'], '/add-students/{id?}', [StudentsController::class, 'addStudent']);
         Route::match(['get', 'post'], '/edit-student/{id?}', [StudentsController::class, 'editStudent']);
+        Route::get('/update-student-pwd/{id?}', [StudentsController::class, 'updateStudentPwd']);
+        Route::post('/check-student-current-pwd', [StudentsController::class, 'chkStudentCurrentPwd']);
+        Route::post('update-student-status', [StudentsController::class, 'updateStudentStatus']);
+        Route::post('/update-student-pwd/{id?}', [StudentsController::class, 'updateStudentPwd']);
+        Route::get('/delete-student/{id}', [StudentsController::class, 'deleteStudent']);
 });
 });
 
