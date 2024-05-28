@@ -1,12 +1,12 @@
 @extends('admin.layouts.layout')
 @section('content')
-        <div class="content-wrapper">
+<div class="content-wrapper">
    <div class="row">
       <div class="col-md-12 grid-margin">
          <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
                <div class="card">
-                  <div class="card-body">
+                                  <div class="card-body">
                      @if(Session::has('error_message'))
                      <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         {{ Session::get('error_message') }}
@@ -33,28 +33,25 @@
                         </button>
                      </div>
                      @endif
-                     <h4 class="card-title">Teacher Schedule Table</h4>
+                     <h4 class="card-title">Students Table</h4>
                      <div class="d-flex flex-row">
-                      <div class="col-sm-3">
-                        <select class="custom-select mr-sm-2 teacherSchedule" id="inlineFormCustomSelect">
-                        <option selected value="all">All Teachers</option>
-                       @foreach($teacherDetails as $teacher)
-                        <option value="{{ $teacher['id'] }}">{{$teacher['first_name']}} {{$teacher['last_name']}}</option>
-                        @endforeach
-                        </select>
+                        <div class="col-sm-3">
+                           <select class="custom-select mr-sm-2 selectClassForStudent" id="inlineFormCustomSelect">
+                              <option selected value="all">All Students</option>
+                              @foreach($grades as $grade)
+                              <option value="{{ $grade['id'] }}">Class {{$grade['grade_name']}}</option>
+                              @endforeach
+                           </select>
+                        </div>
+                        <a href="" class="btn btn-block btn-primary disabled-link" id="addStudent" style="max-width: 150px; margin-left:62%">
+                        Add Student</a>
                      </div>
-
-                     <a href="" class="btn btn-block btn-primary disabled-link" id="addTeacherSchedule" style="max-width: 150px; margin-left:62%">
-                        Add schedule</a>
-                     </div>
-                        @include('admin.teacher_schedules.ajax_teacher_schedules')
-                  </div>
+                        @include('admin.students.ajax_students_list')
+                </div>
                </div>
             </div>
          </div>
       </div>
    </div>
 </div>
-
-
 @endsection

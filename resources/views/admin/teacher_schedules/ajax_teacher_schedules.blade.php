@@ -1,4 +1,5 @@
-<table id="schedules" class="table table-bordered">
+<div class="table-responsive pt-3">
+<table id="schedules" class="table table-bordered teacher_schedule_table">
    <thead>
       <tr>
          <th>ID</th>
@@ -38,3 +39,4 @@
       @endforeach
    </tbody>
 </table>
+</div>

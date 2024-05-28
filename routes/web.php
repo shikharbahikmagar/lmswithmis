@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\SubjectsController;
 use App\Http\Controllers\Front\IndexController;
 use App\Http\Controllers\Admin\TeachersController;
 use App\Http\Controllers\Admin\TeacherScheduleController;
+use App\Http\Controllers\Admin\StudentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +74,10 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
         Route::match(['get', 'post'], '/edit-teacher-schedule/{id}', [TeacherScheduleController::class, 'editTeacherSchedule']);
         Route::post('/show-subjects-for-add', [TeacherScheduleController::class, 'showSubjectsForAdd']);
         Route::post('/show-subjects-for-edit', [TeacherScheduleController::class, 'showSubjectsForEdit']);
+
+        //students
+        Route::match(['get', 'post'], '/students', [StudentsController::class, 'students']);
+        Route::match(['get', 'post'], '/add-students/{id?}', [StudentsController::class, 'addStudent']);
 });
 });
 

@@ -365,6 +365,29 @@ $(document).ready(function () {
             }
         });
     });
+    
+    //students ajax
+        $('.selectClassForStudent').on('change', function () {
+        var class_id = $(this).val(); //or alert($(this).val());
+        //alert(class_id);
+        if(class_id === 'all' || class_id === '') {
+                $('#addStudent').removeAttr('href').css('color', 'gray').addClass('disabled-link');
+            
+            // You can add more styling or effects to visually indicate that the link is disabled
+        } else {
+            $('#addStudent').attr('href', '/admin/add-students/'+class_id).css('color', '').removeClass('disabled-link');
+            // Resetting href attribute and any applied styles if the condition is not met
+        }
+        // alert(class_id);
+        $.ajax({
+            url: '/admin/students',
+            method: "post",
+            data: { class_id: class_id },
+            success: function (data) {
+                $('.student_lists').html(data);
+            }
+        });
+    });
 
 });
 

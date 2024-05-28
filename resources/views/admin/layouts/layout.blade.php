@@ -88,6 +88,9 @@
         $(document).ready( function () {
             $('#schedules').DataTable();
          } );
+        $(document).ready( function () {
+            $('#students').DataTable();
+         } );
          
       </script>
   <!-- End custom js for this page-->
