@@ -10,6 +10,7 @@ use App\Http\Controllers\Front\IndexController;
 use App\Http\Controllers\Admin\TeachersController;
 use App\Http\Controllers\Admin\TeacherScheduleController;
 use App\Http\Controllers\Admin\StudentsController;
+use App\Http\Controllers\Admin\NoticesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,6 +87,12 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
         Route::post('update-student-status', [StudentsController::class, 'updateStudentStatus']);
         Route::post('/update-student-pwd/{id?}', [StudentsController::class, 'updateStudentPwd']);
         Route::get('/delete-student/{id}', [StudentsController::class, 'deleteStudent']);
+
+        //notices
+        Route::get('/notice-categories', [NoticesController::class, 'noticeCategories']);
+        Route::match(['get', 'post'], '/add-edit-notice-category/{id?}', [NoticesController::class, 'addEditNoticeCategory']);
+        Route::post('/update-notice-category-status', [NoticesController::class, 'updateNoticeCategoryStatus']);
+        Route::get('/delete-notice-category/{id}', [NoticesController::class, 'deleteNoticeCategory']);
 });
 });
 

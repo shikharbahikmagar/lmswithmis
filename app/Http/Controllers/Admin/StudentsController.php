@@ -14,6 +14,7 @@ class StudentsController extends Controller
 {
     public function students(Request $request)
     {
+        Session::put('page', 'students');
         $grades = Grade::get();
         if($request->ajax())
         {
@@ -46,6 +47,7 @@ class StudentsController extends Controller
 
     public function addStudent(Request $request, $id = null)
     {
+        Session::put('page', 'students');
         $grade_id = $id;
         if($request->isMethod('post'))
         {
@@ -146,6 +148,7 @@ class StudentsController extends Controller
 
     public function editStudent(Request $request, $id = null)
     {
+        Session::put('page', 'students');
          if($request->isMethod('post'))
         {
             $data = $request->all();
@@ -259,6 +262,7 @@ class StudentsController extends Controller
     //updating student current password
     public function updateStudentPwd(Request $request, $id = null)
     {
+        Session::put('page', 'students');
         $studentDetails = Student::find($id);
         $studentDetails = json_decode(json_encode($studentDetails), true);
         $studentWithGrade = Student::with('grades')->where('grade_id', $studentDetails['grade_id'])->first();

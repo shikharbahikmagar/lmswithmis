@@ -14,6 +14,7 @@ class TeacherScheduleController extends Controller
 {
     public function teacherSchedule(Request $request)
     {
+        Session::put('page', 'teacher_schedules');
         $teacherDetails = Teacher::get();
         if($request->ajax())
         {
@@ -47,6 +48,7 @@ class TeacherScheduleController extends Controller
     //add teacher schedules
     public function addTeacherSchedule(Request $request, $id = null)
     {
+        Session::put('page', 'teacher_schedules');
         $teacher_id = $id;
         if($request->isMethod('post'))
         {
@@ -93,6 +95,7 @@ class TeacherScheduleController extends Controller
     //edit teacher schedules
     public function editTeacherSchedule(Request $request, $id = null)
     {
+        Session::put('page', 'teacher_schedules');
         if($request->isMethod('post'))
         {
             $data = $request->all();

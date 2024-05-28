@@ -114,19 +114,27 @@
             </a>
             <div class="collapse" id="icons">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ url('admin/students') }}">Student Details</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ url('admin/students') }}"
+                @if(Session::get('page') == "students") 
+                   style="background-color: #fff !important; color: #4B49AC !important;"
+                  @else style="background-color: #4B49AC !important; color: #fff !important;" 
+                  @endif>Student Details</a></li>
               </ul>
             </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
               <i class="icon-head menu-icon"></i>
-              <span class="menu-title">User Pages</span>
+              <span class="menu-title">Notices</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ url('/admin/notice-categories') }}"
+                 @if(Session::get('page') == "notice_categories") 
+                   style="background-color: #fff !important; color: #4B49AC !important;"
+                  @else style="background-color: #4B49AC !important; color: #fff !important;" 
+                  @endif> Notice Category </a></li>
                 <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
               </ul>
             </div>

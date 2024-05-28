@@ -353,7 +353,7 @@ $(document).ready(function () {
         });
     });
 
-          $('.selectClassForEdit').on('change', function () {
+    $('.selectClassForEdit').on('change', function () {
         var class_id = $(this).val(); //or alert($(this).val());
         //  alert(class_id);
         $.ajax({
@@ -492,6 +492,50 @@ $(document).ready(function () {
         }).then((result) => {
             if (result.value) {
                 window.location.href = "/admin/delete-student/" + studentId;
+
+            }
+        });
+
+    });
+
+    //update notice category status
+      $('.updateNoticeCategoryStatus').on('click', function(){
+        var status = $(this).children("i").attr("status");
+        var notice_category_id = $(this).attr("notice_category_id");
+        //alert(status);
+
+        $.ajax({
+            type: 'post',
+            url: '/admin/update-notice-category-status',
+            data: { notice_category_id: notice_category_id, status: status  },
+
+            success:function(resp)
+            {
+                if (resp['status'] == 0) {
+                    $("#notice-category-" + notice_category_id).html("<i style='font-size: 20px;' class='mdi mdi-checkbox-blank-circle-outline' status='InActive'></i>");
+                } else if (resp['status'] == 1) {
+                    $("#notice-category-" + notice_category_id).html("<i style='font-size: 20px;' class='mdi mdi-check-circle-outline' status='Active'></i> ");
+                }
+            }, error: function (error) {
+                alert(error);
+            }  
+        })
+    });
+
+    //delte notice category
+      $(document).on("click", ".deleteNoticeCategory", function () {
+        var notice_category_id = $(this).attr("notice_category_id");
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                window.location.href = "/admin/delete-notice-category/" + notice_category_id;
 
             }
         });
