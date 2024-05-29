@@ -91,6 +91,9 @@
         $(document).ready( function () {
             $('#students').DataTable();
          } );
+          $(document).ready( function () {
+            $('#notices').DataTable();
+         } );
          
       </script>
   <!-- End custom js for this page-->

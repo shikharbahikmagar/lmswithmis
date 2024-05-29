@@ -542,6 +542,26 @@ $(document).ready(function () {
 
     });
 
+    //show notices according to selected notice category
+    $('.noticeCategory').on('change', function(){
+        var notice_cat_id = $(this).val();
+        // alert(notice_cat_id);
+
+        $.ajax({
+
+            type: 'post',
+            url: '/admin/notices',
+            data: {notice_cat_id: notice_cat_id},
+
+            success:function(data)
+            {
+                $('.notice_lists').html(data);
+            }
+
+        })
+
+    });
+
 
 });
 

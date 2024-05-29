@@ -12,8 +12,8 @@ use App\Http\Controllers\Admin\TeacherScheduleController;
 use App\Http\Controllers\Admin\StudentsController;
 use App\Http\Controllers\Admin\NoticesController;
 
-/*
-|--------------------------------------------------------------------------
+/*-
+|-------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
@@ -88,11 +88,15 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
         Route::post('/update-student-pwd/{id?}', [StudentsController::class, 'updateStudentPwd']);
         Route::get('/delete-student/{id}', [StudentsController::class, 'deleteStudent']);
 
-        //notices
+        //notice category
         Route::get('/notice-categories', [NoticesController::class, 'noticeCategories']);
         Route::match(['get', 'post'], '/add-edit-notice-category/{id?}', [NoticesController::class, 'addEditNoticeCategory']);
         Route::post('/update-notice-category-status', [NoticesController::class, 'updateNoticeCategoryStatus']);
         Route::get('/delete-notice-category/{id}', [NoticesController::class, 'deleteNoticeCategory']);
+
+        //notices
+        Route::match(['get', 'post'], '/notices', [NoticesController::class, 'notices']);
+        Route::match(['get', 'post'], '/add-edit-notices/{id?}', [NoticesController::class, 'AddEditNotice']);
 });
 });
 

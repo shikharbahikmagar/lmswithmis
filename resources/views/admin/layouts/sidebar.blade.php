@@ -135,7 +135,11 @@
                    style="background-color: #fff !important; color: #4B49AC !important;"
                   @else style="background-color: #4B49AC !important; color: #fff !important;" 
                   @endif> Notice Category </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ url('/admin/notices') }}"
+                   @if(Session::get('page') == "notices") 
+                   style="background-color: #fff !important; color: #4B49AC !important;"
+                  @else style="background-color: #4B49AC !important; color: #fff !important;" 
+                  @endif> Notices </a></li>
               </ul>
             </div>
           </li>
