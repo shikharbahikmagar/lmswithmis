@@ -524,7 +524,7 @@ $(document).ready(function () {
 
     //delte notice category
       $(document).on("click", ".deleteNoticeCategory", function () {
-        var notice_category_id = $(this).attr("notice_category_id");
+        var notice_cat_id = $(this).attr("notice_category_id");
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -535,7 +535,7 @@ $(document).ready(function () {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.value) {
-                window.location.href = "/admin/delete-notice-category/" + notice_category_id;
+                window.location.href = "/admin/delete-notice-category/" + notice_cat_id;
 
             }
         });
@@ -559,6 +559,49 @@ $(document).ready(function () {
             }
 
         })
+
+    });
+
+    $('.updateNoticeStatus').on('click', function(){
+        var status = $(this).children("i").attr("status");
+        var notice_id = $(this).attr("notice_id");
+        //alert(status);
+
+        $.ajax({
+            type: 'post',
+            url: '/admin/update-notice-status',
+            data: { notice_id: notice_id, status: status  },
+
+            success:function(resp)
+            {
+                if (resp['status'] == 0) {
+                    $("#notice-" + notice_id).html("<i style='font-size: 20px;' class='mdi mdi-checkbox-blank-circle-outline' status='InActive'></i>");
+                } else if (resp['status'] == 1) {
+                    $("#notice-" + notice_id).html("<i style='font-size: 20px;' class='mdi mdi-check-circle-outline' status='Active'></i> ");
+                }
+            }, error: function (error) {
+                alert(error);
+            }  
+        })
+    });
+
+    //delte notice
+     $(document).on("click", ".deleteNotice", function () {
+        var notice_id = $(this).attr("notice_id");
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                window.location.href = "/admin/delete-notice/" + notice_id;
+
+            }
+        });
 
     });
 

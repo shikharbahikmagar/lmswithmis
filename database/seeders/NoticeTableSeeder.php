@@ -15,9 +15,9 @@ class NoticeTableSeeder extends Seeder
     {
         $noticeRecords = [
             ['id' => 1, 'admin_id' => 1, 'notice_cat_id' => 3, 'title' => 'for admission', 'description' => 'admission open for class 2',
-            'attachment' => '', 'status' => 1],
+            'attachment' => '', 'url'=> 'admission-012', 'status' => 1],
             ['id' => 2, 'admin_id' => 1, 'notice_cat_id' => 3, 'title' => 'for exam', 'description' => 'exam for class 2',
-            'attachment' => '', 'status' => 1],
+            'attachment' => '', 'url'=> 'exam-1232', 'status' => 1],
         ];
 
         DB::table('notices')->insert($noticeRecords);

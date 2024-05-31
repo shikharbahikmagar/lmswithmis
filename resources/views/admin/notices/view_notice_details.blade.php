@@ -7,12 +7,12 @@
    <div class="container-fluid">
       <div class="row mb-2">
          <div class="col-sm-12">
-            <h1>Notice Categories</h1>
+            <h1>Notice Details</h1>
          </div>
          <div class="col-sm-12">
             <ol class="breadcrumb float-sm-right">
                <li class="breadcrumb-item"><a href="#">Home</a></li>
-               <li class="breadcrumb-item active">Notice Categories</li>
+               <li class="breadcrumb-item active">Notice Details</li>
             </ol>
          </div>
       </div>
@@ -53,59 +53,49 @@
                </div>
                @endif
                <div class="card-header">
-                  <h3 class="card-title">{{ $title }}</h3>
+                  <h3 class="card-title">Notice Details</h3>
                </div>
                <!-- /.card-header -->
                <!-- form start -->
-               <form
-               @if(empty($notice['id']))
-               action="{{ url('/admin/add-edit-notices') }}"
-               @else
-               action="{{ url('/admin/add-edit-notices/'.$notice['id']) }}"
-               @endif
-               role="form" enctype="multipart/form-data" method="post">@csrf
                <div class="card-body">
+                 <div class="form-group">
+                     <label>Added By</label>
+                     <input readonly type="text" class="form-control" name="name" id="name"
+                     @if(!empty($notices['notice_cat_id'])) value="{{ $notices['added_by']['name'] }}"@endif>
+                  </div>
                   <div class="form-group">
-                     <label>Select Notice Category</label>
-                     <select name="notice_cat_id" id="notice_cat_id" class="custom-select" style="width: 100%;">
-                        <option value="">Select</option>
-                        @foreach($noticeCategories as $category)
-                        <option value="{{ $category->id }}" @if(!empty($notice['notice_cat_id']) &&
-                        $notice['notice_cat_id']==$category->id) selected @endif>{{ $category->category_name }}</option>
-                        @endforeach
-                     </select>
+                     <label>Notice Category</label>
+                     <input readonly type="text" class="form-control" name="category_name" id="category_name"
+                     @if(!empty($notices['notice_cat_id'])) value="{{ $notices['notice_categories']['category_name'] }}"@endif>
                   </div>
                   <div class="form-group">
                      <label for="title">Title</label>
-                     <textarea class="form-control" name="title" id="title" rows="2" placeholder="Enter...">@if(!empty($notice['title'])){{ $notice['title'] }}@else{{ old('title') }}@endif</textarea>
+                     <textarea class="form-control" name="title" id="title" rows="3" readonly>@if(!empty($notices['title'])){{ $notices['title'] }}@endif</textarea>
                   </div>
                   <div class="form-group">
                      <label for="link">Link</label>
-                     <input type="text" class="form-control" name="link" id="link" placeholder="Enter link"
-                     @if(!empty($notice)) value="{{ $notice->link }}" @else value="{{ old('link') }}" @endif>
+                     <input type="text" class="form-control" name="link" id="link" placeholder="no links"
+                     @if(!empty($notices['link'])) value="{{ $notices['link'] }}"@endif readonly>
                   </div>
                   <div class="form-group">
                      <label for="description">Description</label>
-                     <textarea class="form-control" name="description" id="description" rows="4" placeholder="Enter...">@if(!empty($notice['description'])){{ $notice['description'] }}@else{{ old('description') }}@endif</textarea>
+                     <textarea class="form-control" name="description" id="description" rows="5" readonly>@if(!empty($notices['description'])){{ $notices['description'] }}@endif</textarea>
                   </div>
                   <div class="form-group">
-                     <label class="form-label">Attachment</label>
+                     <label class="form-label">Attachment <span><i>(click below to open)</i></span></label>
                      <div>
-                        <input type="file" class="form-control" value="{{ old('attachment') }}" id="attachment" name="attachment">
+                         @if(!empty($notices['attachment']))<a target="_blank" href="{{ url('/files/notice_files/'.$notices['attachment']) }}"><span> {{ $notices['attachment'] }}</span></a>@endif
                      </div>
                   </div>
-                  <div class="form-group">
-                     <label class="form-label">Notice URL</label>
-                     <div>
-                          <input type="text" class="form-control" name="url" id="url" placeholder="Enter url"
-                     @if(!empty($notice)) value="{{ $notice->url }}" @else value="{{ old('url') }}" @endif>
-                     </div>
+                   <div class="form-group">
+                     <label>Notice URL</label>
+                     <input readonly type="text" class="form-control" name="url" id="url"
+                     @if(!empty($notices['url'])) value="{{ $notices['url'] }}"@endif>
                   </div>
                   <!-- /.card-body -->
                   <div class="card-footer">
-                     <button type="submit" class="btn btn-primary">{{ $btn }}</button>
+                    <a href="{{ url('admin/notices') }}"><button class="btn btn-primary">Back</button></a>
                   </div>
-                  </form>
                </div>
                <!-- /.card -->
             </div>

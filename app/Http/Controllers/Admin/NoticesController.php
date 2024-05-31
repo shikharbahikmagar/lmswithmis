@@ -42,6 +42,15 @@ class NoticesController extends Controller
         return view('admin.notices.notices')->with(compact('notices', 'noticeCatDetails'));
     }
 
+    public function viewNoticeDetails($id = null)
+    {
+        Session::put('page', 'notices');
+        $notices = Notice::with('added_by', 'notice_categories')->where('id', $id)->first();
+        $notices = json_decode(json_encode($notices), true);
+         //echo "<pre>"; print_r($notices); die;
+        return view('admin.notices.view_notice_details')->with(compact('notices'));
+    }
+
     public function noticeCategories()
     {
         Session::put('page', 'notice_categories');
@@ -147,21 +156,25 @@ class NoticesController extends Controller
             $rules = [
                 'notice_cat_id' => 'required',
                 'title' => 'required',
+                'url' => 'required'
             ];
 
             $customMessages = [
                 'notice_cat_id.required' => 'please select category',
                 'title.required' => 'please enter title',
+                'url.required' => 'please enter url',
             ];
 
             $this->validate($request, $rules, $customMessages);
 
+            //if description and attachment is empty show error
             if(empty($data['description']) && empty($data['attachment']))
             {
                 Session::flash('error_message', 'please attach file or enter description about notice');
                 return redirect()->back();
             }
 
+            //check if file is uploaded or not
             if($request->hasFile('attachment'))
             {
                 $file = $request->file('attachment');
@@ -180,12 +193,16 @@ class NoticesController extends Controller
                 $file_name = '';
             }
 
+            //generat url name with random number
+            $url = $data['url'].'-'.rand(111, 9999);
+
             $notice->admin_id = Auth::guard('admin')->user()->id;
             $notice->notice_cat_id = $data['notice_cat_id'];
             $notice->title = $data['title'];
             $notice->link = $data['link'];
             $notice->description = $data['description'];
             $notice->attachment = $file_name;
+            $notice->url = $url;
             $notice->status = 1;
             $notice->save();
             Session::flash('success_message', $message);
@@ -194,5 +211,33 @@ class NoticesController extends Controller
         $noticeCategories = NoticeCategory::get();
 
         return view('admin.notices.add_edit_notices')->with(compact('title', 'notice', 'btn', 'noticeCategories'));
+    }
+
+    public function updateNoticeStatus(Request $request)
+    {
+        if($request->ajax())
+        {
+            $data = $request->all();
+            // dd($data);
+            if($data['status'] == "Active")
+            {
+                $status = 0;
+            }
+            else
+            {  
+                $status = 1;
+            }
+
+            Notice::where('id', $data['notice_id'])->update(['status'=> $status]);
+            return response()->json(['status' => $status, 'notice_id' => $data['notice_id']]);
+        }
+    }
+
+    //delete notice
+    public function deleteNotice($id)
+    {
+        Notice::where('id', $id)->delete();
+        Session::flash('success_message', 'Notice Deleted Successfully');
+        return redirect('admin/notices');
     }
 }

@@ -7,6 +7,7 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
+          @if(Auth::guard('admin')->user()->type == 'admin' || Auth::guard('admin')->user()->type == 'subadmin') 
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                <i class="icon-layout mdi mdi-account-star" style="font-size: 20px;"></i>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -143,6 +144,6 @@
               </ul>
             </div>
           </li>
-
+          @endif
         </ul>
       </nav>

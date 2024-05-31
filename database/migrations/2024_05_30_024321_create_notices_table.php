@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('link')->nullable();
             $table->longText('description');
             $table->string('attachment')->nullable();
+            $table->string('url');
             $table->tinyInteger('status');
             $table->timestamps();
         });
