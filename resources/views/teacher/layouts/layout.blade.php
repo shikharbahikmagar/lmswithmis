@@ -71,12 +71,8 @@
   <script src="{{ asset('admin/js/Chart.roundedBarCharts.js') }}"></script>
   <script>
           $(document).ready( function () {
-            $('#teachers').DataTable();
+            $('#teachers_details').DataTable();
          } );
-          $(document).ready( function () {
-            $('#example').DataTable();
-         } );
-         
       </script>
   <!-- End custom js for this page-->
 </body>

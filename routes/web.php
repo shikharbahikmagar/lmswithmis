@@ -113,12 +113,11 @@ Route::prefix('/teacher')->namespace('Teacher')->group(function() {
     Route::group(['middleware'=> ['teacher']], function(){
 
         Route::get('/dashboard', [TeacherController::class, 'dashboard']);
-
+        Route::get('/logout', [TeacherController::class, 'logout']);
                 //teachers
         Route::get('/teachers', [TeacherController::class, 'teachers']);
         Route::match(['get', 'post'], 'edit-teacher/{id?}', [TeacherController::class, 'EditTeacher']);
-        Route::post('update-teacher-status', [TeacherController::class, 'updateTeacherStatus']);
-        Route::get('delete-teacher/{id}', [TeacherController::class, 'deleteTeacher']);
+        Route::get('view-details/{id}', [TeacherController::class, 'viewDetails']);
         Route::match(['get', 'post'], '/update-teacher-pwd/{id}', [TeacherController::class, 'updateTeacherPwd']);
         Route::post('/check-teacher-current-pwd', [TeacherController::class, 'chkCurrentTeacherPwd']);
         

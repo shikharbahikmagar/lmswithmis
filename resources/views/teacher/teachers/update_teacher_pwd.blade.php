@@ -58,7 +58,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{ url('/admin/update-teacher-pwd/'.$teacherDetails->id) }}" role="form" method="post">@csrf
+              <form action="{{ url('/teacher/update-teacher-pwd/'.$teacherDetails->id) }}" role="form" method="post">@csrf
                 <div class="card-body">
                     <div class="form-group">
                     <label for="username">Full Name</label>

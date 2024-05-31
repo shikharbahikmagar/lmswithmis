@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Teacher;
 use Session;
 use Auth;
+use Image;
 
 class TeacherController extends Controller
 {
@@ -160,38 +161,12 @@ class TeacherController extends Controller
             $teacherData->save();
 
             Session::flash('success_message', $message);
-            return redirect('admin/teachers');
+            return redirect('teacher/teachers');
         }
 
-        return view('teacher.teachers.edit_teachers')->with(compact('title', 'teacherData', 'btn', 'message'));
+        return view('teacher.teachers.edit_teachers')->with(compact('title', 'teacherData', 'btn'));
 
 
-    }
-    //update teacher status
-    public function updateTeacherStatus(Request $request)
-    {
-        if($request->ajax())
-        {
-            $data = $request->all();
-            
-            if($data['status'] == "Active")
-            {
-                $status = 0;
-            }else
-            {
-                $status = 1;
-            }
-
-            Teacher::where('id', $data['teacher_id'])->update(['status' => $status]);
-            return response()->json(['status' => $status, 'teacher_id' => $data['teacher_id']]);
-        }
-    }
-    //delete teacher
-    public function deleteTeacher($id)
-    {
-        Teacher::where('id', $id)->delete();
-        Session::flash('success_message', 'Teacher deleted successfully');
-        return redirect()->back();
     }
 
     //check teahers current password
@@ -237,10 +212,23 @@ class TeacherController extends Controller
             }
         }
         $teacherDetails = Teacher::find($id);
-        return view('admin.teachers.update_teacher_pwd')->with(compact('teacherDetails'));
-    }    
-
+        return view('teacher.teachers.update_teacher_pwd')->with(compact('teacherDetails'));
+    }   
     
+    public function viewDetails($id=null)
+    {
+        $teacherData = Teacher::find($id);
+        return view('teacher.teachers.view_teacher_details')->with(compact('teacherData'));
+    }
+
+    public function logout()
+    {
+        if(Auth::guard('teacher')->check())
+        {
+            Auth::guard('teacher')->logout();
+            return redirect('/teacher/login');
+        }
+    }
 
 
 }
