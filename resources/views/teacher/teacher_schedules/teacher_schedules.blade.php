@@ -1,6 +1,6 @@
 @extends('teacher.layouts.layout')
 @section('content')
-        <div class="content-wrapper">
+<div class="content-wrapper">
    <div class="row">
       <div class="col-md-12 grid-margin">
          <div class="row">
@@ -33,21 +33,31 @@
                         </button>
                      </div>
                      @endif
-                     <h4 class="card-title">Teacher Schedule Table</h4>
-                     <div class="d-flex flex-row">
-                      <div class="col-sm-3">
-                        <select class="custom-select mr-sm-2 teacherSchedule" id="inlineFormCustomSelect">
-                        <option selected value="all">All Teachers</option>
-                       @foreach($teacherDetails as $teacher)
-                        <option value="{{ $teacher['id'] }}">{{$teacher['first_name']}} {{$teacher['last_name']}}</option>
-                        @endforeach
-                        </select>
+                     <h4 class="card-title">My Schedule</h4>
+                     <div class="table-responsive pt-3">
+                        <table id="schedules" class="table table-bordered teacher_schedule_table">
+                           <thead>
+                              <tr>
+                                 <th>Time</th>
+                                 <th>Class Name</th>
+                                 <th>Subject Name</th>
+                                 <th>Day of the Week</th>
+                                 <!-- <th>Description</th> -->
+                              </tr>
+                           </thead>
+                           <tbody>
+                              @foreach($teachersScheduleData as $schedule)
+                              <tr>
+                                 <td>{{ $schedule['time'] }}</td>
+                                 <td>Class {{ $schedule['classes']['grade_name'] }}</td>
+                                 <td>{{ $schedule['subjects']['subject_name'] }}</td>
+                                 <td>{{ $schedule['day_of_week'] }}</td>
+                              </tr>
+                              <!-- <input type="hidden" name="teacher_id" teacher_id = "{{ $schedule['teachers']['id'] }}"> -->
+                              @endforeach
+                           </tbody>
+                        </table>
                      </div>
-
-                     <a href="" class="btn btn-block btn-primary disabled-link" id="addTeacherSchedule" style="max-width: 150px; margin-left:62%">
-                        Add schedule</a>
-                     </div>
-                        @include('teacher.teacher_schedules.ajax_teacher_schedules')
                   </div>
                </div>
             </div>
@@ -55,6 +65,4 @@
       </div>
    </div>
 </div>
-
-
 @endsection

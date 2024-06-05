@@ -48,7 +48,7 @@
                           <label class="col-sm-3 col-form-label">First Name</label>
                           <div class="col-sm-9">
                             <input readonly type="text" class="form-control" name="first_name" id="first_name" placeholder="Enter first name"
-                            @if(!empty($teacherData)) value="{{ $teacherData->first_name }}" @else value="{{ old('first_name') }}" @endif>
+                            @if(!empty($teacherData)) value="{{ $teacherData->first_name }}" @endif>
                           </div>
                         </div>
                       </div>
@@ -57,7 +57,7 @@
                           <label class="col-sm-3 col-form-label">Last Name</label>
                           <div class="col-sm-9">
                              <input readonly type="text" class="form-control" name="last_name" id="last_name" placeholder="Enter last number"
-                    @if(!empty($teacherData)) value="{{ $teacherData->last_name }}" @else value="{{ old('last_name') }}" @endif>
+                    @if(!empty($teacherData)) value="{{ $teacherData->last_name }}" @endif>
 
                           </div>
                         </div>
@@ -89,11 +89,9 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Gender</label>
                           <div class="col-sm-9">
-                            <select class="form-control" name="gender">
-                              <option value="">Select</option>
-                              <option value="male" @if(!empty($teacherData['gender']) && $teacherData['gender'] == "male") selected @endif>Male</option>
-                              <option value="female" @if(!empty($teacherData['gender']) && $teacherData['gender'] == "female") selected @endif>Female</option>
-                            </select>
+                             <input readonly type="text" class="form-control" name="gender" id="gender" placeholder="Enter gender"
+                                @if(!empty($teacherData)) value="{{ $teacherData->gender }}" @endif>
+
                           </div>
                         </div>
                       </div>
@@ -102,7 +100,7 @@
                           <label class="col-sm-3 col-form-label">Department</label>
                           <div class="col-sm-9">
                              <input readonly type="text" class="form-control" name="department" id="department" placeholder="Enter department"
-                                @if(!empty($teacherData)) value="{{ $teacherData->department }}" @else value="{{ old('department') }}" @endif>
+                                @if(!empty($teacherData)) value="{{ $teacherData->department }}" @endif>
 
                           </div>
                         </div>
@@ -114,7 +112,7 @@
                           <label class="col-sm-3 col-form-label">Teacher Salary</label>
                           <div class="col-sm-9">
                             <input readonly type="text" class="form-control" name="salary" id="salary" placeholder="Enter salary"
-                                @if(!empty($teacherData)) value="{{ $teacherData->salary }}" @else value="{{ old('salary') }}" @endif>
+                                @if(!empty($teacherData)) value="{{ $teacherData->salary }}" @endif>
                           </div>
                         </div>
                       </div>
@@ -123,7 +121,7 @@
                           <label class="col-sm-3 col-form-label">Attendance</label>
                           <div class="col-sm-9">
                             <input readonly type="text" class="form-control" name="attendance" id="attendance" placeholder="Enter attendance"
-                            @if(!empty($teacherData)) value="{{ $teacherData->attendance }}" @else value="{{ old('attendance') }}" @endif>
+                            @if(!empty($teacherData)) value="{{ $teacherData->attendance }}" @endif>
                           </div>
                         </div>
                       </div>
@@ -134,7 +132,7 @@
                           <label class="col-sm-3 col-form-label">Contact</label>
                           <div class="col-sm-9">
                             <input readonly type="text" class="form-control" name="contact" id="contact" placeholder="Enter contact"
-                            @if(!empty($teacherData)) value="{{ $teacherData->contact }}" @else value="{{ old('contact') }}" @endif>
+                            @if(!empty($teacherData)) value="{{ $teacherData->contact }}" @endif>
                           </div>
                         </div>
                       </div>
@@ -153,7 +151,7 @@
                           <label class="col-sm-3 col-form-label">Address</label>
                           <div class="col-sm-9">
                             <input readonly type="text" class="form-control" name="address" id="address" placeholder="Enter address"
-                            @if(!empty($teacherData['address'])) value="{{ $teacherData->address }}" @else value="{{ old('address') }}" @endif>
+                            @if(!empty($teacherData['address'])) value="{{ $teacherData->address }}" @endif>
                           </div>
                         </div>
                       </div>
@@ -161,10 +159,7 @@
                         <div class="col-sm-6">
                              @if(!empty($teacherData['teacher_image']))
                             <img src="{{ asset('/images/teacher_images/'.$teacherData['teacher_image']) }}" width="100px" style="margin-left: 300px;" height="100px" alt="">
-                            <input readonly type="hidden" value="{{ $teacherData['teacher_image'] }}" name="current_teacher_image">
                             <a target="_blank" class="float-right" href="{{ url('images/teacher_images/'.$teacherData['teacher_image']) }}">View Image</a><br>
-                            <a href="javascript:void(0)" class="imageConfirmDelete float-right" style="color:red;" record="book$teacherData-image" 
-                            recordId = "{{ $teacherData->id }}">Delete Image</a>
                             @endif
                       </div>
                     </div>
@@ -174,11 +169,11 @@
                           <label class="col-sm-3 col-form-label">Email</label>
                           <div class="col-sm-9">
                             <input readonly type="text" class="form-control" name="email" id="email" placeholder="Enter email"
-                            @if(!empty($teacherData['email'])) value="{{ $teacherData->email }}" readonly @else value="{{ old('email') }}" @endif>
+                            @if(!empty($teacherData['email'])) value="{{ $teacherData->email }}" readonly @endif>
                           </div>
                         </div>
                       </div>
-                      <div class="col-md-6">
+                      <!-- <div class="col-md-6">
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Password</label>
                           <div class="col-sm-9">
@@ -188,10 +183,10 @@
 
                           </div>
                         </div>
-                      </div>
+                      </div> -->
                     </div>
                     <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Back</button>
+                  <a href="{{ url('/teacher/teachers') }}"><button class="btn btn-primary">Back</button></a>
                 </div>
                   </form>
                 </div>

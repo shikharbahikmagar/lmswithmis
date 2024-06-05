@@ -122,13 +122,7 @@ Route::prefix('/teacher')->namespace('Teacher')->group(function() {
         Route::post('/check-teacher-current-pwd', [TeacherController::class, 'chkCurrentTeacherPwd']);
         
         //teacher schedules
-        Route::match(['get', 'post'], '/teacher-schedules', [TeacherScheduleController::class, 'teacherSchedule']);
-        Route::match(['get', 'post'], '/add-teacher-schedule/{id}', [TeacherScheduleController::class, 'addTeacherSchedule']);
-        Route::match(['get', 'post'], '/edit-teacher-schedule/{id}', [TeacherScheduleController::class, 'editTeacherSchedule']);
-        Route::post('/update-teacher-schedule-status', [TeacherScheduleController::class, 'updateTeacherScheduleStatus']);
-        Route::post('/show-subjects-for-add', [TeacherScheduleController::class, 'showSubjectsForAdd']);
-        Route::post('/show-subjects-for-edit', [TeacherScheduleController::class, 'showSubjectsForEdit']);
-        Route::get('/delete-teacher-schedule/{id}', [TeacherScheduleController::class, 'deleteTeacherSchedule']);
+        Route::match(['get', 'post'], '/teacher-schedules', [TeacherController::class, 'teacherSchedule']);
 
     });
     });

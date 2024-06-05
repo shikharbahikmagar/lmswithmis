@@ -33,7 +33,7 @@
                         </button>
                      </div>
                      @endif
-                     <h4 class="card-title">Sections Table</h4>
+                     <h4 class="card-title">Books Table</h4>
                      <a href="{{ url('/admin/add-edit-book') }}" class="btn btn-block btn-primary" style="max-width: 150px; float: right; display:inline-block;">
                         Add Book</a>
                      <div class="table-responsive pt-3">

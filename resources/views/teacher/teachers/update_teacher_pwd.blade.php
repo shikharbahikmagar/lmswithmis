@@ -82,12 +82,13 @@
                     <span id="chkTeacherCurrentPwd" required></span>
                   </div>
                   <div class="form-group">
-                    <label for="new_password">New Password</label>
-                    <input type="password" class="form-control" id="new_password" name="new_pwd" placeholder="new password">
+                    <label for="new_pwd">New Password</label>
+                    <input type="password" class="form-control" id="new_pwd" name="new_pwd" placeholder="new password">
                   </div>
                   <div class="form-group">
-                    <label for="confirm_password">Confirm Password</label>
-                    <input type="password" class="form-control" id="confirm_password" name="confirm_pwd" placeholder="confirm password">
+                    <label for="confirm_pwd">Confirm Password</label>
+                    <input type="password" class="form-control" id="confirm_pwd" name="confirm_pwd" placeholder="confirm password">
+                  <span id="checkNewConfirm" required></span>
                   </div>  
                 </div>
                 <!-- /.card-body -->

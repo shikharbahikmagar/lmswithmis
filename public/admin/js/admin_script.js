@@ -605,6 +605,20 @@ $(document).ready(function () {
 
     });
 
+    $('#confirm_pwd').on('keyup', function() {
+        var new_pwd = $('#new_pwd').val();
+        var confirm_pwd = $(this).val();
+        //alert(confirm_pwd);
+        if(new_pwd != confirm_pwd)
+            {
+                $("#checkNewConfirm").html("<font color=red>new password and confirm password does not match</font>");
+            }else
+            {
+                $("#checkNewConfirm").html("<font color=green>new password and confirm password matched</font>");
+            }
+
+    });
+
 
 });
 

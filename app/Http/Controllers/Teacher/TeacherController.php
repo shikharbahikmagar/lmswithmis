@@ -4,10 +4,14 @@ namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Teacher;
 use Session;
 use Auth;
 use Image;
+use App\Models\TeacherSchedule;
+use App\Models\Teacher;
+use App\Models\Grade;
+use App\Models\Subject;
+use Hash;
 
 class TeacherController extends Controller
 {
@@ -52,8 +56,7 @@ class TeacherController extends Controller
         return view('teacher.teachers.teachers')->with(compact('teacher'));
     }
 
-
-      //add edit teacher
+   //add edit teacher
     public function EditTeacher(Request $request, $id = null)
     {
         if($id == "")
@@ -191,14 +194,33 @@ class TeacherController extends Controller
         {
             $teacher = Teacher::where('id', $id)->first();
             $data = $request->all();
+
+            $rules = [
+                'teacher_current_pwd' => 'required',
+                'new_pwd' => 'required|min:8',
+                'confirm_pwd' => 'required|min:8|same:new_pwd',
+            ];
+
+            $customMessages = [
+
+                'teacher_current_pwd.required' => 'current password is required',
+                'new_pwd.required' => 'new password is required',
+                'new_pwd.min' => 'the new password must be at least 8 characters',
+                'confirm_pwd.required' => 'confirm password is required',
+                'confirm_pwd.min' => 'the new password must be at least 8 characters',
+                'confirm_pwd.same' => 'new password and confirm password does not match',
+            ];
+
+            $this->validate($request, $rules, $customMessages);
             // echo "<pre>"; print_r($data); die;
+
             if(Hash::check($data['teacher_current_pwd'], $teacher->password))
             {
                 if($data['new_pwd'] == $data['confirm_pwd'])
                 {
                     Teacher::where('id', $id)->update(['password'=> bcrypt($data['new_pwd'])]);
                     Session::flash('success_message', 'Password updated successfully');
-                    return redirect('admin/teachers');
+                    return redirect('teacher/teachers');
                 }else
                 {
                     Session::flash('error_message', 'new password and confirm password does not match');
@@ -219,6 +241,21 @@ class TeacherController extends Controller
     {
         $teacherData = Teacher::find($id);
         return view('teacher.teachers.view_teacher_details')->with(compact('teacherData'));
+    }
+
+
+        public function teacherSchedule(Request $request)
+    {
+        Session::put('page', 'teacher_schedules');
+        $teacherDetails = Teacher::get();
+        $teachersScheduleData = TeacherSchedule::with('subjects', 'classes', 'teachers')->get();
+        $teachersScheduleData = json_decode(json_encode($teachersScheduleData), true);
+        
+       
+
+        // echo "<pre>"; print_r($teachersScheduleData); die;
+        return view('teacher.teacher_schedules.teacher_schedules')->with(compact('teachersScheduleData', 'teacherDetails'));
+        
     }
 
     public function logout()

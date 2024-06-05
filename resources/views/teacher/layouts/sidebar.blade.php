@@ -11,7 +11,7 @@
             <a class="nav-link" data-toggle="collapse" href="#teachers" aria-expanded="false" aria-controls="ui-basic"
           >
               <i class="icon-layout mdi mdi-worker" style="font-size: 20px;"></i>&nbsp;&nbsp;&nbsp;&nbsp;
-              <span class="menu-title">Teacher Details</span>
+              <span class="menu-title">My Details</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="teachers">
@@ -20,12 +20,12 @@
                 @if(Session::get('page') == "teachers_details") 
                    style="background-color: #fff !important; color: #4B49AC !important;"
                   @else style="background-color: #4B49AC !important; color: #fff !important;" 
-                  @endif>Teachers Details</a></li>
+                  @endif>My Details</a></li>
                 <li class="nav-item"> <a class="nav-link" href="{{ url('/teacher/teacher-schedules') }}"
                 @if(Session::get('page') == "teacher_schedules") 
                    style="background-color: #fff !important; color: #4B49AC !important;"
                   @else style="background-color: #4B49AC !important; color: #fff !important;" 
-                  @endif>Teacher Schedules</a></li>
+                  @endif>My Schedules</a></li>
               </ul>
             </div>
           </li>
