@@ -12,7 +12,7 @@ use App\Http\Controllers\Admin\TeacherScheduleController;
 use App\Http\Controllers\Admin\StudentsController;
 use App\Http\Controllers\Admin\NoticesController;
 
-//teahers
+//teaherssdfa
 use App\Http\Controllers\Teacher\TeacherController;
 
 /*-
