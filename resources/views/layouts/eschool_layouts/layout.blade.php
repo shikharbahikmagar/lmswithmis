@@ -1,38 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
+
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>front</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700|Open+Sans" rel="stylesheet">
-    <link href="{{ asset('admin/vendors/mdi/css/materialdesignicons.min.css') }}" media="all" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('front/css/styles-merged.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('front/css/note_board.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('front/css/style.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('front/css/custom.css') }}">
-</head>
-  <body>
-    
-    <div class="probootstrap-search" id="probootstrap-search">
-      <a href="#" class="probootstrap-close js-probootstrap-close"><i class="icon-cross"></i></a>
-      <form action="#">
-        <input type="search" name="s" id="search" placeholder="Search a keyword and hit enter...">
-      </form>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>Scholar - Online School HTML5 Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('front/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{{ asset('front/assets/css/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('front/assets/css/notice_style.css') }}">
+    <link rel="stylesheet" href="{{ asset('front/assets/css/templatemo-scholar.css') }}">
+    <link rel="stylesheet" href="{{ asset('front/assets/css/owl.css') }}">
+    <link rel="stylesheet" href="{{ asset('front/assets/css/animate.css') }}">
+    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<!--
+
+TemplateMo 586 Scholar
+
+https://templatemo.com/tm-586-scholar
+
+-->
+  </head>
+
+<body>
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
-    
-    <div class="probootstrap-page-wrapper">
+  </div>
+  <!-- ***** Preloader End ***** -->
+  @include('layouts.eschool_layouts.header')
 
-    @include('layouts.eschool_layouts.header')
-    @yield('content')
 
-    @include('layouts.eschool_layouts.footer') 
+  @yield('content')
 
-    </div>
-  
-    <script src="{{ asset('front/js/scripts.min.js') }}"></script>
-    <script src="{{ asset('front/js/main.min.js') }}"></script>
-    <script src="{{ asset('front/js/custom.js') }}"></script>
+
+  @include('layouts.eschool_layouts.footer')
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="{{ asset('front/vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ asset('front/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('front/assets/js/isotope.min.js') }}"></script>
+  <script src="{{ asset('front/assets/js/owl-carousel.js') }}"></script>
+  <script src="{{ asset('front/assets/js/counter.js') }}"></script>
+  <script src="{{ asset('front/assets/js/custom.js') }}"></script>
+  <script src="{{ asset('front/assets/js/notice_script.js') }}"></script>
+
 
   </body>
 </html>
