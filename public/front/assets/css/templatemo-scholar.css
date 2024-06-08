@@ -674,18 +674,6 @@ Banner Style
   padding: 170px 0px 120px 0px;
 }
 
-.main-banner .item-1 {
-  background-image: url(../images/banner-item-01.jpg);
-}
-
-.main-banner .item-2 {
-  background-image: url(../images/banner-item-02.jpg);
-}
-
-.main-banner .item-3 {
-  background-image: url(../images/banner-item-03.jpg);
-}
-
 .main-banner .item {
   background-repeat: no-repeat;
   background-position: center center;

@@ -25,7 +25,7 @@
                       <li class="scroll-to-section"><a href="#courses">Courses</a></li>
                       <li class="scroll-to-section"><a href="#team">Team</a></li>
                       <li class="scroll-to-section"><a href="#events">Events</a></li>
-                      <li class="scroll-to-section"><a href="{{ url('/admin/login') }}" targe="_blank">login</a></li>
+                      <li class="scroll-to-section"><a href="{{ url('/admin/login') }}" target="_blank">login</a></li>
                   </ul>   
                     <a class='menu-trigger'>
                         <span>Menu</span>
@@ -43,7 +43,8 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="owl-carousel owl-banner">
-            <div class="item item-1">
+            <div class="item item-1" style="background-image: url('front/assets/images/banner-item-01.jpg');">
+              
               <div class="header-text">
                 <span class="category">Our Courses</span>
                 <h2>With Scholar Teachers, Everything Is Easier</h2>
@@ -58,32 +59,18 @@
                 </div>
               </div>
             </div>
-            <div class="item item-2">
+            <div class="item item-1" style="background-image: url('front/assets/images/banner-item-02.jpg');">
+              
               <div class="header-text">
-                <span class="category">Best Result</span>
-                <h2>Get the best result out of your effort</h2>
-                <p>You are allowed to use this template for any educational or commercial purpose. You are not allowed to re-distribute the template ZIP file on any other website.</p>
+                <span class="category">Our Courses</span>
+                <h2>With Scholar Teachers, Everything Is Easier</h2>
+                <p>Scholar is free CSS template designed by TemplateMo for online educational related websites. This layout is based on the famous Bootstrap v5.3.0 framework.</p>
                 <div class="buttons">
                   <div class="main-button">
                     <a href="#">Request Demo</a>
                   </div>
                   <div class="icon-button">
-                    <a href="#"><i class="fa fa-play"></i> What's the best result?</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item item-3">
-              <div class="header-text">
-                <span class="category">Online Learning</span>
-                <h2>Online Learning helps you save the time</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporious incididunt ut labore et dolore magna aliqua suspendisse.</p>
-                <div class="buttons">
-                  <div class="main-button">
-                    <a href="#">Request Demo</a>
-                  </div>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-play"></i> What's Online Course?</a>
+                    <a href="#"><i class="fa fa-play"></i> What's Scholar?</a>
                   </div>
                 </div>
               </div>
