@@ -43,38 +43,15 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="owl-carousel owl-banner">
-            <div class="item item-1" style="background-image: url('front/assets/images/banner-item-01.jpg');">
+          @foreach($banners as $banner)
+            <div class="item item-1" style="height: 550px; background-image: url('{{ asset('front/assets/banner_images/'.$banner['banner_image']) }}');">
               
-              <div class="header-text">
-                <span class="category">Our Courses</span>
-                <h2>With Scholar Teachers, Everything Is Easier</h2>
-                <p>Scholar is free CSS template designed by TemplateMo for online educational related websites. This layout is based on the famous Bootstrap v5.3.0 framework.</p>
-                <div class="buttons">
-                  <div class="main-button">
-                    <a href="#">Request Demo</a>
-                  </div>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-play"></i> What's Scholar?</a>
-                  </div>
-                </div>
+              <div class="header-text" style="margin-top: 50px;">
+                <h2>{{ $banner['title'] }}</h2>
+                <p>{{ $banner['description'] }}</p>
               </div>
             </div>
-            <div class="item item-1" style="background-image: url('front/assets/images/banner-item-02.jpg');">
-              
-              <div class="header-text">
-                <span class="category">Our Courses</span>
-                <h2>With Scholar Teachers, Everything Is Easier</h2>
-                <p>Scholar is free CSS template designed by TemplateMo for online educational related websites. This layout is based on the famous Bootstrap v5.3.0 framework.</p>
-                <div class="buttons">
-                  <div class="main-button">
-                    <a href="#">Request Demo</a>
-                  </div>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-play"></i> What's Scholar?</a>
-                  </div>
-                </div>
-              </div>
-            </div>
+            @endforeach
           </div>
         </div>
       </div>

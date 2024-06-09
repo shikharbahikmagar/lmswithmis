@@ -61,16 +61,6 @@ https://templatemo.com/tm-586-scholar
   <script src="{{ asset('front/assets/js/counter.js') }}"></script>
   <script src="{{ asset('front/assets/js/custom.js') }}"></script>
   <script src="{{ asset('front/assets/js/notice_script.js') }}"></script>
-  <script>
-    var owl = $('.owl-carousel');
-    owl({
-        loop:true,
-        margin:10,
-        autoplay:true,
-        autoplayTimeout:3000,
-        autoplayHoverPause:true
-    });
-</script>
 
   </body>
 </html>

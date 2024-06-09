@@ -148,6 +148,13 @@
                           <label class="col-sm-3 col-form-label">Student Image</label>
                           <div class="col-sm-9">
                             <input type="file" class="form-control" value="{{ old('student_image') }}" id="student_image" name="student_image">
+                            @if(!empty($students['student_image']))
+                            <img src="{{ asset('/images/student_images/'.$students['student_image']) }}" width="100px" style="margin-left: 300px;" height="100px" alt="">
+                            <input type="hidden" value="{{ $students['student_image'] }}" name="current_teacher_image">
+                            <a target="_blank" class="float-right" href="{{ url('images/student_images/'.$students['student_image']) }}">View Image</a><br>
+                            <a href="javascript:void(0)" class="imageConfirmDelete float-right" style="color:red;" record="student-{{ $students['id'] }}" 
+                            recordId = "{{ $students->id }}">Delete Image</a>
+                            @endif
                             <span><a href="">View Image</a></span> | <span><a href="" style="color: red;">Delete Image</a></span>
                           </div>
                         </div>

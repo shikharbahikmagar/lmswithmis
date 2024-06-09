@@ -2,7 +2,7 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{ url('/admin/dashboard') }}">
               <i class="icon-grid menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
@@ -141,6 +141,22 @@
                    style="background-color: #fff !important; color: #4B49AC !important;"
                   @else style="background-color: #4B49AC !important; color: #fff !important;" 
                   @endif> Notices </a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#banner" aria-expanded="false" aria-controls="banner">
+              <i class="icon-head menu-icon"></i>
+              <span class="menu-title">Banners</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="banner">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{ url('/admin/banners') }}"
+                 @if(Session::get('page') == "banners") 
+                   style="background-color: #fff !important; color: #4B49AC !important;"
+                  @else style="background-color: #4B49AC !important; color: #fff !important;" 
+                  @endif> Banners</a></li>
               </ul>
             </div>
           </li>

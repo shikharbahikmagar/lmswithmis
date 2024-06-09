@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\TeachersController;
 use App\Http\Controllers\Admin\TeacherScheduleController;
 use App\Http\Controllers\Admin\StudentsController;
 use App\Http\Controllers\Admin\NoticesController;
+use App\Http\Controllers\Admin\BannersController;
 
 //teaherssdfa
 use App\Http\Controllers\Teacher\TeacherController;
@@ -103,6 +104,10 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
         Route::match(['get', 'post'], '/add-edit-notices/{id?}', [NoticesController::class, 'AddEditNotice']);
         Route::post('/update-notice-status', [NoticesController::class, 'updateNoticeStatus']);
         Route::get('/delete-notice/{id}', [NoticesController::class, 'deleteNotice']);
+
+        //banners
+        Route::get('/banners', [BannersController::class, 'banners']);
+        Route::match(['get', 'post'], '/add-edit-banner/{id?}', [BannersController::class, 'addEditBanners']);
 });
 });
 
