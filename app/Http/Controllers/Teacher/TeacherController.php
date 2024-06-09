@@ -134,9 +134,8 @@ class TeacherController extends Controller
                     $extension = $teacher_image->getClientOriginalExtension();
                     $image_name = rand(111, 9999).'.'.$extension;
                     $image_path = 'images/teacher_images/'.$image_name;
-                    $teacher_image = Image::make($teacher_image)->resize(500, 500);
                     //save image to file
-                    Image::make($teacher_image)->save($image_path);
+                    Image::make($teacher_image)->resize(500, 500)->save($image_path);
                 }
                     else if(!empty($data['current_teacher_image']))
                 {
