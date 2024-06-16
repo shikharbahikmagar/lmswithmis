@@ -6,12 +6,14 @@ use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\BooksController;
 use App\Http\Controllers\Admin\GradesController;
 use App\Http\Controllers\Admin\SubjectsController;
-use App\Http\Controllers\Front\IndexController;
 use App\Http\Controllers\Admin\TeachersController;
 use App\Http\Controllers\Admin\TeacherScheduleController;
 use App\Http\Controllers\Admin\StudentsController;
 use App\Http\Controllers\Admin\NoticesController;
 use App\Http\Controllers\Admin\BannersController;
+
+use App\Http\Controllers\Front\IndexController;
+use App\Http\Controllers\Front\LibraryController;
 
 //teaherssdfa
 use App\Http\Controllers\Teacher\TeacherController;
@@ -133,4 +135,5 @@ Route::prefix('/teacher')->namespace('Teacher')->group(function() {
     });
 
 Route::get('/', [IndexController::class, 'index']);
+Route::get('/library', [LibraryController::class, 'library']);
    

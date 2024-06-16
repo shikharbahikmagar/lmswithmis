@@ -1,4 +1,4 @@
-@extends('layouts.eschool_layouts.layout')
+@extends('front.layouts.eschool_layouts.layout')
 @section('content')
 
 @include('front.eschool.notice_board')

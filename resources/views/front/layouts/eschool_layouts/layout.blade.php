@@ -44,13 +44,14 @@ https://templatemo.com/tm-586-scholar
     </div>
   </div>
   <!-- ***** Preloader End ***** -->
-  @include('layouts.eschool_layouts.header')
+  @include('front.layouts.eschool_layouts.header')
+  @include('front.layouts.eschool_layouts.banners')
 
 
   @yield('content')
 
 
-  @include('layouts.eschool_layouts.footer')
+  @include('front.layouts.eschool_layouts.footer')
 
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
