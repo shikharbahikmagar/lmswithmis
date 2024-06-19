@@ -110,6 +110,8 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
         //banners
         Route::get('/banners', [BannersController::class, 'banners']);
         Route::match(['get', 'post'], '/add-edit-banner/{id?}', [BannersController::class, 'addEditBanners']);
+        Route::post('/update-banner-status', [BannersController::class, 'updateBannerStatus']);
+        Route::get('/delete-banner/{id}', [BannersController::class, 'deleteBanner']);
 });
 });
 

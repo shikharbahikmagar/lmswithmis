@@ -1,0 +1,6 @@
+#borrow-btn:hover{
+    
+    background-color: rgba(122, 106, 216, 0.95) !important;
+    color: white !important;
+    transition: all 0.5s ease-in-out;
+}

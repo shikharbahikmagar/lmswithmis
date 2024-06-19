@@ -11,7 +11,7 @@ class Book extends Model
 
     public function categories()
     {
-        return $this->belongsTo('App\Models\Category', 'category_id')->select('id', 'category_name');
+        return $this->belongsTo('App\Models\Category', 'category_id')->select('id', 'category_name', 'table_no');
     }
 
     public function added_by_details()

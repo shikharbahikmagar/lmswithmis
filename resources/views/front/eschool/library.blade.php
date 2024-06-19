@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <title>Scholar - Online School HTML5 Template</title>
+    <title>E-LIBRARY</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('front/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{ asset('front/assets/css/templatemo-scholar.css') }}">
     <link rel="stylesheet" href="{{ asset('front/assets/css/owl.css') }}">
     <link rel="stylesheet" href="{{ asset('front/assets/css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('front/assets/css/custom.css') }}">
     <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <!--
@@ -64,14 +65,11 @@ https://templatemo.com/tm-586-scholar
       </div>
     </div>
   </div>
-
-
 <section class="section courses" id="courses" >
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
           <div class="section-heading">
-            <h6>Latest Courses</h6>
             <h2>Latest Courses</h2>
           </div>
         </div>
@@ -80,95 +78,28 @@ https://templatemo.com/tm-586-scholar
         <li>
           <a class="is_active" href="#!" data-filter="*">Show All</a>
         </li>
+        @foreach($book_categories as $category)
         <li>
-          <a href="#!" data-filter=".design">Webdesign</a>
+          <a class="is_active" href="#!" data-filter="{{ $category['category_name'] }}">{{ $category['category_name'] }}</a>
         </li>
-        <li>
-          <a href="#!" data-filter=".development">Development</a>
-        </li>
-        <li>
-          <a href="#!" data-filter=".wordpress">Wordpress</a>
-        </li>
+        @endforeach
       </ul>
       <div class="row event_box">
-        <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 design">
+        @foreach($books as $book)
+        <div class="col-lg-2 col-md-6 align-self-center mb-30 event_outer col-md-6 text-center {{ $book['categories']['category_name'] }}">
           <div class="events_item">
             <div class="thumb">
-              <a href="#"><img src="{{ asset('front/assets/images/course-01.jpg') }}" alt=""></a>
-              <span class="category">Webdesign</span>
-              <span class="price"><h6><em>$</em>160</h6></span>
+              <a href="#"><img style="width: 300px; height: 200px;" src="{{ asset('images/book_images/'.$book['book_image']) }}" alt=""></a>
+              <span class="category">{{ $book['categories']['category_name'] }}</span>
             </div>
             <div class="down-content">
-              <span class="author">Stella Blair</span>
-              <h4>Learn Web Design</h4>
+              <span class="author">{{ $book['author'] }}</span>
+                <h4>{{ $book['title'] }}</h4>
             </div>
           </div>
+          <span id="borrow-btn" style="background-color: white; color: rgba(122, 106, 216, 0.95);" type="button" class="btn btn-primary">Borrow</span>
         </div>
-        <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6  development">
-          <div class="events_item">
-            <div class="thumb">
-              <a href="#"><img src="{{ asset('front/assets/images/course-02.jpg') }}" alt=""></a>
-              <span class="category">Development</span>
-              <span class="price"><h6><em>$</em>340</h6></span>
-            </div>
-            <div class="down-content">
-              <span class="author">Cindy Walker</span>
-              <h4>Web Development Tips</h4>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 design wordpress">
-          <div class="events_item">
-            <div class="thumb">
-              <a href="#"><img src="{{ asset('front/assets/images/course-03.jpg') }}" alt=""></a>
-              <span class="category">Wordpress</span>
-              <span class="price"><h6><em>$</em>640</h6></span>
-            </div>
-            <div class="down-content">
-              <span class="author">David Hutson</span>
-              <h4>Latest Web Trends</h4>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 development">
-          <div class="events_item">
-            <div class="thumb">
-              <a href="#"><img src="{{ asset('front/assets/images/course-04.jpg') }}" alt=""></a>
-              <span class="category">Development</span>
-              <span class="price"><h6><em>$</em>450</h6></span>
-            </div>
-            <div class="down-content">
-              <span class="author">Stella Blair</span>
-              <h4>Online Learning Steps</h4>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 wordpress development">
-          <div class="events_item">
-            <div class="thumb">
-              <a href="#"><img src="{{ asset('front/assets/images/course-05.jpg') }}" alt=""></a>
-              <span class="category">Wordpress</span>
-              <span class="price"><h6><em>$</em>320</h6></span>
-            </div>
-            <div class="down-content">
-              <span class="author">Sophia Rose</span>
-              <h4>Be a WordPress Master</h4>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 wordpress design">
-          <div class="events_item">
-            <div class="thumb">
-              <a href="#"><img src="{{ asset('front/assets/images/course-06.jpg') }}" alt=""></a>
-              <span class="category">Webdesign</span>
-              <span class="price"><h6><em>$</em>240</h6></span>
-            </div>
-            <div class="down-content">
-              <span class="author">David Hutson</span>
-              <h4>Full Stack Developer</h4>
-            </div>
-          </div>
-        </div>
+        @endforeach
       </div>
     </div>
   </section>

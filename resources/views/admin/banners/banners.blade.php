@@ -57,10 +57,10 @@
             <td style="word-wrap: break-word;max-width: 160px;white-space:normal;">{{ $banner['title'] }}</td>
             <td><img style="width: 150px; height: 100px;" class="rounded-sm" src="{{ asset('front/assets/banner_images/'.$banner['banner_image']) }}" alt=""></td>
             <td>@if($banner['status'] == 1) 
-            <a href="javascript:void(0)" class="updateNoticeStatus" id="banner-{{ $banner['id'] }}" banner_id="{{$banner['id']}}">
+            <a href="javascript:void(0)" class="updateBannerStatus" id="banner-{{ $banner['id'] }}" banner_id="{{$banner['id']}}">
             <i status="Active" style="font-size: 20px; " class="mdi mdi-check-circle-outline"></i></a>
             @elseif($banner['status'] == 0)
-            <a href="javascript:void(0)" class="updateNoticeStatus" id="banner-{{ $banner['id']}}" banner_id="{{$banner['id']}}">
+            <a href="javascript:void(0)" class="updateBannerStatus" id="banner-{{ $banner['id']}}" banner_id="{{$banner['id']}}">
             <i style="font-size: 20px; " class="mdi mdi-checkbox-blank-circle-outline" status="InActive"></i></a>
             @endif 
             </td>

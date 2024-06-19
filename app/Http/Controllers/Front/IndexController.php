@@ -15,7 +15,7 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $banners = Banner::orderBy('id', 'desc')->take(5)->get();
+        $banners = Banner::orderBy('id', 'desc')->take(5)->where('status', '1')->get();
         $banners = json_decode(json_encode($banners), true);
 
         $total_students = Student::get()->count();

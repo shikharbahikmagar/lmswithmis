@@ -86,4 +86,33 @@ class BannersController extends Controller
 
         return view('admin.banners.add_edit_banners')->with(compact('banner', 'title', 'btn'));
     }
+
+    public function updateBannerStatus(Request $request)
+    {
+        if($request->ajax())
+        {
+            $data = $request->all();
+
+            if($data['status'] == "Active")
+            {
+                $status = 0;
+            }else
+            {
+                $status = 1;
+            }
+
+            Banner::where('id', $data['banner_id'])->update(['status' => $status]);
+
+                return response()->json(['status' => $status, 'banner_id' => $data['banner_id']]);
+        }
+    }
+
+
+    //delete banner
+    public function deleteBanner($id)
+    {
+        Banner::where('id', $id)->delete();
+        Session::flash('success_message', 'banner deleted successfully');
+        return redirect('admin/banners');
+    }
 }

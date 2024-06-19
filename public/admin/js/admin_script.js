@@ -620,6 +620,50 @@ $(document).ready(function () {
     });
 
 
+        //update banner status
+        $(document).on("click", ".updateBannerStatus", function () {
+            var status = $(this).children("i").attr("status");
+            var banner_id = $(this).attr("banner_id");
+            // alert(banner_id);
+            $.ajax({
+                type: 'post',
+                url: '/admin/update-banner-status',
+                data: { status: status, banner_id: banner_id },
+    
+                success: function (resp) {
+                    if (resp['status'] == 0) {
+                        $("#banner-" + banner_id).html("<i style='font-size: 20px;' class='mdi mdi-checkbox-blank-circle-outline' status='InActive'></i>");
+                    } else if (resp['status'] == 1) {
+                        $("#banner-" + banner_id).html("<i style='font-size: 20px;' class='mdi mdi-check-circle-outline' status='Active'></i> ");
+                    }
+                }, error: function (error) {
+                    alert(error);
+                }
+            })
+        });
+        
+        //banner delete confirmation sweet alert
+        $(document).on("click", ".deleteBanner", function () {
+            var banner_id = $(this).attr("banner_id");
+            //alert(banner_id);
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = "/admin/delete-banner/" + banner_id;
+    
+                }
+            });
+    
+        });
+
+
 });
 
 
