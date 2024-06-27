@@ -8,28 +8,11 @@
        </li>
        @foreach($noticeCategories as $category)
        <li class="nav-item">
-          <a href="javascript:void(0)" class="nav-link rounded-pill note-link d-flex align-items-center px-2 px-md-3 mr-0 mr-md-2" id="note-business"> <i class="icon-briefcase mr-1"></i><span class="d-none d-md-block">{{ $category['category_name'] }}</span></a>
+          <a href="javascript:void(0)" notice_cat_id = "{{ $category['id'] }}" class="nav-link rounded-pill note-link d-flex align-items-center px-2 px-md-3 mr-0 mr-md-2 notice_filter" id="note-business"> <i class="icon-briefcase mr-1"></i><span class="d-none d-md-block">{{ $category['category_name'] }}</span></a>
        </li>
        @endforeach
     </ul>
-    <div class="tab-content bg-transparent">
-       <div id="note-full-container" class="note-has-grid row">
-         @foreach($notices as $notice)
-          <div class="col-md-4 single-note-item all-category" style>
-             <div class="card card-body">
-                <span class="side-stick"></span>
-                <a href="{{ url('/notice/'.$notice['url']) }}">
-                <h5 class="note-title text-truncate w-75 mb-0" data-noteheading="Book a Ticket for Movie">{{ $notice['title'] }}<i class="point ml-1 font-10"></i></h5>
-                <p class="note-date font-12 text-muted">{{ \Carbon\Carbon::parse($notice['created_at'])->diffForHumans() }}</p>
-                <div class="note-content">
-                   <p class="note-inner-content text-muted" data-notecontent="Blandit tempus porttitor aasfs. Integer posuere erat a ante venenatis.">{{ $notice['description'] }}</p>
-                   </a>
-                </div>
-             </div>
-          </div>
-          @endforeach
-       </div>
-    </div>
+      @include('front.eschool.ajax_notice_board')
     <div class="modal fade" id="addnotesmodal" tabindex="-1" role="dialog" aria-labelledby="addnotesmodalTitle" style="display: none;" aria-hidden="true">
        <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content border-0">

@@ -17,6 +17,6 @@ class VerifyCsrfToken extends Middleware
         "/admin/update-teacher-status", "/admin/check-teacher-current-pwd", "/admin/teacher-schedules",
          "/admin/show-subjects-for-add", "/admin/show-subjects-for-edit", "/admin/students", "/admin/check-student-current-pwd",
          "/admin/update-student-status", "/admin/update-teacher-schedule-status", "/admin/update-notice-category-status", "/admin/notices",
-         "/admin/update-notice-status", "/admin/update-banner-status",
+         "/admin/update-notice-status", "/admin/update-banner-status", "/show-filtered-notices",
     ];
 }
