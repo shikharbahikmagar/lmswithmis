@@ -1000,33 +1000,6 @@ Courses Style
   display: inline-block;
 }
 
-.events_item .thumb span.price {
-  position: absolute;
-  right: -30px;
-  top: -50px;
-  background-color: rgba(122, 106, 216, 0.95);
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  display: inline-block;
-  transition: all .3s;
-}
-
-.events_item .thumb span.price h6 {
-  margin-top: 72px;
-  margin-left: 22px;
-  font-size: 28px;
-  text-transform: uppercase;
-  color: #fff;
-  font-weight: 700;
-}
-
-.events_item .thumb span.price em {
-  font-size: 18px;
-  font-weight: 500;
-  font-style: normal;
-  vertical-align: top;
-}
 
 .events_item {
   background-color: #f1f0fe;

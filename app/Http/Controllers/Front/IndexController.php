@@ -32,8 +32,16 @@ class IndexController extends Controller
         if($request->ajax())
         {
             $data = $request->all();
-            $notices = Notice::where('notice_cat_id', $data['notice_cat_id'])->get();
-            $notices = json_decode(json_encode($notices), true);
+            if($data['notice_cat_id'] == "all")
+            {
+                $notices = Notice::all();
+                $notices = json_decode(json_encode($notices), true);
+            }else
+            {
+                $notices = Notice::where('notice_cat_id', $data['notice_cat_id'])->get();
+                $notices = json_decode(json_encode($notices), true);
+            }
+
             return view('front.eschool.ajax_notice_board')->with(compact('noticeCategories', 'notices', 'banners', 'total_students', 'total_teachers', 'total_subjects', 'teachers'));
         //echo "<pre>"; print_r($notices); die;
 

@@ -4,3 +4,24 @@
     color: white !important;
     transition: all 0.5s ease-in-out;
 }
+
+.books_container{
+    min-width: 250px;
+    min-height: 250px;
+}
+
+.book-title {
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden; /* Hides any overflow beyond container */
+    text-overflow: ellipsis; /* Shows ellipsis for truncated text */
+    font-size: 18px; /* Example font size */
+    max-width: 100%; /* Adjust the max-width as per your layout */
+  }
+
+  .books_container {
+    transition: transform 0.3s ease;
+  }
+  
+  .books_container:hover {
+    transform: scale(1.1); /* Scale up by 10% on hover */
+  }

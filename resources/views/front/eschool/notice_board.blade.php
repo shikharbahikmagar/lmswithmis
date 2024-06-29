@@ -2,7 +2,7 @@
 <div class="page-content container note-has-grid" style="margin-top: 100px;">
     <ul class="nav nav-pills p-3 bg-white mb-3 rounded-pill align-items-center">
        <li class="nav-item">
-          <a href="javascript:void(0)" class="nav-link rounded-pill note-link d-flex align-items-center px-2 px-md-3 mr-0 mr-md-2 active" id="all-category">
+          <a href="javascript:void(0)" notice_cat_id = "all" class="nav-link rounded-pill note-link d-flex align-items-center px-2 px-md-3 mr-0 mr-md-2 active notice_filter" id="all-category">
           <i class="icon-layers mr-1"></i><span class="d-none d-md-block">All Notes</span>
           </a>
        </li>

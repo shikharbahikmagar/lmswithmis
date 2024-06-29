@@ -86,15 +86,15 @@ https://templatemo.com/tm-586-scholar
       </ul>
       <div class="row event_box">
         @foreach($books as $book)
-        <div class="col-lg-2 col-md-6 align-self-center mb-30 event_outer col-md-6 text-center {{ $book['categories']['category_name'] }}">
+        <div class="col-lg-3 col-md-6 align-self-center mb-30 mt-5 event_outer col-md-6 text-center books_container design {{ $book['categories']['category_name'] }}">
           <div class="events_item">
             <div class="thumb">
-              <a href="#"><img style="width: 300px; height: 200px;" src="{{ asset('images/book_images/'.$book['book_image']) }}" alt=""></a>
+              <a href="#"><img style="width: 180px; height: 180px;" src="{{ asset('images/book_images/'.$book['book_image']) }}" alt=""></a>
               <span class="category">{{ $book['categories']['category_name'] }}</span>
             </div>
             <div class="down-content">
               <span class="author">{{ $book['author'] }}</span>
-                <h4>{{ $book['title'] }}</h4>
+                <h4 class="book-title ">{{ $book['title'] }}</h4>
             </div>
           </div>
           <span id="borrow-btn" style="background-color: white; color: rgba(122, 106, 216, 0.95);" type="button" class="btn btn-primary">Borrow</span>
