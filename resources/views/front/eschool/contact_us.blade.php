@@ -6,12 +6,7 @@
             <h6>Contact Us</h6>
             <h2>Feel free to contact us anytime</h2>
             <p>Thank you for choosing our templates. We provide you best CSS templates at absolutely 100% free of charge. You may support us by sharing our website to your friends.</p>
-            <div class="special-offer">
-              <span class="offer">off<br><em>50%</em></span>
-              <h6>Valide: <em>24 April 2036</em></h6>
-              <h4>Special Offer <em>50%</em> OFF!</h4>
-              <a href="#"><i class="fa fa-angle-right"></i></a>
-            </div>
+          
           </div>
         </div>
         <div class="col-lg-6">

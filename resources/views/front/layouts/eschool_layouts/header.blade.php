@@ -20,9 +20,9 @@
                     <!-- ***** Serach Start ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                      <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+                      <li class="scroll-to-section"><a href="{{url('/')}}" class="active">Home</a></li>
                       <li class="scroll-to-section"><a href="#services">Services</a></li>
-                      <li class="scroll-to-section"><a target="_blank" href="{{ url('/library')}}">E-Library</a></li>
+                      <li class="scroll-to-section"><a href="{{ url('/library')}}">E-Library</a></li>
                       <li class="scroll-to-section"><a href="#team">Team</a></li>
                       <li class="scroll-to-section"><a href="#events">Events</a></li>
                       <li class="scroll-to-section"><a href="{{ url('/admin/login') }}" target="_blank">login</a></li>
@@ -37,4 +37,3 @@
     </div>
   </header>
   <!-- ***** Header Area End ***** -->
-

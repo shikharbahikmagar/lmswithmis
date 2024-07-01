@@ -285,7 +285,7 @@ Header Style
 */
 
 .background-header {
-  background-color: #7a6ad8 !important;
+  background-color: #2c2650e6 !important;
   border-radius: 0px 0px 25px 25px;
   height: 80px!important;
   position: fixed!important;
@@ -667,10 +667,11 @@ Banner Style
 */
 
 .main-banner {
-  background-image: url(../images/banner-bg.jpg);
+  background-image: url("/front/assets/images/main-b1.jpg");
   background-position: right bottom;
   background-repeat: no-repeat;
   background-size: cover;
+ 
   padding: 170px 0px 120px 0px;
 }
 
@@ -1056,7 +1057,7 @@ Facts Style
   z-index: -1;
   width: 95%;
   height: 100%;
-  background-color: #7a6ad8;
+  background-color: #2c2650e6;
   content: '';
   border-top-right-radius: 500px;
   border-bottom-right-radius: 500px;
@@ -1478,13 +1479,13 @@ Contact Style
 .contact-us .contact-us-content {
   border-radius: 25px;
   padding: 80px;
-  background-color: #7a6ad8;
+  background-color: #2c2650e6;
   position: relative;
   z-index: 1;
 }
 
 .contact-us .contact-us-content::before {
-  background: url(../images/contact-dec-01.png);
+
   position: absolute;
   left: 50%;
   transform: translateX(-149px);
@@ -1497,7 +1498,7 @@ Contact Style
 }
 
 .contact-us .contact-us-content::after {
-  background: url(../images/contact-dec-02.png);
+ 
   position: absolute;
   right: 0;
   bottom: 0;
@@ -1599,7 +1600,7 @@ Footer Style
 footer {
   margin-top: 150px;
   position: relative;
-  background-color: #7a6ad8;
+  background-color: #2c2650e6;
   vertical-align: middle;
   min-height: 150px;
   border-radius: 150px 150px 0px 0px;

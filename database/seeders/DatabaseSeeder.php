@@ -28,6 +28,8 @@ class DatabaseSeeder extends Seeder
         //$this->call(StudentsTableSeeder::class);
         //  $this->call(NoticeCategoriesTableSeeder::class);
         // $this->call(NoticeTableSeeder::class);
-        $this->call(BannersTableSeeder::class);
+        // $this->call(BannersTableSeeder::class);
+        // $this->call(EventCatTableSeeder::class);
+        $this->call(EventsTableSeeder::class);
     }
 }
