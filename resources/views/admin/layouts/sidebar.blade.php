@@ -145,6 +145,27 @@
             </div>
           </li>
           <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#event" aria-expanded="false" aria-controls="event">
+              <i class="icon-head menu-icon"></i>
+              <span class="menu-title">Events</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="event">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{ url('/admin/event-categories') }}"
+                 @if(Session::get('page') == "event_categories") 
+                   style="background-color: #fff !important; color: #4B49AC !important;"
+                  @else style="background-color: #4B49AC !important; color: #fff !important;" 
+                  @endif> Event Category </a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ url('/admin/events') }}"
+                   @if(Session::get('page') == "events") 
+                   style="background-color: #fff !important; color: #4B49AC !important;"
+                  @else style="background-color: #4B49AC !important; color: #fff !important;" 
+                  @endif> Events </a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#banner" aria-expanded="false" aria-controls="banner">
               <i class="icon-head menu-icon"></i>
               <span class="menu-title">Banners</span>

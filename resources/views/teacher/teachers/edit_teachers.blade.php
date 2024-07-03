@@ -156,6 +156,7 @@
                             <input type="text" class="form-control" name="address" id="address" placeholder="Enter address"
                             @if(!empty($teacherData['address'])) value="{{ $teacherData->address }}" @else value="{{ old('address') }}" @endif>
                           </div>
+                          <input type="hidden" name="old_password" value="{{ $teacherData['password'] }}">
                         </div>
                       </div>
                         <div class="col-sm-6">

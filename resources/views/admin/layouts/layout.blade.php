@@ -20,6 +20,7 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    <link href="{{ asset('admin/vendors/mdi/css/materialdesignicons.min.css') }}" media="all" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="{{ asset('admin/css/vertical-layout-light/style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('admin/css/custom.css') }}">
   <!-- endinject -->
   <link rel="shortcut icon" href="{{ asset('admin/images/favicon.png') }}" />
@@ -69,6 +70,7 @@
   <script src="{{ asset('admin/js/dashboard.js') }}"></script>
     <script src="{{ asset('admin/js/admin_script.js') }}"></script>
   <script src="{{ asset('admin/js/Chart.roundedBarCharts.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>
          $(document).ready( function () {
             $('#categories').DataTable();
@@ -97,6 +99,23 @@
          
       </script>
   <!-- End custom js for this page-->
+
+        @if(Session::has('toast_message'))
+
+         <script>
+          toastr.options = {
+            "closeButton": true,
+            "progressBar": true,
+            "showEasing": "swing",
+            "positionClass": "toast-bottom-full-width",
+              timeOut: 2000,
+          }
+            toastr.success("{{ Session::get('toast_message') }}");
+         </script>
+
+        @endif
+
+        Session::flush();
 </body>
 
 </html>

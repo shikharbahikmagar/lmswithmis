@@ -10,6 +10,7 @@ use App\Models\Banner;
 use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\Subject;
+use App\Models\Event;
 
 class IndexController extends Controller
 {
@@ -25,6 +26,8 @@ class IndexController extends Controller
         $teachers = Teacher::get();
         $teachers = json_decode(json_encode($teachers), true);
         
+        $events = Event::with('event_categories')->orderBy('id', 'desc')->take(3)->where('status', '1')->get();
+        $events = json_decode(json_encode($events), true);
 
         $noticeCategories = NoticeCategory::all();
         $noticeCategories = json_decode(json_encode($noticeCategories), true);
@@ -42,7 +45,7 @@ class IndexController extends Controller
                 $notices = json_decode(json_encode($notices), true);
             }
 
-            return view('front.eschool.ajax_notice_board')->with(compact('noticeCategories', 'notices', 'banners', 'total_students', 'total_teachers', 'total_subjects', 'teachers'));
+            return view('front.eschool.ajax_notice_board')->with(compact('noticeCategories', 'notices', 'banners', 'total_students', 'total_teachers', 'total_subjects', 'teachers', 'events'));
         //echo "<pre>"; print_r($notices); die;
 
         }
@@ -52,6 +55,6 @@ class IndexController extends Controller
     
        
         // echo "<pre>"; print_r($teacher_details); die;
-        return view('front.eschool.app')->with(compact('noticeCategories', 'notices', 'banners', 'total_students', 'total_teachers', 'total_subjects', 'teachers'));
+        return view('front.eschool.app')->with(compact('noticeCategories', 'notices', 'banners', 'total_students', 'total_teachers', 'total_subjects', 'teachers', 'events'));
     }
 }

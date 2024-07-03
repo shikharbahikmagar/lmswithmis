@@ -165,7 +165,7 @@ class TeacherController extends Controller
             Session::flash('success_message', $message);
             return redirect('teacher/teachers');
         }
-
+ 
         return view('teacher.teachers.edit_teachers')->with(compact('title', 'teacherData', 'btn'));
 
 
@@ -217,7 +217,9 @@ class TeacherController extends Controller
             {
                 if($data['new_pwd'] == $data['confirm_pwd'])
                 {
+
                     Teacher::where('id', $id)->update(['password'=> bcrypt($data['new_pwd'])]);
+
                     Session::flash('success_message', 'Password updated successfully');
                     return redirect('teacher/teachers');
                 }else

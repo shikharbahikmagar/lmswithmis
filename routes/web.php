@@ -11,7 +11,7 @@ use App\Http\Controllers\Admin\TeacherScheduleController;
 use App\Http\Controllers\Admin\StudentsController;
 use App\Http\Controllers\Admin\NoticesController;
 use App\Http\Controllers\Admin\BannersController;
-
+use App\Http\Controllers\Admin\EventsController;
 use App\Http\Controllers\Front\IndexController;
 use App\Http\Controllers\Front\LibraryController;
 
@@ -112,6 +112,18 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
         Route::match(['get', 'post'], '/add-edit-banner/{id?}', [BannersController::class, 'addEditBanners']);
         Route::post('/update-banner-status', [BannersController::class, 'updateBannerStatus']);
         Route::get('/delete-banner/{id}', [BannersController::class, 'deleteBanner']);
+
+        //event categories
+        Route::get('/event-categories', [EventsController::class, 'eventCategories']);
+        Route::match(['get', 'post'], 'add-edit-event-category/{id?}', [EventsController::class, 'addEditEventCategory']);
+        Route::post('/update-event-category-status', [EventsController::class, 'updateEventCategoryStatus']);
+        Route::get('/delete-event-category/{id}', [EventsController::class, 'deleteEventCategory']);
+
+        //events
+        Route::get('/events', [EventsController::class, 'events']);
+        Route::match(['get', 'post'], 'add-edit-event/{id?}', [EventsController::class, 'addEditEvent']);
+        Route::get('/delete-event/{id?}', [EventsController::class, 'deleteEvent']);
+        Route::post('/update-event-status', [EventsController::class, 'updateEventStatus']);
 });
 });
 
@@ -134,7 +146,8 @@ Route::prefix('/teacher')->namespace('Teacher')->group(function() {
         Route::match(['get', 'post'], '/teacher-schedules', [TeacherController::class, 'teacherSchedule']);
 
     });
-    });
+});
+
 
 Route::get('/', [IndexController::class, 'index']);
 Route::get('/library', [LibraryController::class, 'library']);

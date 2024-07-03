@@ -663,6 +663,90 @@ $(document).ready(function () {
     
         });
 
+    //delete events category
+     $(document).on("click", ".deleteEventCategory", function () {
+        var event_cat_id = $(this).attr("event_cat_id");
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                window.location.href = "/admin/delete-event-category/" + event_cat_id;
+
+            }
+        });
+
+    });
+
+     //update event category status
+     $(document).on("click", ".updateEventCatStatus", function () {
+        var status = $(this).children("i").attr("status");
+        var event_cat_id = $(this).attr("event_cat_id");
+        // alert(event_cat_id);
+        $.ajax({
+            type: 'post',
+            url: '/admin/update-event-category-status',
+            data: { status: status, event_cat_id: event_cat_id },
+
+            success: function (resp) {
+                if (resp['status'] == 0) {
+                    $("#event-cat-" + event_cat_id).html("<i style='font-size: 20px;' class='mdi mdi-checkbox-blank-circle-outline' status='InActive'></i>");
+                } else if (resp['status'] == 1) {
+                    $("#event-cat-" + event_cat_id).html("<i style='font-size: 20px;' class='mdi mdi-check-circle-outline' status='Active'></i> ");
+                }
+            }, error: function (error) {
+                alert(error);
+            }
+        })
+    });
+
+        //delte events
+        $(document).on("click", ".deleteEvent", function () {
+            var event_id = $(this).attr("event_id");
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = "/admin/delete-event/" + event_id;
+    
+                }
+            });
+    
+        });
+    
+         //update event status
+         $(document).on("click", ".updateEventStatus", function () {
+            var status = $(this).children("i").attr("status");
+            var event_id = $(this).attr("event_id");
+            // alert(event_id);
+            $.ajax({
+                type: 'post',
+                url: '/admin/update-event-status',
+                data: { status: status, event_id: event_id },
+    
+                success: function (resp) {
+                    if (resp['status'] == 0) {
+                        $("#event-" + event_id).html("<i style='font-size: 20px;' class='mdi mdi-checkbox-blank-circle-outline' status='InActive'></i>");
+                    } else if (resp['status'] == 1) {
+                        $("#event-" + event_id).html("<i style='font-size: 20px;' class='mdi mdi-check-circle-outline' status='Active'></i> ");
+                    }
+                }, error: function (error) {
+                    alert(error);
+                }
+            })
+        });
+
 
 });
 

@@ -3,3 +3,7 @@
     cursor: not-allowed; /* Shows a 'not-allowed' cursor on hover */
 }
 
+.my_toast{
+    max-width: 1200px;
+    width: 90%;
+}
