@@ -1,7 +1,7 @@
 @extends('front.layouts.eschool_layouts.layout')
 @section('content')
 
-@include('front.eschool.notice_board')
+@include('front.eschool.notices.notice_board')
 
 
 <div class="section fun-facts">

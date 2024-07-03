@@ -45,7 +45,7 @@ class IndexController extends Controller
                 $notices = json_decode(json_encode($notices), true);
             }
 
-            return view('front.eschool.ajax_notice_board')->with(compact('noticeCategories', 'notices', 'banners', 'total_students', 'total_teachers', 'total_subjects', 'teachers', 'events'));
+            return view('front.eschool.notices.ajax_notice_board')->with(compact('noticeCategories', 'notices', 'banners', 'total_students', 'total_teachers', 'total_subjects', 'teachers', 'events'));
         //echo "<pre>"; print_r($notices); die;
 
         }
@@ -56,5 +56,29 @@ class IndexController extends Controller
        
         // echo "<pre>"; print_r($teacher_details); die;
         return view('front.eschool.app')->with(compact('noticeCategories', 'notices', 'banners', 'total_students', 'total_teachers', 'total_subjects', 'teachers', 'events'));
+    }
+
+    public function notice($url)
+    {
+        if($url == "")
+        {
+            Session::flash('errro_message', 'something went wrong');
+        }else
+        {
+            $banners = Banner::orderBy('id', 'desc')->take(5)->where('status', '1')->get();
+            $banners = json_decode(json_encode($banners), true);
+
+            $latest_notices = Notice::orderBy('id', 'desc')->take(4)->get();
+
+            $notice_details = Notice::with('notice_categories', 'added_by')->where('url', $url)->first();
+            $notice_details = json_decode(json_encode($notice_details), true);
+            //echo "<pre>"; print_r($notice_details); die;
+
+            $noticeCategories = NoticeCategory::all();
+            $noticeCategories = json_decode(json_encode($noticeCategories), true);
+
+            
+        }
+        return view('front.eschool.notices.notice_details')->with(compact('notice_details', 'banners', 'latest_notices', 'noticeCategories'));
     }
 }

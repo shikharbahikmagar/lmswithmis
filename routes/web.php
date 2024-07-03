@@ -152,4 +152,4 @@ Route::prefix('/teacher')->namespace('Teacher')->group(function() {
 Route::get('/', [IndexController::class, 'index']);
 Route::get('/library', [LibraryController::class, 'library']);
 Route::post('/show-filtered-notices', [IndexController::class, 'index']);
-   
+Route::get('/notice/{url}', [IndexController::class, 'notice']);

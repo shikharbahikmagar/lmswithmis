@@ -12,7 +12,7 @@
        </li>
        @endforeach
     </ul>
-      @include('front.eschool.ajax_notice_board')
+      @include('front.eschool.notices.ajax_notice_board')
     <div class="modal fade" id="addnotesmodal" tabindex="-1" role="dialog" aria-labelledby="addnotesmodalTitle" style="display: none;" aria-hidden="true">
        <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content border-0">
