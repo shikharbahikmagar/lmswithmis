@@ -11,12 +11,6 @@
                     </a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Serach Start ***** -->
-                    <div class="search-input">
-                      <form id="search" action="#">
-                        <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
-                        <i class="fa fa-search"></i>
-                      </form>
-                    </div>
                     <!-- ***** Serach Start ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
@@ -26,6 +20,7 @@
                       <li class="scroll-to-section"><a href="#team">Team</a></li>
                       <li class="scroll-to-section"><a href="#events">Events</a></li>
                       <li class="scroll-to-section"><a href="{{ url('/admin/login') }}" target="_blank">login</a></li>
+                      <li class="scroll-to-section"><a href="{{ url('/user-profile') }}" target="_blank">Profile</a></li>
                   </ul>   
                     <a class='menu-trigger'>
                         <span>Menu</span>

@@ -81,4 +81,13 @@ class IndexController extends Controller
         }
         return view('front.eschool.notices.notice_details')->with(compact('notice_details', 'banners', 'latest_notices', 'noticeCategories'));
     }
+
+    //user profile
+    public function userProfile()
+    {
+        $banners = Banner::orderBy('id', 'desc')->take(5)->where('status', '1')->get();
+        $banners = json_decode(json_encode($banners), true);
+
+        return view('front.eschool.user_profile.user_profile')->with(compact('banners'));
+    }
 }
