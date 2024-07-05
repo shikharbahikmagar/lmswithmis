@@ -11,7 +11,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('front/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="{{ asset('front/assets/css/fontawesome.css') }}">
@@ -19,8 +19,10 @@
     <link rel="stylesheet" href="{{ asset('front/assets/css/owl.css') }}">
     <link rel="stylesheet" href="{{ asset('front/assets/css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('front/assets/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('front/assets/css/carousel.css') }}">
     <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    
 <!--
 
 TemplateMo 586 Scholar
@@ -44,63 +46,35 @@ https://templatemo.com/tm-586-scholar
     </div>
   </div>
   <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">
-                        <h1>Scholar</h1>
-                    </a>
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Serach Start ***** -->
-                    <div class="search-input">
-                      <form id="search" action="#">
-                        <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
-                        <i class="fa fa-search"></i>
-                      </form>
-                    </div>
-                    <!-- ***** Serach Start ***** -->
-                    <!-- ***** Menu Start ***** -->
-                    <ul class="nav">
-                      <li class="scroll-to-section"><a href="{{url('/')}}" class="active">Home</a></li>
-                      <li class="scroll-to-section"><a href="#services">Services</a></li>
-                      <li class="scroll-to-section"><a href="{{ url('/library')}}">E-Library</a></li>
-                      <li class="scroll-to-section"><a href="#team">Team</a></li>
-                      <li class="scroll-to-section"><a href="#events">Events</a></li>
-                      <li class="scroll-to-section"><a href="{{ url('/admin/login') }}" target="_blank">login</a></li>
-                      <li class="scroll-to-section"><a href="{{ url('/user-profile') }}" target="_blank">Profile</a></li>
-                  </ul>   
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
-                    <!-- ***** Menu End ***** -->
-                </nav>
-            </div>
-        </div>
-    </div>
-  </header>
-  
-  <div class="main-banner" id="top">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="owl-carousel owl-banner">
-          @foreach($banners as $banner)
-            <div class="item item-1" style="height: 400px; background-image: url('{{ asset('front/assets/banner_images/'.$banner['banner_image']) }}');">
-              
-              <div class="header-text" style="margin-top: 50px;">
-                <h2>{{ $banner['title'] }}</h2>
-                <p>{{ $banner['description'] }}</p>
-              </div>
-            </div>
-            @endforeach
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  @include('front.layouts.eschool_layouts.header')
+
+  <div class="container text-center my-3">
+		<div class="row mx-auto my-auto justify-content-center">
+			<div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+				<div class="carousel-inner" role="listbox">
+          @foreach($books as $book)
+					<div class="carousel-item active">
+						<div class="col-md-3">
+							<div class="card">
+								<div class="card-img">
+									<img src="{{ asset('images/book_images/'.$book['book_image']) }}" style="height: 300px;" class="img-fluid">
+								</div>
+								<div class="card-img-overlay">Slide 1</div>
+							</div>
+						</div>
+					</div>
+        @endforeach
+				</div>
+				<a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				</a>
+				<a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				</a>
+			</div>
+		</div>		
+	</div>
+
 <section class="section courses" id="courses" >
     <div class="container">
       <div class="row">
@@ -125,7 +99,7 @@ https://templatemo.com/tm-586-scholar
         <div class="col-lg-3 col-md-6 align-self-center mb-30 mt-5 event_outer col-md-6 text-center books_container design {{ $book['categories']['category_name'] }}">
           <div class="events_item">
             <div class="thumb">
-              <a href="#"><img style="width: 180px; height: 180px;" src="{{ asset('images/book_images/'.$book['book_image']) }}" alt=""></a>
+              <a href="{{ url('/books/'.$book['id']) }}"><img style="width: 180px; height: 180px;" src="{{ asset('images/book_images/'.$book['book_image']) }}" alt=""></a>
               <span class="category">{{ $book['categories']['category_name'] }}</span>
             </div>
             <div class="down-content">
@@ -133,12 +107,12 @@ https://templatemo.com/tm-586-scholar
                 <h4 class="book-title ">{{ $book['title'] }}</h4>
             </div>
           </div>
-          <span id="borrow-btn" style="background-color: white; color: rgba(122, 106, 216, 0.95);" type="button" class="btn btn-primary">Borrow</span>
+          <span id="borrow-btn" style="background-color: white; color: rgba(122, 106, 216, 0.95);" type="button" class="btn btn-primary"><a href="{{ url('/books/'.$book['id']) }}">Borrow</a></span>
         </div>
         @endforeach
       </div>
 
-      <div class="d-flex" style="margin-top: 50px;">
+      <div class="d-flex" style="margin-top: 100px;">
           {!! $books->links() !!}
       </div>
     </div>
@@ -154,6 +128,7 @@ https://templatemo.com/tm-586-scholar
   <script src="{{ asset('front/assets/js/counter.js') }}"></script>
   <script src="{{ asset('front/assets/js/custom.js') }}"></script>
   <script src="{{ asset('front/assets/js/notice_script.js') }}"></script>
-
+  <script src="{{ asset('front/assets/js/carousel.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </body>
 </html>

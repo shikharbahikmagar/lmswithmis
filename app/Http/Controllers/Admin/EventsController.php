@@ -14,6 +14,7 @@ class EventsController extends Controller
     //events
     public function events()
     {
+        Session::put('page', 'events');
         $events = Event::with('event_categories')->get();
         $events = json_decode(json_encode($events), true);
         //echo "<pre>"; print_r($events); die;
@@ -23,6 +24,8 @@ class EventsController extends Controller
 
     public function addEditEvent(Request $request, $id=null)
     {
+        Session::put('page', 'events');
+
         if($id == "")
         {
             $eventData = New Event;
@@ -115,6 +118,8 @@ class EventsController extends Controller
     //event categories
     public function eventCategories()
     {
+        Session::put('page', 'events_categories');
+
 
         $eventCategories = EventCategory::all();
         return view('admin.events.event_categories')->with(compact('eventCategories'));
@@ -123,6 +128,8 @@ class EventsController extends Controller
     //add edit event category
     public function addEditEventCategory(Request $request, $id=null)
     {
+        Session::put('page', 'events_categories');
+
         if($id == "")
         {
             $title = "Add Event Category";

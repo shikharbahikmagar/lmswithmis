@@ -18,7 +18,7 @@ class IndexController extends Controller
     {
         $banners = Banner::orderBy('id', 'desc')->take(5)->where('status', '1')->get();
         $banners = json_decode(json_encode($banners), true);
-
+        
         $total_students = Student::get()->count();
         $total_teachers = Teacher::get()->count();
         $total_subjects = Subject::get()->count();

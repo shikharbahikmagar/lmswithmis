@@ -154,3 +154,4 @@ Route::get('/library', [LibraryController::class, 'library']);
 Route::post('/show-filtered-notices', [IndexController::class, 'index']);
 Route::get('/notice/{url}', [IndexController::class, 'notice']);
 Route::get('/user-profile', [IndexController::class, 'userProfile']);
+Route::get('/books/{id}', [LibraryController::class, 'bookDetails']);

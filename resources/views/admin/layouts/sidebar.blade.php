@@ -30,14 +30,14 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements"
+            <a class="nav-link" data-toggle="collapse" href="#book_category" aria-expanded="false" aria-controls="book_category"
             @if(Session::get('page') == "book_category" || Session::get('page') == "books") 
             style="background-color: #4B49AC !important; color: #fff !important;" @endif>
               <i class="icon-columns mdi mdi-library" style="font-size: 20px;"></i>&nbsp;&nbsp;&nbsp;&nbsp;
               <span class="menu-title">Library</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="form-elements">
+            <div class="collapse" id="book_category">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"><a class="nav-link" href="{{ url('/admin/categories') }}"
                 @if(Session::get('page') == "book_category") 
@@ -153,7 +153,7 @@
             <div class="collapse" id="event">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="{{ url('/admin/event-categories') }}"
-                 @if(Session::get('page') == "event_categories") 
+                 @if(Session::get('page') == "events_categories") 
                    style="background-color: #fff !important; color: #4B49AC !important;"
                   @else style="background-color: #4B49AC !important; color: #fff !important;" 
                   @endif> Event Category </a></li>

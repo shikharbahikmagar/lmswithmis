@@ -12,6 +12,7 @@ class BannersController extends Controller
 {
     public function banners()
     {
+        Session::put('page', 'banners');
        $banners =  Banner::all();
        $banners = json_decode(json_encode($banners), true);
        return view('admin.banners.banners')->with(compact('banners'));
@@ -19,6 +20,8 @@ class BannersController extends Controller
 
     public function addEditBanners(Request $request, $id=null)
     {
+        Session::put('page', 'banners');
+
         if($id == "")
         {
             $title = "Add Banner";

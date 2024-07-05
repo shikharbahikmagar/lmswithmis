@@ -660,127 +660,13 @@ Header Style
   
 }
 
+
 /* 
 ---------------------------------------------
 Banner Style
 --------------------------------------------- 
 */
 
-.main-banner {
-  background-image: url("/front/assets/images/main-b1.jpg");
-  background-position: right bottom;
-  background-repeat: no-repeat;
-  background-size: cover;
- 
-  padding: 170px 0px 120px 0px;
-}
-
-.main-banner .item {
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  border-radius: 25px;
-  padding: 100px 100px;
-  margin-left: 130px;
-}
-
-.main-banner .item span.category {
-  background-color: #7a6ad8;
-  color: #fff;
-  font-size: 14px;
-  text-transform: uppercase;
-  padding: 5px 15px;
-  border-radius: 20px;
-  display: inline-block;
-  margin-bottom: 50px;
-}
-
-.main-banner .item h2 {
-  font-size: 48px;
-  font-weight: 700;
-  color: #fff;
-  line-height: 70px;
-  width: 60%;
-  margin-bottom: 40px;
-}
-
-.main-banner .item p {
-  color: #fff;
-  width: 65%;
-}
-
-.main-banner .item .buttons {
-  display: flex;
-  margin-top: 50px;
-}
-
-.main-banner .item .buttons .main-button {
-  margin-right: 30px;
-}
-
-.main-banner .item .buttons .main-button a {
-  font-size: 14px;
-  color: #7a6ad8;
-  background-color: #fff;
-  display: inline-block;
-  height: 50px;
-  line-height: 50px;
-  padding: 0px 25px;
-  border-radius: 25px;
-  font-weight: 500;
-}
-
-.main-banner .item .buttons .icon-button i {
-  color: #7a6ad8;
-  background-color: #fff;
-  display: inline-block;
-  height: 50px;
-  width: 50px;
-  text-align: center;
-  line-height: 50px;
-  border-radius: 50%;
-  margin-right: 10px;
-  font-size: 16px;
-}
-
-.main-banner .item .buttons .icon-button a {
-  color: #fff;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.main-banner .owl-nav {
-  position: absolute;
-  max-width: 1320px;
-  bottom: 23px;
-  left: 0;
-  text-align: right;
-}
-
-.main-banner .owl-nav .owl-prev i,
-.main-banner .owl-nav .owl-next i {
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
-  font-size: 24px;
-  display: inline-block;
-  color: #fff;
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  opacity: 1;
-  transition: all .3s;
-}
-
-.main-banner .owl-nav .owl-prev i {
-  position: absolute;
-  bottom: 65px;
-}
-
-.main-banner .owl-nav .owl-prev i:hover,
-.main-banner .owl-nav .owl-next i:hover {
-  opacity: 1;
-  background-color: rgba(255, 255, 255, 0.5);
-}
 
 
 /* 
@@ -1057,7 +943,7 @@ Facts Style
   z-index: -1;
   width: 95%;
   height: 100%;
-  background-color: #2c2650e6;
+  background-color: #c2d8ea;  
   content: '';
   border-top-right-radius: 500px;
   border-bottom-right-radius: 500px;
@@ -1081,7 +967,7 @@ Facts Style
 }
 
 .fun-facts h2 {
-  color: #fff;
+  color: #171515;
   font-size: 48px;
   font-weight: 700;
 }
@@ -1092,7 +978,7 @@ Facts Style
 }
 
 .fun-facts p {
-  color: #fff;
+  color: #171515;
   font-size: 15px;
   font-weight: 500;
   margin-top: 15px;
@@ -1418,7 +1304,7 @@ Contact Style
   position: absolute;
   left: 0;
   top: 0;
-  background-color: #7a6ad8;
+  background-color: #171515;
   width: 80px;
   padding: 30px 8px;
   line-height: 25px;
@@ -1471,7 +1357,7 @@ Contact Style
   display: inline-block;
   text-align: center;
   line-height: 50px;
-  background-color: #7a6ad8;
+  background-color: #c2d8ea;
   color: #fff;
   border-radius: 50%;
 }
