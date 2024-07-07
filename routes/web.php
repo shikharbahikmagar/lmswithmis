@@ -17,6 +17,8 @@ use App\Http\Controllers\Front\LibraryController;
 
 //teaherssdfa
 use App\Http\Controllers\Teacher\TeacherController;
+//student
+use App\Http\Controllers\Student\StudentController;
 
 /*-
 |-------------------------------------------------------------------------
@@ -127,6 +129,7 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
 });
 });
 
+//for teachers
 Route::prefix('/teacher')->namespace('Teacher')->group(function() {
 
     Route::match(['get', 'post'], '/login', [TeacherController::class, 'login']);
@@ -144,6 +147,28 @@ Route::prefix('/teacher')->namespace('Teacher')->group(function() {
         
         //teacher schedules
         Route::match(['get', 'post'], '/teacher-schedules', [TeacherController::class, 'teacherSchedule']);
+
+    });
+});
+
+//routes for students
+Route::prefix('/student')->namespace('Student')->group(function() {
+
+    Route::match(['get', 'post'], '/login', [StudentController::class, 'login']);
+
+    Route::group(['middleware'=> ['student']], function(){
+
+        Route::get('/dashboard', [StudentController::class, 'dashboard']);
+        Route::get('/logout', [StudentController::class, 'logout']);
+                //teachers
+        Route::get('/students', [StudentController::class, 'students']);
+        Route::match(['get', 'post'], 'edit-teacher/{id?}', [StudentController::class, 'EditTeacher']);
+        Route::get('view-details/{id}', [StudentController::class, 'viewDetails']);
+        Route::match(['get', 'post'], '/update-teacher-pwd/{id}', [StudentController::class, 'updateTeacherPwd']);
+        Route::post('/check-teacher-current-pwd', [StudentController::class, 'chkCurrentTeacherPwd']);
+        
+        //teacher schedules
+        Route::match(['get', 'post'], '/teacher-schedules', [StudentController::class, 'teacherSchedule']);
 
     });
 });

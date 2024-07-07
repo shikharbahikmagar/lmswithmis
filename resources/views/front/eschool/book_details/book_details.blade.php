@@ -115,10 +115,18 @@ https://templatemo.com/tm-586-scholar
           </div>
 
           <hr />
+        <form action="">
+          <div class="row mb-4">
+            <div class="col-md-4 col-6">
+              <label class="mb-2">Select Date</label>
+              <input type="date" name="">
+            </div>
 
-          
-          <a href="#" class="btn btn-warning shadow-0">Borrow</a>
+          </div>
+          <button type="submit" class="btn btn-warning shadow-0">Borrow</button>
           <a href="#" class="btn btn-light border border-secondary py-2 icon-hover px-3"> <i class="me-1 fa fa-heart fa-lg"></i> Save </a>
+
+          </form>
         </div>
       </main>
     </div>
