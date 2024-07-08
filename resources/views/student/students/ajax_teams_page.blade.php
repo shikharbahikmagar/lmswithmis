@@ -1,5 +1,6 @@
 @extends('student.dashboard')
 @section('ajax_page')
+<div class="tab-content p-4">
 <div class="tab-pane active show" id="team-tab" role="tabpanel">
    <h4 class="card-title mb-4">Team</h4>
    <div class="row">
@@ -360,6 +361,7 @@
       <!-- end col -->
    </div>
    <!-- end row -->
+</div>
 </div>
 <!-- end tab pane -->
 @endsection

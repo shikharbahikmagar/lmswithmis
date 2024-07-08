@@ -45,7 +45,7 @@ class StudentController extends Controller
         $student_details = Student::where('id', Auth::guard('student')->user()->id)->first();
         $student_details = json_decode(json_encode($student_details), true);
 
-        return view('student.dashboard')->with(compact('student_details'));
+        return view('student.students.ajax_assignments_page')->with(compact('student_details'));
     }
 
     public function students()

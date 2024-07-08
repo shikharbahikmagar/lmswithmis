@@ -8,8 +8,8 @@
                 <div class="row align-items-center">
                     <div class="col-md-3">
                         <div class="text-center border-end">
-                            <img src="{{ asset('/images/student_images/'.$student_details['student_image']) }}" class="img-fluid avatar-xxl rounded-circle" alt="">
-                            <h4 class="text-primary font-size-20 mt-3 mb-2">{{ $student_details['first_name']}} {{ $student_details['middle_name'] }} {{ $student_details['last_name'] }} </h4>
+                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="img-fluid avatar-xxl rounded-circle" alt="">
+                            <h4 class="text-primary font-size-20 mt-3 mb-2">Jansh Wells</h4>
                             <h5 class="text-muted font-size-13 mb-0">Web Designer</h5>
                         </div>
                     </div><!-- end col -->
@@ -23,9 +23,9 @@
                             <div class="row my-4">
                                 <div class="col-md-12">
                                     <div>
-                                        <p class="text-muted mb-2 fw-medium"><i class="mdi mdi-email-outline me-2"></i> {{ $student_details['email'] }}
+                                        <p class="text-muted mb-2 fw-medium"><i class="mdi mdi-email-outline me-2"></i>Janshwells@probic.com
                                         </p>
-                                        <p class="text-muted fw-medium mb-0"><i class="mdi mdi-phone-in-talk-outline me-2"></i> {{ $student_details['parent_contact'] }}
+                                        <p class="text-muted fw-medium mb-0"><i class="mdi mdi-phone-in-talk-outline me-2"></i>418-955-4703
                                         </p>
                                     </div>
                                 </div><!-- end col -->
@@ -39,13 +39,13 @@
                                     </a>
                                 </li><!-- end li -->
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link px-4 "  href="https://bootdey.com/snippets/view/profile-task-with-team-cards" target="__blank">
+                                    <a class="nav-link px-4 active" data-bs-toggle="tab" href="#tasks-tab" role="tab" aria-selected="false" tabindex="-1">
                                         <span class="d-block d-sm-none"><i class="mdi mdi-menu-open"></i></span>
                                         <span class="d-none d-sm-block">Tasks</span>
                                     </a>
                                 </li><!-- end li -->
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link px-4  active" data-bs-toggle="tab" href="#team-tab" role="tab" aria-selected="true">
+                                    <a class="nav-link px-4 "  href="https://bootdey.com/snippets/view/profile-with-team-section" target="__blank">
                                         <span class="d-block d-sm-none"><i class="mdi mdi-account-group-outline"></i></span>
                                         <span class="d-none d-sm-block">Team</span>
                                     </a>
@@ -58,9 +58,7 @@
         </div><!-- end card -->
 
         <div class="card">
-            <div class="tab-content p-4">            
-                @yield('ajax_page');
-            </div>
+        @yield('ajax_page')
         </div><!-- end card -->
     </div><!-- end col -->
 
@@ -102,19 +100,19 @@
                             <tbody>
                                 <tr>
                                     <th scope="row">Name</th>
-                                    <td>{{ $student_details['first_name'] }} {{ $student_details['middle_name'] }} {{ $student_details['last_name'] }}</td>
+                                    <td>Jansh Wells</td>
                                 </tr><!-- end tr -->
                                 <tr>
-                                    <th scope="row">Parent Name</th>
-                                    <td>{{ $student_details['parent_name'] }}</td>
+                                    <th scope="row">Location</th>
+                                    <td>California, United States</td>
                                 </tr><!-- end tr -->
                                 <tr>
-                                    <th scope="row">Address</th>
-                                    <td>{{ $student_details['address'] }}</td>
+                                    <th scope="row">Language</th>
+                                    <td>English</td>
                                 </tr><!-- end tr -->
                                 <tr>
-                                    <th scope="row">Email</th>
-                                    <td>{{ $student_details['email'] }}</td>
+                                    <th scope="row">Website</th>
+                                    <td>abc12@probic.com</td>
                                 </tr><!-- end tr -->
                             </tbody><!-- end tbody -->
                         </table><!-- end table -->
@@ -146,5 +144,4 @@
         </div><!-- end card -->
     </div><!-- end col -->
 </div>
-
 @endsection
