@@ -184,16 +184,6 @@
                           </div>
                         </div>
                       </div>
-                       <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Password</label>
-                          <div class="col-sm-9">
-                            <input type="password" class="form-control" name="password" id="password" placeholder="you can not change password here"
-                            @if(!empty($students['password']))  readonly @endif>
-                            <input type="hidden" value="{{ $students['password']}}" name="old_password">
-                          </div>
-                        </div>
-                      </div>
                       </div>                     
                     <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Submit</button>

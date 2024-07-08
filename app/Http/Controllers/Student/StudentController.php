@@ -42,7 +42,10 @@ class StudentController extends Controller
 
         // Auth::guard('student')->logout();
         // dd("hello");
-        return view('student.dashboard');
+        $student_details = Student::where('id', Auth::guard('student')->user()->id)->first();
+        $student_details = json_decode(json_encode($student_details), true);
+
+        return view('student.dashboard')->with(compact('student_details'));
     }
 
     public function students()
@@ -83,5 +86,12 @@ class StudentController extends Controller
             ];
 
         }
+    }
+
+    //student logout
+    public function logout()
+    {
+        Auth::guard('student')->logout();
+        return redirect('/student/login');
     }
 }

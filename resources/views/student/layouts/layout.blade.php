@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Skydash Teacher</title>
+  <title>Student | Panel</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{ asset('admin/vendors/feather/feather.css') }}">
   <link rel="stylesheet" href="{{ asset('admin/vendors/ti-icons/css/themify-icons.css') }}">
@@ -22,25 +22,26 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="{{ asset('admin/css/vertical-layout-light/style.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/css/custom.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.2.96/css/materialdesignicons.min.css" integrity="sha512-LX0YV/MWBEn2dwXCYgQHrpa9HJkwB+S+bnBpifSOTO1No27TqNMKYoAn6ff2FBh03THAzAiiCwQ+aPX+/Qt/Ow==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- endinject -->
   <link rel="shortcut icon" href="{{ asset('admin/images/favicon.png') }}" />
 </head>
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
-    @include('teacher.layouts.header')
+    @include('student.layouts.header')
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_settings-panel.html -->
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
-      @include('teacher.layouts.sidebar')
+      @include('student.layouts.sidebar')
       <!-- partial -->
       <div class="main-panel">
         @yield('content')
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
-       @include('teacher.layouts.footer')
+       @include('student.layouts.footer')
         <!-- partial -->
       </div>
       <!-- main-panel ends -->

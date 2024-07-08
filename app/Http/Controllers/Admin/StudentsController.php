@@ -224,7 +224,6 @@ class StudentsController extends Controller
             $student->roll_no = $data['roll_no'];
             $student->grade_id = $data['grade_id'];
             $student->email = $data['email'];
-            $student->password = $data['old_password'];
             $student->student_image = $image_name;
             $student->status = 1;
             $student->save();
