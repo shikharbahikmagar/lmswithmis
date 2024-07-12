@@ -126,6 +126,9 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
         Route::match(['get', 'post'], 'add-edit-event/{id?}', [EventsController::class, 'addEditEvent']);
         Route::get('/delete-event/{id?}', [EventsController::class, 'deleteEvent']);
         Route::post('/update-event-status', [EventsController::class, 'updateEventStatus']);
+
+        //book requests
+        Route::get('/book-requests', [BooksController::class, 'bookRequests']);
 });
 });
 

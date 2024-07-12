@@ -181,6 +181,22 @@
               </ul>
             </div>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#book_request" aria-expanded="false" aria-controls="book_request">
+              <i class="icon-head menu-icon"></i>
+              <span class="menu-title">Book Requests</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="book_request">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{ url('/admin/book-requests') }}"
+                 @if(Session::get('page') == "book_requests") 
+                   style="background-color: #fff !important; color: #4B49AC !important;"
+                  @else style="background-color: #4B49AC !important; color: #fff !important;" 
+                  @endif>Requests</a></li>
+              </ul>
+            </div>
+          </li>
           @endif
         </ul>
       </nav>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Admin;
 use App\Models\Category;
+use App\Models\BookRequest;
 use Auth;
 use Image;
 use Session;
@@ -132,5 +133,18 @@ class BooksController extends Controller
         Book::where('id', $id)->delete();
         Session::flash('success_message', 'book deleted successfully');
         return redirect()->back();
+    }
+
+    //book requests 
+    public function bookRequests()
+    {
+        Session::put('page', 'book_requests');
+
+        $bookRequests = BookRequest::with(['student_details', 'book_details'])->get();
+        $bookRequests = json_decode(json_encode($bookRequests), true);
+
+        echo "<pre>"; print_r($bookRequests); die;
+
+        return view('admin.books.book_requests')->with(compact('bookRequests'));
     }
 }

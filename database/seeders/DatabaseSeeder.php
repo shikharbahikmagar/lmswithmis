@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(NoticeTableSeeder::class);
         // $this->call(BannersTableSeeder::class);
         // $this->call(EventCatTableSeeder::class);
-        $this->call(EventsTableSeeder::class);
+        // $this->call(EventsTableSeeder::class);
+        $this->call(BookReqTableSeeder::class);
     }
 }
