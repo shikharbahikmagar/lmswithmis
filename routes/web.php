@@ -141,8 +141,7 @@ Route::prefix('/teacher')->namespace('Teacher')->group(function() {
 
         Route::get('/dashboard', [TeacherController::class, 'dashboard']);
         Route::get('/logout', [TeacherController::class, 'logout']);
-                //teachers
-        Route::get('/teachers', [TeacherController::class, 'teachers']);
+    
         Route::match(['get', 'post'], 'edit-teacher/{id?}', [TeacherController::class, 'EditTeacher']);
         Route::get('view-details/{id}', [TeacherController::class, 'viewDetails']);
         Route::match(['get', 'post'], '/update-teacher-pwd/{id}', [TeacherController::class, 'updateTeacherPwd']);

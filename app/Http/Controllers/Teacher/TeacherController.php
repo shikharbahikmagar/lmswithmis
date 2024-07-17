@@ -43,7 +43,7 @@ class TeacherController extends Controller
 
     public function dashboard()
     {
-
+        Session::put('page', '');
         // Auth::guard('teacher')->logout();
         // dd("hello");
         return view('teacher.dashboard');
@@ -51,7 +51,7 @@ class TeacherController extends Controller
 
     public function teachers()
     {
-        Session::put('page', 'teachers_details');
+        Session::put('page', 'teacher_details');
         $teacher = Teacher::where('id', Auth::guard('teacher')->user()->id)->first();
         return view('teacher.teachers.teachers')->with(compact('teacher'));
     }
@@ -189,6 +189,7 @@ class TeacherController extends Controller
 
     public function updateTeacherPwd(Request $request, $id)
     {
+        Session::put('page', 'teacher_password');
         if($request->isMethod('post'))
         {
             $teacher = Teacher::where('id', $id)->first();
@@ -221,7 +222,7 @@ class TeacherController extends Controller
                     Teacher::where('id', $id)->update(['password'=> bcrypt($data['new_pwd'])]);
 
                     Session::flash('success_message', 'Password updated successfully');
-                    return redirect('teacher/teachers');
+                    return redirect('teacher/dashboard');
                 }else
                 {
                     Session::flash('error_message', 'new password and confirm password does not match');
@@ -240,6 +241,7 @@ class TeacherController extends Controller
     
     public function viewDetails($id=null)
     {
+        Session::put('page', 'teacher_details');
         $teacherData = Teacher::find($id);
         return view('teacher.teachers.view_teacher_details')->with(compact('teacherData'));
     }
