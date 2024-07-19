@@ -17,6 +17,7 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
 
+    //login admin
     public function login(request $request)
     {
         if($request->isMethod('post'))
@@ -60,6 +61,7 @@ class AdminController extends Controller
         }
     }
 
+    //update admin details
     public function updateAdminDetails(Request $request)
     {
         Session::put('page', 'update_details');
@@ -129,6 +131,8 @@ class AdminController extends Controller
         return view('admin.update_admin_details')->with(compact('adminDetails'));
     }
 
+    //check admin current password
+
     public function checkCurrentPwd(Request $request)
     {
         $data = $request->all();
@@ -143,6 +147,8 @@ class AdminController extends Controller
         }
         
     }
+
+    //update admin password
 
     public function updateAdminPwd(Request $request)
     {

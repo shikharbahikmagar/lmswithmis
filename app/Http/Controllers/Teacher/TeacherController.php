@@ -246,8 +246,8 @@ class TeacherController extends Controller
         return view('teacher.teachers.view_teacher_details')->with(compact('teacherData'));
     }
 
-
-        public function teacherSchedule(Request $request)
+    //get teacher schedules
+    public function teacherSchedule(Request $request)
     {
         Session::put('page', 'teacher_schedules');
         $teacherDetails = Teacher::get();

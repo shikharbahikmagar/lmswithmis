@@ -175,6 +175,7 @@ class TeachersController extends Controller
             }
     }
 
+    //update teacher password
     public function updateTeacherPwd(Request $request, $id)
     {
         if($request->isMethod('post'))
