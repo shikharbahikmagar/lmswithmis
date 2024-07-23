@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\BannersController;
 use App\Http\Controllers\Admin\EventsController;
 use App\Http\Controllers\Front\IndexController;
 use App\Http\Controllers\Front\LibraryController;
+use App\Http\Controllers\Admin\BookRequestsController;
 
 //teaherssdfa
 use App\Http\Controllers\Teacher\TeacherController;
@@ -172,7 +173,14 @@ Route::prefix('/student')->namespace('Student')->group(function() {
         //teacher schedules
         Route::match(['get', 'post'], '/teacher-schedules', [StudentController::class, 'teacherSchedule']);
 
+
     });
+});
+
+Route::group(['middleware'=> ['student']], function() {
+
+    Route::post('/book-request/{id}', [BookRequestsController::class, 'bookRequest']);
+
 });
 
 

@@ -143,8 +143,8 @@ class BooksController extends Controller
         $bookRequests = BookRequest::with(['student_details', 'book_details'])->get();
         $bookRequests = json_decode(json_encode($bookRequests), true);
 
-        echo "<pre>"; print_r($bookRequests); die;
+        //echo "<pre>"; print_r($bookRequests); die;
 
-        return view('admin.books.book_requests')->with(compact('bookRequests'));
+        return view('admin.book_requests.book_requests')->with(compact('bookRequests'));
     }
 }

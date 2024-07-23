@@ -115,7 +115,7 @@ https://templatemo.com/tm-586-scholar
           </div>
 
           <hr />
-        <form action="">
+        <form action="{{ url('/book-request/'.$book_details['id']) }}" method="post">@csrf
           <div class="row mb-4">
             <div class="col-md-4 col-6">
               <label class="mb-2">Select Date</label>
