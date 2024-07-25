@@ -5,7 +5,7 @@
         <div class="col-lg-3 col-md-6">
           <div class="team-member">
             <div class="main-content">
-              <img src="{{ asset('images/teacher_images/'.$teacher['teacher_image']) }}" alt="">
+              <img src="{{ asset('images/teacher_images/'.$teacher['teacher_image']) }}" alt="" style="width: 200px; height: 200px;">
               <span class="category">{{ $teacher['department'] }}</span>
               <h4>{{ $teacher['first_name'] }} {{ $teacher['last_name'] }}</h4>
               <ul class="social-icons">

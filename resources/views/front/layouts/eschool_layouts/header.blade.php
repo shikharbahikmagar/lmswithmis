@@ -26,7 +26,20 @@
         </li>
    
       </ul>
-      <li class="nav-item dropdown" style="margin-right: 60px;">
+      @if(Auth::guard('student')->check())
+      <div class="btn-group" style="margin-right: 80px;">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fa-regular fa-user"></i>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <li><a class="dropdown-item" href="#"><img class="rounded-circle" src="{{ asset('/images/student_images/'.Auth::guard('student')->user()->student_image) }}" alt="" style="width: 50px; height: 50px;"></a></li>
+          <li><a class="dropdown-item" href="#">{{Auth::guard('student')->user()->first_name}}</a></li>
+          <hr>
+          <li><a class="dropdown-item" href="#">logout</a></li>
+        </ul>
+      </div>
+      @else
+      <li class="nav-item dropdown" style="margin-right: 80px;">
           <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Login
           </a>
@@ -40,7 +53,7 @@
             <li><a class="dropdown-item" href="https://www.google.com">Admin</a></li>
           </ul>
         </li>
-
+        @endif
     </div>
   </div>
 </nav>
