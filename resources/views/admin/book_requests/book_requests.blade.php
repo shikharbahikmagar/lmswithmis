@@ -33,9 +33,7 @@
                         </button>
                      </div>
                      @endif
-                     <h4 class="card-title">Teachers Table</h4>
-                     <a href="{{ url('/admin/add-edit-request') }}" class="btn btn-block btn-primary" style="max-width: 150px; float: right; display:inline-block;">
-                        Add Teacher</a>
+                     <h4 class="card-title">Book Requests Table</h4>
                      <div class="table-responsive pt-3">
                     <table id="teachers_table" class="table table-bordered">
                         <thead>

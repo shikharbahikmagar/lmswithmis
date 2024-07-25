@@ -13,7 +13,7 @@
     <link href="{{ asset('front/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
    
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="{{ asset('front/assets/css/fontawesome.css') }}">
@@ -68,7 +68,23 @@ https://templatemo.com/tm-586-scholar
   <script src="{{ asset('front/assets/js/custom.js') }}"></script>
   <script src="{{ asset('front/assets/js/front_script.js') }}"></script>
   <script src="{{ asset('front/assets/js/notice_script.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  @if(Session::has('toast_message'))
 
+<script>
+ toastr.options = {
+   "closeButton": true,
+   "progressBar": true,
+   "showEasing": "swing",
+   "positionClass": "toast-bottom-full-width",
+     timeOut: 2000,
+ }
+   toastr.success("{{ Session::get('toast_message') }}");
+</script>
+
+@endif
+
+Session::flush();
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <nav id="navbar" class="navbar navbar-light navbar-expand-lg">
