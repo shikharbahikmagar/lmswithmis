@@ -19,11 +19,12 @@ class BookRequestsController extends Controller
             $check_book_availability = Book::find($id);
             if($check_book_availability)
             {
-                Session::flash('toast_message', "book requested");
-                return redirect()->back();
+                smilify('success', 'Success, Book Requested Successfully');
+                return redirect('/library');
             }else
             {
-                Session::flash('toast_message', "book not found");
+                notify()->error('book not found ⚡️');
+                return redirect()->back();
             }
 
 

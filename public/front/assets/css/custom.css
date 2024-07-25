@@ -35,3 +35,7 @@
   .icon-hover:hover i {
     color: #3b71ca !important;
   }
+
+  #laravel-notify{
+    z-index: 9999;
+    }
