@@ -14,7 +14,7 @@
 
    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+    @notifyCss
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="{{ asset('front/assets/css/fontawesome.css') }}">
     <link rel="stylesheet" href="{{ asset('front/assets/css/notice_style.css') }}">
@@ -55,7 +55,7 @@ https://templatemo.com/tm-586-scholar
 
 
   @include('front.layouts.eschool_layouts.footer')
-
+  @include('notify::components.notify')
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
 
@@ -70,7 +70,7 @@ https://templatemo.com/tm-586-scholar
   <script src="{{ asset('front/assets/js/notice_script.js') }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   @if(Session::has('toast_message'))
-
+  @notifyJs
 <script>
  toastr.options = {
    "closeButton": true,

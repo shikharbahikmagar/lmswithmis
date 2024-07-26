@@ -35,7 +35,7 @@
           <li><a class="dropdown-item" href="#"><img class="rounded-circle" src="{{ asset('/images/student_images/'.Auth::guard('student')->user()->student_image) }}" alt="" style="width: 50px; height: 50px;"></a></li>
           <li><a class="dropdown-item" href="#">{{Auth::guard('student')->user()->first_name}}</a></li>
           <hr>
-          <li><a class="dropdown-item" href="#">logout</a></li>
+          <li><a class="dropdown-item" href="{{ url('/student/logout') }}">logout</a></li>
         </ul>
       </div>
       @else
@@ -44,7 +44,7 @@
             Login
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-            <li><a class="dropdown-item" href="https://www.google.com">Student</a></li>
+            <li><a class="dropdown-item" href="{{ url('/student/login') }}">Student</a></li>
             <hr class="dropdown-divider">
             <li><a class="dropdown-item" href="https://www.google.com">Teacher</a></li>
             <li>

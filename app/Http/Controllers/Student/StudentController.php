@@ -21,13 +21,13 @@ class StudentController extends Controller
             $studentCount = Student::where(['email' => $data['email']])->count();
             if($studentCount == 0)
             {
-                Session::flash('error_message', 'Invalid email address');
+                Session::flash('error_message', 'Account not found with this email');
                 return redirect()->back();
             }
 
             if(Auth::guard('student')->attempt(['email'=>$data['email'], 'password'=>$data['password']]))
             {
-                return redirect('/student/dashboard');
+                return redirect('/');
             }else
             {
                 Session::flash('error_message', 'Invalid email address or password');
@@ -92,6 +92,7 @@ class StudentController extends Controller
     public function logout()
     {
         Auth::guard('student')->logout();
-        return redirect('/student/login');
+        smilify('success', 'You have successfully logged out');
+        return redirect('/');
     }
 }
