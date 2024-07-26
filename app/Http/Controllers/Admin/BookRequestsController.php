@@ -29,7 +29,10 @@ class BookRequestsController extends Controller
 
 
             $book_request = new BookRequest;
-
+            $book_request->book_id = $book_id;
+            $book_request->student_id = $student_id;
+            $book_request->status = 'pending';  
+            
 
             // echo "<pre>"; print_r($id); die;
         }
