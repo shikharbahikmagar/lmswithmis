@@ -99,7 +99,7 @@
                      <div class="card-body">
                         <div class="row">
                            <div class="col-sm-3">
-                              <p class="mb-0">Full Name</p>
+                              <p class="mb-0">Full Name:</p>
                            </div>
                            <div class="col-sm-9">
                               <p class="text-muted mb-0">{{ $student_details['first_name'] }} {{ $student_details['middle_name'] }} {{ $student_details['last_name'] }}</p>
@@ -108,7 +108,7 @@
                         <hr>
                         <div class="row">
                            <div class="col-sm-3">
-                              <p class="mb-0">Email</p>
+                              <p class="mb-0">Email:</p>
                            </div>
                            <div class="col-sm-9">
                               <p class="text-muted mb-0">{{ $student_details['email'] }}</p>
@@ -117,7 +117,7 @@
                         <hr>
                         <div class="row">
                            <div class="col-sm-3">
-                              <p class="mb-0">Parent Name</p>
+                              <p class="mb-0">Parent Name:</p>
                            </div>
                            <div class="col-sm-9">
                               <p class="text-muted mb-0">{{ $student_details['parent_name'] }}</p>
@@ -126,7 +126,7 @@
                         <hr>
                         <div class="row">
                            <div class="col-sm-3">
-                              <p class="mb-0">Parent Mobile</p>
+                              <p class="mb-0">Parent Mobile:</p>
                            </div>
                            <div class="col-sm-9">
                               <p class="text-muted mb-0">{{ $student_details['parent_contact'] }}</p>
@@ -135,7 +135,7 @@
                         <hr>
                         <div class="row">
                            <div class="col-sm-3">
-                              <p class="mb-0">Address</p>
+                              <p class="mb-0">Address:</p>
                            </div>
                            <div class="col-sm-9">
                               <p class="text-muted mb-0">{{ $student_details['address'] }}</p>
@@ -149,32 +149,34 @@
                            <div class="card-body">
                               <p class="mb-4"><span class="text-primary font-italic me-1">Update</span> Details
                               </p>
-                              <form action="{{ url('/students/update-details/'.$student_details['id']) }}" method="post" enctype="multipart/form-data">@csrf
+                              <form action="{{ url('/student/update-details/'.$student_details['id']) }}" method="post" enctype="multipart/form-data">@csrf
                                  <div class="row g-3 align-items-center">
                                     <div class="col-auto">
-                                       <label for="email" class="col-form-label">Email</label>
+                                       <label for="email" class="col-form-label">Email:</label>
                                     </div>
                                     <div class="col-auto">
                                        <input type="text" id="email" style="background-color: lightgray;" class="form-control" aria-describedby="passwordHelpInline" value="{{ $student_details['email'] }}" readonly="">
                                     </div>
                                     <div class="col-auto">
-                                       <label for="address" class="col-form-label">Address</label>
+                                       <label for="address" class="col-form-label">Address:</label>
                                     </div>
                                     <div class="col-auto">
                                        <input type="text" id="address" name="address" class="form-control" aria-describedby="passwordHelpInline" value="{{ $student_details['address'] }}">
                                     </div>
                                     <div class="col-auto">
-                                       <label for="parent_contact" class="col-form-label">Parent Contact</label>
+                                       <label for="parent_contact" class="col-form-label">Parent Contact:</label>
                                     </div>
                                     <div class="col-auto">
                                        <input type="text" id="parent_contact" name="parent_contact" class="form-control" aria-describedby="passwordHelpInline" value="{{ $student_details['parent_contact'] }}">
                                     </div>
                                     <div class="col-auto">
-                                       <label for="student_image" class="col-form-label">Update Profile</label>
+                                       <label for="student_image" class="col-form-label">Update Profile:</label>
                                     </div>
                                     <div class="col-auto">
                                        <input type="file" id="student_image" name="student_image" class="form-control" aria-describedby="passwordHelpInline" >
                                     </div>
+                                    <input type="hidden" name="student_current_image" id="student_current_image" value="{{ $student_details['student_image'] }}">
+                              
                                     <div class="col-auto">
                                        <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
@@ -186,33 +188,35 @@
                      <div class="col-md-6">
                         <div class="card mb-4 mb-md-0">
                            <div class="card-body">
-                              <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project Status
+                              <p class="mb-4"><span class="text-primary font-italic me-1">Update</span> Password
                               </p>
-                              <p class="mb-1" style="font-size: .77rem;">Web Design</p>
-                              <div class="progress rounded" style="height: 5px;">
-                                 <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80"
-                                    aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                              <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
-                              <div class="progress rounded" style="height: 5px;">
-                                 <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72"
-                                    aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                              <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
-                              <div class="progress rounded" style="height: 5px;">
-                                 <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89"
-                                    aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                              <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
-                              <div class="progress rounded" style="height: 5px;">
-                                 <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55"
-                                    aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                              <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
-                              <div class="progress rounded mb-2" style="height: 5px;">
-                                 <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66"
-                                    aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
+                              <form action="{{ url('/student/update-details/'.$student_details['id']) }}" method="post" enctype="multipart/form-data">@csrf
+                                 <div class="row g-3 align-items-center">
+                                    <div class="col-auto">
+                                       <label for="current_password" class="col-form-label">Current Password:</label>
+                                    </div>
+                                    <div class="col-auto">
+                                       <input type="text" id="current_password" name="current_password" class="form-control" aria-describedby="passwordHelpInline" placeholder="Enter current password">
+                                       <p id="chkCurrentPwdStd"></p>
+                                    </div>
+                                   
+                                    <div class="col-auto">
+                                       <label for="mew_password" class="col-form-label">New Password:</label>
+                                    </div>
+                                    <div class="col-auto">
+                                       <input type="text" id="mew_password" name="mew_password" class="form-control" aria-describedby="passwordHelpInline" placeholder="Enter new password">
+                                    </div>
+                                    <div class="col-auto">
+                                       <label for="confirm_password" class="col-form-label">Confirm Password:</label>
+                                    </div>
+                                    <div class="col-auto">
+                                       <input type="text" id="confirm_password" name="confirm_password" class="form-control" aria-describedby="passwordHelpInline" placeholder="Enter new password again">
+                                    </div>
+                                    <div class="col-auto">
+                                       <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                 </div>
+                              </form>
                            </div>
                         </div>
                      </div>
@@ -229,6 +233,7 @@
       <script src="{{ asset('front/assets/js/owl-carousel.js') }}"></script>
       <script src="{{ asset('front/assets/js/counter.js') }}"></script>
       <script src="{{ asset('front/assets/js/custom.js') }}"></script>
+      <script src="{{ asset('front/assets/js/front_script.js') }}"></script>
       <script src="{{ asset('front/assets/js/notice_script.js') }}"></script>
       <script src="{{ asset('front/assets/js/carousel.js') }}"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

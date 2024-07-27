@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Student;
 use Auth;
 use Session;
+use Validator;
+use Image;
+use Hash;
 
 
 class StudentController extends Controller
@@ -94,5 +97,83 @@ class StudentController extends Controller
         Auth::guard('student')->logout();
         smilify('success', 'You have successfully logged out');
         return redirect('/');
+    }
+
+    //update details by student
+    public function updateDetails(Request $request, $id=null)
+    {
+        if($request->isMethod('post'))
+        {
+            $data = $request->all();
+            //echo "<pre>"; print_r($data); die;
+            if($data['address'] == "")
+            {
+                smilify('error', 'Address is Required');
+
+                return redirect()->back();
+                
+            }else if($data['parent_contact'] == "")
+            {
+                smilify('error', 'parent Contact is Required');
+                return redirect()->back();
+
+            }else if(!is_numeric($data['parent_contact']))
+            {
+                smilify('error', 'Parent Contact must be a number');
+                return redirect()->back();
+            }else
+            {
+                if($request->hasFile('student_image'))
+                {
+                    $image_tmp = $request->file('student_image');
+
+                    if($image_tmp->isValid())
+                    {
+
+                        $extension = $image_tmp->getClientOriginalExtension();
+                        $image_name = rand(111, 9999).'.'.$extension;
+                        $image_path = 'images/student_images/'.$image_name;
+
+                        //save image to file
+                        Image::make($image_tmp)->save($image_path);
+                    }
+                        else if(!empty($data['student_current_image']))
+                    {
+                        $image_name = $data['student_current_image'];
+                    }else
+                    {
+                        $image_name = "";
+                    }   
+
+
+                Student::where('id', $id)->update(['address' => $data['address'], 'parent_contact' => $data['parent_contact'], 'student_image' => $image_name]);
+                smilify('success', 'Details updated successfully');
+
+                return redirect()->back();
+                }
+
+                Student::where('id', $id)->update(['address' => $data['address'], 'parent_contact' => $data['parent_contact']]);
+                smilify('success', 'Details updated successfully');
+                
+                return redirect()->back();
+            }
+        }
+    }
+
+    //check current password
+    public function checkCurrentPwd(Request $request)
+    {
+        if($request->ajax())
+        {
+            $data = $request->all();
+            // echo "<pre>"; print_r($data); die;
+            if(Hash::check($data['current_password'], Auth::guard('student')->user()->password))
+            {
+                echo "true";
+            }else
+            {
+                echo "false";
+            }
+        }
     }
 }

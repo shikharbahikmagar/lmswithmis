@@ -184,6 +184,8 @@ Route::group(['middleware'=> ['student']], function() {
     Route::get('/user-profile', [IndexController::class, 'userProfile']);
 
     Route::post('/student/update-details/{id}', [StudentController::class, 'updateDetails']);
+
+    Route::post('/student/check-current-pwd', [StudentController::class, 'checkCurrentPwd']);
 });
 
 

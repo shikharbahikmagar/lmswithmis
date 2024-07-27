@@ -22,4 +22,24 @@ $(document).ready(function () {
 
     })
 
+    $('#current_password').keyup(function () {
+        var current_password = $('#current_password').val();
+         //alert (current_password);
+        $.ajax({
+            type: 'post',
+            url: '/student/check-current-pwd',
+            data: { current_password: current_password },
+            success: function (resp) {
+                if (resp == "false") {
+                    $("#chkCurrentPwdStd").html("<font color=red>password is incorrect</font>");
+                } else {
+                    $("#chkCurrentPwdStd").html("<font color=green>password is correct</font>");
+                }
+            }, error: function () {
+                alert("error");
+            }
+        });
+    });
+
+
 });
