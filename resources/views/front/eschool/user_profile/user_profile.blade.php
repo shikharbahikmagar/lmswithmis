@@ -1,158 +1,237 @@
-@extends('front.layouts.eschool_layouts.layout')
-@section('content')
-
-
-<div class="text-center" style="margin-top: 50px;">
-  <h1>My Details</h1>
-</div>
-<div class="container bootstrap snippets bootdey" style="margin-top: 60px;">
-<div class="row ng-scope">
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-body text-center">
-                <div class="pv-lg"><img class="center-block img-responsive img-circle img-thumbnail thumb96" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Contact"></div>
-                <h3 class="m0 text-bold">Audrey Hunt</h3>
-                <div class="mv-lg">
-                    <p>Hello, I'm a just a dummy contact in your contact list and this is my presentation text. Have fun!</p>
-                </div>
-                <div class="text-center"><a class="btn btn-primary" href="">Send message</a></div>
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+      <title>E-LIBRARY</title>
+      @notifyCss
+      <!-- Bootstrap core CSS -->
+      <link href="{{ asset('front/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+      <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+      <!-- Additional CSS Files -->
+      <link rel="stylesheet" href="{{ asset('front/assets/css/fontawesome.css') }}">
+      <link rel="stylesheet" href="{{ asset('front/assets/css/templatemo-scholar.css') }}">
+      <link rel="stylesheet" href="{{ asset('front/assets/css/owl.css') }}">
+      <link rel="stylesheet" href="{{ asset('front/assets/css/animate.css') }}">
+      <link rel="stylesheet" href="{{ asset('front/assets/css/custom.css') }}">
+      <link rel="stylesheet" href="{{ asset('front/assets/css/carousel.css') }}">
+      <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+      <!--
+         TemplateMo 586 Scholar
+         
+         https://templatemo.com/tm-586-scholar
+         
+         -->
+   </head>
+   <body>
+      <!-- ***** Preloader Start ***** -->
+      <div id="js-preloader" class="js-preloader">
+         <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+               <span></span>
+               <span></span>
+               <span></span>
             </div>
-        </div>
-        <div class="panel panel-default hidden-xs hidden-sm">
-            <div class="panel-heading">
-                <div class="panel-title text-center">Recent contacts</div>
+         </div>
+      </div>
+      <!-- ***** Header Area Start ***** -->
+      @include('front.layouts.eschool_layouts.header')
+      <section style="background-color: #eee;">
+         <div class="container py-5">
+            <div class="row">
+               <div class="col">
+                  <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4">
+                     <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">User</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+                     </ol>
+                  </nav>
+               </div>
             </div>
-            <div class="panel-body">
-                <div class="media">
-                    <div class="media-left media-middle">
-                        <a href="#"><img class="media-object img-circle img-thumbnail thumb48" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Contact"></a>
-                    </div>
-                    <div class="media-body pt-sm">
-                        <div class="text-bold">Floyd Ortiz
-                            <div class="text-sm text-muted">12m ago</div>
+            <div class="row">
+               <div class="col-lg-4">
+                  <div class="card mb-4">
+                     <div class="card-body text-center">
+                        <img src="{{ asset('/images/student_images/'.$student_details['student_image']) }}" alt="avatar"
+                           class="rounded-circle img-fluid" style="width: 150px; height: 150px; margin-left: 110px;">
+                        <h5 class="my-3">{{ $student_details['first_name'] }} {{ $student_details['middle_name'] }} {{ $student_details['last_name'] }}</h5>
+                        <p class="text-muted mb-1">{{ $student_details['gender'] }}</p>
+                        <p class="text-muted mb-4">{{ $student_details['address'] }}</p>
+                        <div class="d-flex justify-content-center mb-2">
+                           <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary">Follow</button>
+                           <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-primary ms-1">Message</button>
                         </div>
-                    </div>
-                </div>
-                <div class="media">
-                    <div class="media-left media-middle">
-                        <a href="#"><img class="media-object img-circle img-thumbnail thumb48" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="Contact"></a>
-                    </div>
-                    <div class="media-body pt-sm">
-                        <div class="text-bold">Luis Vasquez
-                            <div class="text-sm text-muted">2h ago</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="media">
-                    <div class="media-left media-middle">
-                        <a href="#"><img class="media-object img-circle img-thumbnail thumb48" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="Contact"></a>
-                    </div>
-                    <div class="media-body pt-sm">
-                        <div class="text-bold">Duane Mckinney
-                            <div class="text-sm text-muted">yesterday</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="media">
-                    <div class="media-left media-middle">
-                        <a href="#"><img class="media-object img-circle img-thumbnail thumb48" src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="Contact"></a>
-                    </div>
-                    <div class="media-body pt-sm">
-                        <div class="text-bold">Connie Lambert
-                            <div class="text-sm text-muted">2 weeks ago</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-8">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <div class="pull-right">
-                    <div class="btn-group dropdown" uib-dropdown="dropdown">
-                        <button class="btn btn-link dropdown-toggle" uib-dropdown-toggle="" aria-haspopup="true" aria-expanded="false"><em class="fa fa-ellipsis-v fa-lg text-muted"></em></button>
-                        <ul class="dropdown-menu dropdown-menu-right animated fadeInLeft" role="menu">
-                            <li><a href=""><span>Send by message</span></a></li>
-                            <li><a href=""><span>Share contact</span></a></li>
-                            <li><a href=""><span>Block contact</span></a></li>
-                            <li><a href=""><span class="text-warning">Delete contact</span></a></li>
+                     </div>
+                  </div>
+                  <div class="card mb-4 mb-lg-0">
+                     <div class="card-body p-0">
+                        <ul class="list-group list-group-flush rounded-3">
+                           <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                              <i class="fas fa-globe fa-lg text-warning"></i>
+                              <p class="mb-0">https://mdbootstrap.com</p>
+                           </li>
+                           <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                              <i class="fab fa-github fa-lg text-body"></i>
+                              <p class="mb-0">mdbootstrap</p>
+                           </li>
+                           <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                              <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
+                              <p class="mb-0">@mdbootstrap</p>
+                           </li>
+                           <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                              <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
+                              <p class="mb-0">mdbootstrap</p>
+                           </li>
+                           <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                              <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
+                              <p class="mb-0">mdbootstrap</p>
+                           </li>
                         </ul>
-                    </div>
-                </div>
-                <div class="h4 text-center">My Information</div>
-                <div class="row pv-lg">
-                    <div class="col-lg-2"></div>
-                    <div class="col-lg-8">
-                        <form class="form-horizontal ng-pristine ng-valid">
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label" for="inputContact1">Name</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" id="inputContact1" type="text" placeholder="" value="Audrey Hunt">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label" for="inputContact2">Email</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" id="inputContact2" type="email" value="mail@example.com">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label" for="inputContact3">Phone</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" id="inputContact3" type="text" value="(123) 465 789">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label" for="inputContact4">Mobile</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" id="inputContact4" type="text" value="(12) 123 987 465">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label" for="inputContact5">Website</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" id="inputContact5" type="text" value="http://some.wesbite.com">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label" for="inputContact6">Address</label>
-                                <div class="col-sm-10">
-                                    <textarea class="form-control" id="inputContact6" row="4">Some nice Street, 1234</textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label" for="inputContact7">Social</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" id="inputContact7" type="text" value="@Social">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label" for="inputContact8">Company</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" id="inputContact8" type="text" placeholder="No Company">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> Favorite contact?</label>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-8">
+                  <div class="card mb-4">
+                     <div class="card-body">
+                        <div class="row">
+                           <div class="col-sm-3">
+                              <p class="mb-0">Full Name</p>
+                           </div>
+                           <div class="col-sm-9">
+                              <p class="text-muted mb-0">{{ $student_details['first_name'] }} {{ $student_details['middle_name'] }} {{ $student_details['last_name'] }}</p>
+                           </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                           <div class="col-sm-3">
+                              <p class="mb-0">Email</p>
+                           </div>
+                           <div class="col-sm-9">
+                              <p class="text-muted mb-0">{{ $student_details['email'] }}</p>
+                           </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                           <div class="col-sm-3">
+                              <p class="mb-0">Parent Name</p>
+                           </div>
+                           <div class="col-sm-9">
+                              <p class="text-muted mb-0">{{ $student_details['parent_name'] }}</p>
+                           </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                           <div class="col-sm-3">
+                              <p class="mb-0">Parent Mobile</p>
+                           </div>
+                           <div class="col-sm-9">
+                              <p class="text-muted mb-0">{{ $student_details['parent_contact'] }}</p>
+                           </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                           <div class="col-sm-3">
+                              <p class="mb-0">Address</p>
+                           </div>
+                           <div class="col-sm-9">
+                              <p class="text-muted mb-0">{{ $student_details['address'] }}</p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="card mb-4 mb-md-0">
+                           <div class="card-body">
+                              <p class="mb-4"><span class="text-primary font-italic me-1">Update</span> Details
+                              </p>
+                              <form action="{{ url('/students/update-details/'.$student_details['id']) }}" method="post" enctype="multipart/form-data">@csrf
+                                 <div class="row g-3 align-items-center">
+                                    <div class="col-auto">
+                                       <label for="email" class="col-form-label">Email</label>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button class="btn btn-info" type="submit">Update</button>
-                                </div>
-                            </div>
-                        </form>
-                        <div class="text-right"><a class="text-muted" href="#">Delete this contact?</a></div>
-                    </div>
-                </div>
+                                    <div class="col-auto">
+                                       <input type="text" id="email" style="background-color: lightgray;" class="form-control" aria-describedby="passwordHelpInline" value="{{ $student_details['email'] }}" readonly="">
+                                    </div>
+                                    <div class="col-auto">
+                                       <label for="address" class="col-form-label">Address</label>
+                                    </div>
+                                    <div class="col-auto">
+                                       <input type="text" id="address" name="address" class="form-control" aria-describedby="passwordHelpInline" value="{{ $student_details['address'] }}">
+                                    </div>
+                                    <div class="col-auto">
+                                       <label for="parent_contact" class="col-form-label">Parent Contact</label>
+                                    </div>
+                                    <div class="col-auto">
+                                       <input type="text" id="parent_contact" name="parent_contact" class="form-control" aria-describedby="passwordHelpInline" value="{{ $student_details['parent_contact'] }}">
+                                    </div>
+                                    <div class="col-auto">
+                                       <label for="student_image" class="col-form-label">Update Profile</label>
+                                    </div>
+                                    <div class="col-auto">
+                                       <input type="file" id="student_image" name="student_image" class="form-control" aria-describedby="passwordHelpInline" >
+                                    </div>
+                                    <div class="col-auto">
+                                       <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                 </div>
+                              </form>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="card mb-4 mb-md-0">
+                           <div class="card-body">
+                              <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project Status
+                              </p>
+                              <p class="mb-1" style="font-size: .77rem;">Web Design</p>
+                              <div class="progress rounded" style="height: 5px;">
+                                 <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80"
+                                    aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
+                              <div class="progress rounded" style="height: 5px;">
+                                 <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72"
+                                    aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
+                              <div class="progress rounded" style="height: 5px;">
+                                 <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89"
+                                    aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
+                              <div class="progress rounded" style="height: 5px;">
+                                 <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55"
+                                    aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
+                              <div class="progress rounded mb-2" style="height: 5px;">
+                                 <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66"
+                                    aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
             </div>
-        </div>
-    </div>
-</div>
-</div>
-@endsection
+         </div>
+      </section>
+      @include('notify::components.notify')
+      @include('front.layouts.eschool_layouts.footer')
+      <script src="{{ asset('front/vendor/jquery/jquery.min.js') }}"></script>
+      <script src="{{ asset('front/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+      <script src="{{ asset('front/assets/js/isotope.min.js') }}"></script>
+      <script src="{{ asset('front/assets/js/owl-carousel.js') }}"></script>
+      <script src="{{ asset('front/assets/js/counter.js') }}"></script>
+      <script src="{{ asset('front/assets/js/custom.js') }}"></script>
+      <script src="{{ asset('front/assets/js/notice_script.js') }}"></script>
+      <script src="{{ asset('front/assets/js/carousel.js') }}"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+      @notifyJs
+   </body>
+</html>

@@ -1,3 +1,5 @@
+@extends('front.layouts.eschool_layouts.layout')
+@section('content')
 
 <div class="section about-us">
     <div class="container">
@@ -67,3 +69,5 @@
       </div>
     </div>
   </div>
+@include('front.eschool.contact_us')
+@endsection

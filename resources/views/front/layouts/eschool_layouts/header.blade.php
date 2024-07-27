@@ -16,13 +16,16 @@
           <a class="nav-link active home" aria-current="page" href="{{ url('/') }}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link about" href="https://www.google.com">About us</a>
+          <a class="nav-link about" href="{{ url('/about-us') }}">About us</a>
         </li>
         <li class="nav-item">
           <a class="nav-link contact" href="https://www.google.com">Contact</a>
         </li>
         <li class="nav-item">
           <a class="nav-link contact" href="{{ url('/library') }}">E-Library</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link contact" href="{{ url('/user-profile') }}">profile</a>
         </li>
    
       </ul>
@@ -34,6 +37,8 @@
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <li><a class="dropdown-item" href="#"><img class="rounded-circle" src="{{ asset('/images/student_images/'.Auth::guard('student')->user()->student_image) }}" alt="" style="width: 50px; height: 50px;"></a></li>
           <li><a class="dropdown-item" href="#">{{Auth::guard('student')->user()->first_name}}</a></li>
+          <hr>
+          <li><a class="dropdown-item" href="{{ url('/student/dashboar') }}">Dashboard</a></li>
           <hr>
           <li><a class="dropdown-item" href="{{ url('/student/logout') }}">logout</a></li>
         </ul>

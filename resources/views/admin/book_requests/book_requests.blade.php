@@ -44,7 +44,7 @@
                                  <th>Author</th>
                                  <th>ISBN no</th>
                                  <th>Request at</th>
-                                 <th>Returned at</th>
+                                 <th>Return Date</th>
                                  <th>Status</th>
                                  <th>Action</th>
                               </tr>
@@ -57,8 +57,8 @@
                                  <td>{{ $request['book_details']['title'] }}</td>
                                  <td>{{ $request['book_details']['author'] }}</td>
                                  <td>{{ $request['book_details']['isbn_no'] }}</td>
-                                 <td>{{ $request['request_date'] }}</td>
-                                 <td>{{ $request['return_date'] }}</td>
+                                 <td>{{ \Carbon\Carbon::parse($request['request_date'])->diffForHumans() }}</td>
+                                 <td>{{ \Carbon\Carbon::parse($request['return_date'])->diffForHumans() }}</td>
                                  <td><select name="status" id="status">
                                     <option value="0" @if($request['status'] == "pending") selected @endif>Pending</option>
                                     <option value="1" @if($request['status'] == "approved") selected @endif>Approved</option>

@@ -181,12 +181,21 @@ Route::group(['middleware'=> ['student']], function() {
 
     Route::post('/book-request/{id}', [BookRequestsController::class, 'bookRequest']);
 
+    Route::get('/user-profile', [IndexController::class, 'userProfile']);
+
+    Route::post('/student/update-details/{id}', [StudentController::class, 'updateDetails']);
 });
 
 
 Route::get('/', [IndexController::class, 'index']);
+
+Route::get('/about-us', [IndexController::class, 'aboutUs']);
+
 Route::get('/library', [LibraryController::class, 'library']);
+
 Route::post('/show-filtered-notices', [IndexController::class, 'index']);
+
 Route::get('/notice/{url}', [IndexController::class, 'notice']);
-Route::get('/user-profile', [IndexController::class, 'userProfile']);
+
+
 Route::get('/books/{id}', [LibraryController::class, 'bookDetails']);

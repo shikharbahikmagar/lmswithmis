@@ -11,6 +11,7 @@ use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\Subject;
 use App\Models\Event;
+use Auth;
 
 class IndexController extends Controller
 {
@@ -88,6 +89,24 @@ class IndexController extends Controller
         $banners = Banner::orderBy('id', 'desc')->take(5)->where('status', '1')->get();
         $banners = json_decode(json_encode($banners), true);
 
-        return view('front.eschool.user_profile.user_profile')->with(compact('banners'));
+        if(Auth::guard('student')->check())
+        {
+            $current_student = Auth::guard('student')->user()->id;
+            $student_details = Student::find($current_student);
+            $student_details = json_decode(json_encode($student_details), true);
+            //echo "<pre>"; print_r($student_details); die;
+        }
+       
+
+        return view('front.eschool.user_profile.user_profile')->with(compact('banners', 'student_details'));
+    }
+
+    //about us
+    public function aboutUs()
+    {
+        $banners = Banner::orderBy('id', 'desc')->take(5)->where('status', '1')->get();
+        $banners = json_decode(json_encode($banners), true);
+
+        return view('front.eschool.about_us')->with(compact('banners'));
     }
 }
