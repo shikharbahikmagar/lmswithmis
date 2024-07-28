@@ -46,7 +46,7 @@
                   <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4">
                      <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">User</a></li>
+                        <li class="breadcrumb-item"><a href="#">Profile</a></li>
                         <li class="breadcrumb-item active" aria-current="page">User Profile</li>
                      </ol>
                   </nav>
