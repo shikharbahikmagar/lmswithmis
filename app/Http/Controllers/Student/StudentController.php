@@ -176,4 +176,31 @@ class StudentController extends Controller
             }
         }
     }
+
+    //update password
+    public function updatePassword(Request $request)
+    {
+        if($request->isMethod('post'))
+        {
+            $data = $request->all();
+            //echo "<pre>"; print_r($data); die;
+            if(Hash::check($data['current_password'], Auth::guard('student')->user()->password))
+            {
+                if($data['new_password'] == $data['confirm_password'])
+                {
+                    Student::where('id', Auth::guard('student')->user()->id)->update(['password' => bcrypt($data['confirm_password'])]);
+                    notify()->success('Password updated successfully');
+                    return redirect()->back();
+                }else
+                {
+                    notify()->error('New password and confirm password do not match');
+                    return redirect()->back();
+                }
+            }else
+            {
+                notify()->error('Current password is incorrect');
+                return redirect()->back();
+            }
+        }
+    }
 }

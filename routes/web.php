@@ -186,6 +186,8 @@ Route::group(['middleware'=> ['student']], function() {
     Route::post('/student/update-details/{id}', [StudentController::class, 'updateDetails']);
 
     Route::post('/student/check-current-pwd', [StudentController::class, 'checkCurrentPwd']);
+
+    Route::post('/student/update-password/{id}', [StudentController::class, 'updatePassword']);
 });
 
 

@@ -190,27 +190,27 @@
                            <div class="card-body">
                               <p class="mb-4"><span class="text-primary font-italic me-1">Update</span> Password
                               </p>
-                              <form action="{{ url('/student/update-details/'.$student_details['id']) }}" method="post" enctype="multipart/form-data">@csrf
+                              <form action="{{ url('/student/update-password/'.$student_details['id']) }}" method="post">@csrf
                                  <div class="row g-3 align-items-center">
                                     <div class="col-auto">
                                        <label for="current_password" class="col-form-label">Current Password:</label>
                                     </div>
                                     <div class="col-auto">
-                                       <input type="text" id="current_password" name="current_password" class="form-control" aria-describedby="passwordHelpInline" placeholder="Enter current password">
+                                       <input type="password" id="current_password" name="current_password" class="form-control" aria-describedby="passwordHelpInline" placeholder="Enter current password">
                                        <p id="chkCurrentPwdStd"></p>
                                     </div>
                                    
                                     <div class="col-auto">
-                                       <label for="mew_password" class="col-form-label">New Password:</label>
+                                       <label for="new_password" class="col-form-label">New Password:</label>
                                     </div>
                                     <div class="col-auto">
-                                       <input type="text" id="mew_password" name="mew_password" class="form-control" aria-describedby="passwordHelpInline" placeholder="Enter new password">
+                                       <input type="password" id="new_password" name="new_password" class="form-control" aria-describedby="passwordHelpInline" placeholder="Enter new password">
                                     </div>
                                     <div class="col-auto">
                                        <label for="confirm_password" class="col-form-label">Confirm Password:</label>
                                     </div>
                                     <div class="col-auto">
-                                       <input type="text" id="confirm_password" name="confirm_password" class="form-control" aria-describedby="passwordHelpInline" placeholder="Enter new password again">
+                                       <input type="password" id="confirm_password" name="confirm_password" class="form-control" aria-describedby="passwordHelpInline" placeholder="Enter new password again">
                                     </div>
                                     <div class="col-auto">
                                        <button type="submit" class="btn btn-primary">Submit</button>
