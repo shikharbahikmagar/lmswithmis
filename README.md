@@ -33,7 +33,7 @@
                 <li>PHP 8.0 or higher</li>
                 <li>Composer</li>
                 <li>Laravel 10.x</li>
-                <li>MySQL or any compatible database</li>
+                <li>MySQL</li>
             </ul>
             <h3>Steps</h3>
             <ol>
@@ -56,7 +56,13 @@
                 <li>User management</li>
             </ul>
             <h3>School Management System</h3>
-            <p>Access the school management system at <code>http://localhost:8000/school</code>. Features include:</p>
+            <p>Access the school management system at <code>http://localhost:8000</code>. Features include:</p>
+            <ul>
+                <li>All Librarian Roles</li>
+                <li>All School Admin Roles</li>
+            </ul>
+             <h3>Admin Dashboard</h3>
+            <p>Access the Library and school management system admin dashboard at <code>http://localhost:8000/admin/dashboard</code>. Features include:</p>
             <ul>
                 <li>Student record management</li>
                 <li>Class schedule management</li>
@@ -83,7 +89,7 @@
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 Library and School Management Systems</p>
+        <p>&copy; Shikharbahikmagar</p>
     </footer>
 </body>
 </html>
