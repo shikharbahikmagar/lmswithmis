@@ -58,15 +58,15 @@
             <h3>School Management System</h3>
             <p>Access the school management system at <code>http://localhost:8000</code>. Features include:</p>
             <ul>
-                <li>All Librarian Roles</li>
-                <li>All School Admin Roles</li>
+             <li>Student record management</li>
+                <li>Class schedule management</li>
+                <li>Grade tracking</li>
             </ul>
              <h3>Admin Dashboard</h3>
             <p>Access the Library and school management system admin dashboard at <code>http://localhost:8000/admin/dashboard</code>. Features include:</p>
             <ul>
-                <li>Student record management</li>
-                <li>Class schedule management</li>
-                <li>Grade tracking</li>
+               <li>All Librarian Roles</li>
+                <li>All School Admin Roles</li>
             </ul>
             <h3>Packages Used</h3>
             <ul>
