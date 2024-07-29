@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Resend\Laravel\Facades\Resend;
+use App\Mail\BookReqStatus;
 use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\BookRequest;
@@ -61,5 +62,46 @@ class BookRequestsController extends Controller
         }
         
 
+    }
+
+
+    //update book request status
+    public function updateBookRequest(Request $request, $id=null)
+    {
+        if($request->isMethod('post'))
+        {
+            $data = $request->all();
+
+            //echo "<pre>"; print_r($data); die;
+            $book_request_details = BookRequest::where('id', $id)->with('student_details', 'book_details')->first();
+            $book_request_details = json_decode(json_encode($book_request_details), true);
+            //echo "<pre>"; print_r($book_request_details); die;
+
+
+            $student_name = $book_request_details['student_details']['first_name'].' '.$book_request_details['student_details']['middle_name'].' '.$book_request_details['student_details']['last_name'];
+            $student_email = $book_request_details['student_details']['email'];
+            $book_name = $book_request_details['book_details']['title'];
+
+            //echo "<pre>"; print_r($book_name); die;
+
+
+            BookRequest::where('id', $id)->update(['status'=>$data['book_req_status'], 'return_date'=>$data['return_date']]);
+
+            //send mail to student about status update
+            Mail::to($student_email)->send(new BookReqStatus($student_name, $student_email, $book_name, $data['book_req_status'], $data['return_date']));
+            
+            Session::flash('success_message', 'Book Request Status Updated Successfully');
+            return redirect('/admin/book-requests');
+        }
+
+        $book_request_details = BookRequest::find($id);
+        $book_request_details = json_decode(json_encode($book_request_details), true);
+
+        $request_date = Carbon::parse($book_request_details['request_date'])->format('Y-m-d');
+        $return_date = Carbon::parse($book_request_details['return_date'])->format('Y-m-d');
+        // echo "<pre>"; print_r($request_date); die;
+
+
+       return view('admin.book_requests.update_book_requests')->with(compact('book_request_details', 'return_date', 'request_date'));
     }
 }

@@ -11,7 +11,7 @@ class BookRequest extends Model
 
     public function student_details()
     {
-        return $this->belongsTo('App\Models\Student', 'student_id')->select('id', 'first_name', 'middle_name', 'last_name');
+        return $this->belongsTo('App\Models\Student', 'student_id')->select('id', 'email', 'first_name', 'middle_name', 'last_name');
     }
 
     public function book_details()

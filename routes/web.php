@@ -130,6 +130,7 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
 
         //book requests
         Route::get('/book-requests', [BooksController::class, 'bookRequests']);
+        Route::match(['get', 'post'], '/update-book-request/{id}', [BookRequestsController::class, 'updateBookRequest']);
 });
 });
 

@@ -59,15 +59,10 @@
                                  <td>{{ $request['book_details']['isbn_no'] }}</td>
                                  <td>{{ \Carbon\Carbon::parse($request['request_date'])->diffForHumans() }}</td>
                                  <td>{{ \Carbon\Carbon::parse($request['return_date'])->diffForHumans() }}</td>
-                                 <td><select name="status" id="status">
-                                    <option value="0" @if($request['status'] == "pending") selected @endif>Pending</option>
-                                    <option value="1" @if($request['status'] == "approved") selected @endif>Approved</option>
-                                    <option value="2" @if($request['status'] == "rejected") selected @endif>Rejected</option>
-                                    </select>
-                                 </td>
+                                 <td>{{ ucfirst($request['status']) }}</td>
                                  <td>
-                                    <a href="{{ url('admin/add-edit-request/'.$request['id']) }}"><i style="font-size: 20px;" class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;
-                                    <a href="javascript:void(0)" class="deleteGrade" record="request" recordId = "{{ $request['id'] }}"><i style="color:red; font-size: 20px;" class="fa fa-trash"></i></a>
+                                    <a href="{{ url('admin/update-book-request/'.$request['id']) }}"><i style="font-size: 20px;" class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;
+                                    <a href="javascript:void(0)" class="deleteBookRequest" recordId = "{{ $request['id'] }}"><i style="color:red; font-size: 20px;" class="fa fa-trash"></i></a>
                                  </td>
                               </tr>
                               @endforeach
