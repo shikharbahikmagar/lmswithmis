@@ -38,7 +38,7 @@
           <li><a class="dropdown-item" href="#"><img class="rounded-circle" src="{{ asset('/images/student_images/'.Auth::guard('student')->user()->student_image) }}" alt="" style="width: 50px; height: 50px;"></a></li>
           <li><a class="dropdown-item" href="#">{{Auth::guard('student')->user()->first_name}}</a></li>
           <hr>
-          <li><a class="dropdown-item" href="{{ url('/student/dashboar') }}">Dashboard</a></li>
+          <li><a class="dropdown-item" href="{{ url('/student/dashboard') }}">Dashboard</a></li>
           <hr>
           <li><a class="dropdown-item" href="{{ url('/student/logout') }}">logout</a></li>
         </ul>
