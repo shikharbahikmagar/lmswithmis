@@ -91,7 +91,7 @@
         </section>
     </main>
     <footer>
-        <p>&copy; Shikharbahikmagar</p>
+        <p>&copy; ShikharBahikMagar</p>
     </footer>
 </body>
 </html>
