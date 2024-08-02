@@ -62,8 +62,8 @@
                         <p class="text-muted mb-1">{{ $student_details['gender'] }}</p>
                         <p class="text-muted mb-4">{{ $student_details['address'] }}</p>
                         <div class="d-flex justify-content-center mb-2">
-                           <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary">Follow</button>
-                           <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-primary ms-1">Message</button>
+                           <a href="{{ url('/download-id-card') }}"><button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary">Download ID Card</button></a>
+                           <a href="{{ url('/student-id-card') }}"><button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-primary ms-1">View ID Card</button></a>
                         </div>
                      </div>
                   </div>

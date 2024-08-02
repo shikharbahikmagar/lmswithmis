@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Student;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Student;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Auth;
 use Session;
 use Validator;
@@ -202,5 +203,23 @@ class StudentController extends Controller
                 return redirect()->back();
             }
         }
+    }
+
+    //student id card
+    public function studentIdCard()
+    {
+        $student_details = Student::where('id', Auth::guard('student')->user()->id)->first();
+        $student_details = json_decode(json_encode($student_details), true);
+        return view('front.eschool.user_profile.user_id_card')->with(compact('student_details'));
+    }
+
+    //download student id card
+    public function downloadIdCard()
+    {
+        $student_details = Student::where('id', Auth::guard('student')->user()->id)->first();
+        $student_details = json_decode(json_encode($student_details), true);
+
+        $pdf = PDF::loadView('front.eschool.user_profile.user_id_card', $student_details);
+        return $pdf->download('MyIdCard.pdf');
     }
 }
