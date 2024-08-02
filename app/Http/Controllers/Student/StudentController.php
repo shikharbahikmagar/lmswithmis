@@ -210,6 +210,7 @@ class StudentController extends Controller
     {
         $student_details = Student::where('id', Auth::guard('student')->user()->id)->first();
         $student_details = json_decode(json_encode($student_details), true);
+
         return view('front.eschool.user_profile.user_id_card')->with(compact('student_details'));
     }
 
@@ -218,6 +219,7 @@ class StudentController extends Controller
     {
         $student_details = Student::where('id', Auth::guard('student')->user()->id)->first();
         $student_details = json_decode(json_encode($student_details), true);
+        //echo "<pre>"; print_r($student_details); die;
 
         $pdf = PDF::loadView('front.eschool.user_profile.user_id_card', $student_details);
         return $pdf->download('MyIdCard.pdf');

@@ -13,7 +13,7 @@
             <div class="padding">
                 <div class="font">
                     <div class="top">
-                        <img src="{{ asset('/front/assets/id_card_images/download.png') }}">
+                        <img src="{{ asset('/images/student_images/'.$student_details['student_image']) }}">
                     </div>
                     <div class="bottom">
                         <p>{{ $student_details['first_name'] }} {{ $student_details['middle_name'] }} {{ $student_details['last_name'] }}</p>
