@@ -180,18 +180,19 @@ Route::prefix('/student')->namespace('Student')->group(function() {
 
 Route::group(['middleware'=> ['student']], function() {
 
+    //request for book
     Route::post('/book-request/{id}', [BookRequestsController::class, 'bookRequest']);
-
+    //view user profile
     Route::get('/user-profile', [IndexController::class, 'userProfile']);
-
+    //update user profile
     Route::post('/student/update-details/{id}', [StudentController::class, 'updateDetails']);
-
+    //check current password
     Route::post('/student/check-current-pwd', [StudentController::class, 'checkCurrentPwd']);
-
+    //update password
     Route::post('/student/update-password/{id}', [StudentController::class, 'updatePassword']);
-
+    //view student id card
     Route::get('/student-id-card', [StudentController::class, 'studentIdCard']);
-
+    //download student id card
     Route::get('/download-id-card', [StudentController::class, 'downloadIdCard']);
 });
 
@@ -206,5 +207,5 @@ Route::post('/show-filtered-notices', [IndexController::class, 'index']);
 
 Route::get('/notice/{url}', [IndexController::class, 'notice']);
 
-
+//view book details
 Route::get('/books/{id}', [LibraryController::class, 'bookDetails']);
