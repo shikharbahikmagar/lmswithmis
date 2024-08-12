@@ -56,7 +56,7 @@
                <div class="col-lg-4">
                   <div class="card mb-4">
                      <div class="card-body text-center">
-                        <img src="{{ asset('/images/student_images/'.$student_details['student_image']) }}" alt="avatar"
+                        <img src="{{ asset('/images/student_images/'.Auth::guard('student')->user()->student_image) }}" alt="avatar"
                            class="rounded-circle img-fluid" style="width: 150px; height: 150px; margin-left: 110px;">
                         <h5 class="my-3">{{ $student_details['first_name'] }} {{ $student_details['middle_name'] }} {{ $student_details['last_name'] }}</h5>
                         <p class="text-muted mb-1">{{ $student_details['gender'] }}</p>

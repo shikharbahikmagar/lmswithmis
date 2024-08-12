@@ -18,7 +18,7 @@ class LibraryController extends Controller
         $banners = Banner::orderBy('id', 'desc')->take(5)->where('status', '1')->get();
         $banners = json_decode(json_encode($banners), true);
 
-        $books = Book::with('added_by_details', 'categories')->latest()->paginate(4);
+        $books = Book::with('added_by_details', 'categories')->latest()->paginate(8);
         // /$books = json_decode(json_encode($books), true);
 
         $book_categories = Category::orderBy('id', 'desc')->get();

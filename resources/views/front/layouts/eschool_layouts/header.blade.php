@@ -6,12 +6,6 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarScroll">
       <ul class="navbar-nav me-auto  my-2 my-lg-0 navbar-nav-scroll" style="gap: 20px;  color: white;">
-      <li class="nav-item" style="margin-left: 200px;">
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-      </li>
         <li class="nav-item" style="margin-left: 50px;">
           <a class="nav-link active home" aria-current="page" href="{{ url('/') }}">Home</a>
         </li>

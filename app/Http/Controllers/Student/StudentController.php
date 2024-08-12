@@ -127,6 +127,7 @@ class StudentController extends Controller
                 if($request->hasFile('student_image'))
                 {
                     $image_tmp = $request->file('student_image');
+                    
 
                     if($image_tmp->isValid())
                     {
@@ -134,11 +135,11 @@ class StudentController extends Controller
                         $extension = $image_tmp->getClientOriginalExtension();
                         $image_name = rand(111, 9999).'.'.$extension;
                         $image_path = 'images/student_images/'.$image_name;
-
+                        //echo "<pre>"; print_r($image_name); die;
                         //save image to file
                         Image::make($image_tmp)->save($image_path);
                     }
-                        else if(!empty($data['student_current_image']))
+                    else if(!empty($data['student_current_image']) && empty($request->file('student_image')))
                     {
                         $image_name = $data['student_current_image'];
                     }else
