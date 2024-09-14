@@ -151,46 +151,22 @@ https://templatemo.com/tm-586-scholar
           <!-- Pills content -->
           <div class="tab-content" id="ex1-content">
             <div class="tab-pane fade show active" id="ex1-pills-1" role="tabpanel" aria-labelledby="ex1-tab-1">
-              <p>
-                {{ $book_details['description']}}
-              </p>
-              <div class="row mb-2">
-                <div class="col-12 col-md-6">
-                  <ul class="list-unstyled mb-0">
-                    <li><i class="fas fa-check text-success me-2"></i>Some great feature name here</li>
-                    <li><i class="fas fa-check text-success me-2"></i>Lorem ipsum dolor sit amet, consectetur</li>
-                    <li><i class="fas fa-check text-success me-2"></i>Duis aute irure dolor in reprehenderit</li>
-                    <li><i class="fas fa-check text-success me-2"></i>Optical heart sensor</li>
-                  </ul>
-                </div>
-                <div class="col-12 col-md-6 mb-0">
-                  <ul class="list-unstyled">
-                    <li><i class="fas fa-check text-success me-2"></i>Easy fast and ver good</li>
-                    <li><i class="fas fa-check text-success me-2"></i>Some great feature name here</li>
-                    <li><i class="fas fa-check text-success me-2"></i>Modern style and design</li>
-                  </ul>
-                </div>
-              </div>
               <table class="table border mt-3 mb-2">
                 <tr>
-                  <th class="py-2">Display:</th>
-                  <td class="py-2">13.3-inch LED-backlit display with IPS</td>
+                  <th class="py-2">Title:</th>
+                  <td class="py-2"> {{ $book_details['title'] }}</td>
                 </tr>
                 <tr>
-                  <th class="py-2">Processor capacity:</th>
-                  <td class="py-2">2.3GHz dual-core Intel Core i5</td>
+                  <th class="py-2">Author:</th>
+                  <td class="py-2"> {{ $book_details['author'] }}</td>
                 </tr>
                 <tr>
-                  <th class="py-2">Camera quality:</th>
-                  <td class="py-2">720p FaceTime HD camera</td>
+                  <th class="py-2">Category:</th>
+                  <td class="py-2"> {{ $book_details['categories']['category_name'] }}</td>
                 </tr>
                 <tr>
-                  <th class="py-2">Memory</th>
-                  <td class="py-2">8 GB RAM or 16 GB RAM</td>
-                </tr>
-                <tr>
-                  <th class="py-2">Graphics</th>
-                  <td class="py-2">Intel Iris Plus Graphics 640</td>
+                  <th class="py-2">ISBN</th>
+                  <td class="py-2">{{ $book_details['isbn_no'] }}M</td>
                 </tr>
               </table>
             </div>
