@@ -11,23 +11,46 @@ use App\Models\Category;
 
 class LibraryController extends Controller
 {
-    public function library()
+
+    public function library(Request $request, $id=null)
     {
         // Paginator::useBootstrap();
 
-        $banners = Banner::orderBy('id', 'desc')->take(5)->where('status', '1')->get();
-        $banners = json_decode(json_encode($banners), true);
+            if($id == "")
+            {
+                $banners = Banner::orderBy('id', 'desc')->take(5)->where('status', '1')->get();
+                $banners = json_decode(json_encode($banners), true);
+        
+                $books = Book::with('added_by_details', 'categories')->latest()->paginate(8);
+                // /$books = json_decode(json_encode($books), true);
+        
+        
+                $book_categories = Category::orderBy('id', 'desc')->get();
+                $book_categories = json_decode(json_encode($book_categories), true);
+        
+                //echo "<pre>"; print_r($books); die;
+                // echo "<pre>"; print_r($id); die;
+                return view('front.eschool.library')->with(compact('banners', 'books', 'book_categories'));
+            }else if(!empty($id))
+            {
+                $banners = Banner::orderBy('id', 'desc')->take(5)->where('status', '1')->get();
+                $banners = json_decode(json_encode($banners), true);
+        
+                $books = Book::with('added_by_details', 'categories')->where('category_id', $id)->latest()->paginate(8);
+                $book_categories = Category::orderBy('id', 'desc')->get();
+                $book_categories = json_decode(json_encode($book_categories), true);
+        
 
-        $books = Book::with('added_by_details', 'categories')->latest()->paginate(8);
-        // /$books = json_decode(json_encode($books), true);
+                return view('front.eschool.library')->with(compact('banners', 'books', 'book_categories'));
+            }
+        
+            
+    
+           
 
-        $book_categories = Category::orderBy('id', 'desc')->get();
-        $book_categories = json_decode(json_encode($book_categories), true);
+        }
+       
 
-        //echo "<pre>"; print_r($books); die;
-
-        return view('front.eschool.library')->with(compact('banners', 'books', 'book_categories'));
-    }
 
     public function bookDetails($id = null)
     {
@@ -37,7 +60,14 @@ class LibraryController extends Controller
         $book_details = Book::with('categories')->where('id', $id)->first();
         $book_details = json_decode(json_encode($book_details), true);
 
-        $relatedBooks = BOok::where('category_id', $book_details['category_id'])->where('id', '!=', $id)->limit(4)->inRandomOrder()
+       // $imagePath = public_path('images/book_images/' . $book_details['book_image']);
+        //echo "<pre>"; print_r($imagePath); die;
+        // Analyze the image
+        // $results = $this->imageAnalysisService->analyzeImage($imagePath);
+
+        // echo "<pre>"; print_r($results); die;
+
+        $relatedBooks = Book::where('category_id', $book_details['category_id'])->where('id', '!=', $id)->limit(4)->inRandomOrder()
         ->get()->toArray();
         //echo "<pre>"; print_r($relatedBooks); die;
 

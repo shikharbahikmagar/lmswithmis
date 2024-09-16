@@ -162,7 +162,7 @@ Route::prefix('/student')->namespace('Student')->group(function() {
 
     Route::group(['middleware'=> ['student']], function(){
 
-        Route::get('/dashboard', [StudentController::class, 'dashboard']);
+        Route::get('/dashboard', [IndexController::class, 'userProfile']);
         Route::get('/logout', [StudentController::class, 'logout']);
                 //teachers
         Route::get('/students', [StudentController::class, 'students']);
@@ -201,7 +201,7 @@ Route::get('/', [IndexController::class, 'index']);
 
 Route::get('/about-us', [IndexController::class, 'aboutUs']);
 
-Route::get('/library', [LibraryController::class, 'library']);
+Route::match(['get', 'post'],'/library/{id?}', [LibraryController::class, 'library']);
 
 Route::post('/show-filtered-notices', [IndexController::class, 'index']);
 

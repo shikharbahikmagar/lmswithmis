@@ -3,7 +3,7 @@
   <div class="carousel-inner">
     @foreach($banners as $banner)
     <div class="carousel-item active">
-      <img src="{{ url('/front/assets/banner_images/'.$banner['banner_image']) }}" style="height: 800px; object-fit: cover; object-position: 55%" class="d-block w-100" alt="...">
+      <img src="{{ url('/front/assets/banner_images/'.$banner['banner_image']) }}" style="height: 500px; object-fit: cover; object-position: 55%" class="d-block w-100" alt="...">
     </div>
     @endforeach
   </div>

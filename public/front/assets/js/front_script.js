@@ -41,5 +41,30 @@ $(document).ready(function () {
         });
     });
 
+    $(document).on("click", ".filter_library_book", function() {
+
+        var book_category_id = $(this).attr("book_category_id");
+        //alert(book_category_id);
+
+        $.ajax({
+
+            type: "post",
+            url: "/library",
+            data: {book_category_id: book_category_id},
+
+            success:function(data){
+
+                $('.filtered_books').html(data);
+            },
+            error:function(error)
+            {
+                alert(error);
+            }
+        })
+
+    })
+
+
+
 
 });

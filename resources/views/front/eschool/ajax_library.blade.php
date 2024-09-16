@@ -12,14 +12,9 @@
         </div>
       </div>
       <ul class="event_filter">
-      <li>
-       
-       <a href="{{url('/library')}}" >Show All</a>
-     </li>
         @foreach($book_categories as $category)
         <li>
-       
-          <a href="{{url('/library/'.$category['id'])}}" >{{ $category['category_name'] }}</a>
+          <a class="is_active filter_library_book" book_category_id="{{ $category['id'] }}" href="#!" data-filter="{{ $category['category_name'] }}">{{ $category['category_name'] }}</a>
         </li>
         @endforeach
       </ul>
